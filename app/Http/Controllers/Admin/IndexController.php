@@ -14,6 +14,6 @@ use App\Http\Controllers\Controller;
 class IndexController extends controller
 {
     public function index(){
-        echo 22;
+        return view('admin.index.index');
     }
 }
