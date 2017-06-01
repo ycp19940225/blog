@@ -11,15 +11,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-class IndexController extends controller
+class AdminController extends controller
 {
     /**
-     * @name 后台首页
-     * @desc 后台首页
+     * @name 后台管理员首页
+     * @desc 后台管理员首页
      * @auther ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-        return view('admin.index.index');
+        return view('admin.admin.index');
     }
 }
