@@ -260,7 +260,7 @@
 								</li>
 								<li class="media media-sm">
 									<a href="javascript:;" class="pull-left">
-										<img src="{{ loadStatic('admin/img/user-4.jpg') }}}" alt="" class="media-object rounded-corner" />
+										<img src="{{ loadStatic('user') }}}" alt="" class="media-object rounded-corner" />
 									</a>
 									<div class="media-body">
 										<a href="javascript:;"><h4 class="media-heading">Aliquam nec dolor vel nisl dictum ullamcorper.</h4></a>
@@ -534,4 +534,7 @@
 		</div>
 		<!-- end row -->
 	<!-- end #content -->
+	@endsection
+@section('script.js')
+	Dashboard.init();
 	@endsection

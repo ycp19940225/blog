@@ -16,7 +16,7 @@ class IndexController extends controller
     /**
      * @name 后台首页
      * @desc 后台首页
-     * @auther ycp
+     * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
