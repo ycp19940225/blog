@@ -49,12 +49,8 @@ class Users extends Base
      */
     public function addUser(Request $request)
     {
-        if($this->checkUnique($request->input('adminname'))){
-            $data = $this->processingData($request->input(),'add');
-            return $this->create($data);
-        }else
-            return false;
-
+        $data = $this->processingData($request->input(),'add');
+        return $this->create($data);
     }
 
     /**
@@ -66,7 +62,7 @@ class Users extends Base
      */
     public function checkUnique($field)
     {
-      return $field==$this->where('adminname',$field)->value('adminname') ? false:true;
+      return $field==$this->where('adminname',$field)->value('adminname') ;
     }
 
     /**

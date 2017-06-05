@@ -83,7 +83,7 @@
                 serverSide: true,
                 processing: true,
                 ajax: {
-                    url: '/admin/user/tables',
+                    url: '{{ url('admin/user/tables') }}'
                 },
                columns: [
                    { data: 'id', name: 'id' },

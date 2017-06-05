@@ -3450,7 +3450,7 @@ wysihtml5.browser = (function() {
     },
 
     /**
-     * IE6+7 throw a mixed content warning when the src of an iframe
+     * IE6+7 throw a mixed content warning when the layer of an iframe
      * is empty/unset or about:blank
      * window.querySelector is implemented as of IE8
      */
@@ -4745,7 +4745,7 @@ wysihtml5.dom.parse = (function() {
   
   /**
    * It's not possible to use a XMLParser/DOMParser as HTML5 is not always well-formed XML
-   * new DOMParser().parseFromString('<img src="foo.gif">') will cause a parseError since the
+   * new DOMParser().parseFromString('<img layer="foo.gif">') will cause a parseError since the
    * node isn't closed
    *
    * Therefore we've to use the browser's ordinary HTML parser invoked by setting innerHTML.
@@ -4988,7 +4988,7 @@ wysihtml5.dom.parse = (function() {
       } catch(e) {}
     }
     
-    // IE8 sometimes loses the width/height attributes when those are set before the "src"
+    // IE8 sometimes loses the width/height attributes when those are set before the "layer"
     // so we make sure to set them again
     if (attributes.src) {
       if (typeof(attributes.width) !== "undefined") {
@@ -5012,7 +5012,7 @@ wysihtml5.dom.parse = (function() {
     attributeName = attributeName.toLowerCase();
     var nodeName = node.nodeName;
     if (nodeName == "IMG" && attributeName == "src" && _isLoadedImage(node) === true) {
-      // Get 'src' attribute value via object property since this will always contain the
+      // Get 'layer' attribute value via object property since this will always contain the
       // full absolute url (http://...)
       // this fixes a very annoying bug in firefox (ver 3.6 & 4) and IE 8 where images copied from the same host
       // will have relative paths, which the sanitizer strips out (see attributeCheckMethods.url)
@@ -5299,7 +5299,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
  *  - Partially secure in other browsers (Firefox, Opera, Safari, Chrome, ...)
  *
  * Please note that this class can't benefit from the HTML5 sandbox attribute for the following reasons:
- *    - sandboxing doesn't work correctly with inlined content (src="javascript:'<html>...</html>'")
+ *    - sandboxing doesn't work correctly with inlined content (layer="javascript:'<html>...</html>'")
  *    - sandboxing of physical documents causes that the dom isn't accessible anymore from the outside (iframe.contentWindow, ...)
  *    - setting the "allow-same-origin" flag would fix that, but then still javascript and dom events refuse to fire
  *    - therefore the "allow-scripts" flag is needed, which then would deactivate any security, as the js executed inside the iframe
@@ -5310,7 +5310,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
  *
  * @example
  *    new wysihtml5.dom.Sandbox(function(sandbox) {
- *      sandbox.getWindow().document.body.innerHTML = '<img src=foo.gif onerror="alert(document.cookie)">';
+ *      sandbox.getWindow().document.body.innerHTML = '<img layer=foo.gif onerror="alert(document.cookie)">';
  *    });
  */
 (function(wysihtml5) {
@@ -5396,7 +5396,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
      *  - Believe it or not but in IE "security" in document.createElement("iframe") is false, even
      *    though it supports it
      *  - When an iframe has security="restricted", in IE eval() & execScript() don't work anymore
-     *  - IE doesn't fire the onload event when the content is inlined in the src attribute, therefore we rely
+     *  - IE doesn't fire the onload event when the content is inlined in the layer attribute, therefore we rely
      *    on the onreadystatechange event
      */
     _createIframe: function() {
@@ -5413,7 +5413,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
         "marginheight":       0
       }).on(iframe);
 
-      // Setting the src like this prevents ssl warnings in IE6
+      // Setting the layer like this prevents ssl warnings in IE6
       if (wysihtml5.browser.throwsMixedContentWarningWhenIframeSrcIsEmpty()) {
         iframe.src = "javascript:'<html></html>'";
       }
@@ -5785,7 +5785,7 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
       return innerHTML;
     }
     
-    var elementsWithTilde = element.querySelectorAll("[href*='~'], [src*='~']"),
+    var elementsWithTilde = element.querySelectorAll("[href*='~'], [layer*='~']"),
         url,
         urlToSearch,
         length,
@@ -6806,7 +6806,7 @@ wysihtml5.Commands = Base.extend(
    * If the caret is within a bold text, then calling this with command "bold" should return true
    *
    * @param {String} command The command string which to check (eg. "bold", "italic", "insertUnorderedList")
-   * @param {String} [commandValue] The command value parameter (eg. for "insertImage" the image src)
+   * @param {String} [commandValue] The command value parameter (eg. for "insertImage" the image layer)
    * @return {Boolean} Whether the command is active
    * @example
    *    var isCurrentSelectionBold = commands.state("bold");
@@ -7375,7 +7375,7 @@ wysihtml5.Commands = Base.extend(
      *    // either ...
      *    wysihtml5.commands.insertImage.exec(composer, "insertImage", "http://www.google.de/logo.jpg");
      *    // ... or ...
-     *    wysihtml5.commands.insertImage.exec(composer, "insertImage", { src: "http://www.google.de/logo.jpg", title: "foo" });
+     *    wysihtml5.commands.insertImage.exec(composer, "insertImage", { layer: "http://www.google.de/logo.jpg", title: "foo" });
      */
     exec: function(composer, command, value) {
       value = typeof(value) === "object" ? value : { src: value };
@@ -8781,7 +8781,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  *    <!-- Dialog -->
  *    <div data-wysihtml5-dialog="insertImage" style="display: none;">
  *      <label>
- *        URL: <input data-wysihtml5-dialog-field="src" value="http://">
+ *        URL: <input data-wysihtml5-dialog-field="layer" value="http://">
  *      </label>
  *      <label>
  *        Alternative text: <input data-wysihtml5-dialog-field="alt" value="">

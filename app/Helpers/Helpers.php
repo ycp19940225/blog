@@ -31,4 +31,15 @@ if ( ! function_exists('get_md5_password'))
         }
     }
 }
+/**
+ * 自定义消息数组
+ *
+ */
+if ( ! function_exists('msg'))
+{
+    function msg($code = 200,$msg='',$array = [])
+    {
+       return ['code' =>$code,'msg'=>$msg,'data'=>$array];
+    }
+}
 

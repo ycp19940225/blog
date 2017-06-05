@@ -33,21 +33,26 @@ class AdminController extends controller
     }
 
     /**
-     * @name 添加管理员
+     * @name 添加管理员页面
      * @desc 添加管理员
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function add(Request $request)
+    public function add()
     {
-        if($request->isMethod('post')){
-           if($this->user->saveUser($request)){
-               return redirect('admin/user/index');
-               exit();
-           }
-        }
         return view('admin.user.edit',['title'=>'添加用户']);
     }
+
+    public function addOperate(Request $request){
+        if($this->user->checkUnique($request->input('adminname'))){
+            return response()->json(msg('500','该用户名已存在！'));
+        }
+        if($this->user->saveUser($request)){
+            return response()->json(msg('200','添加成功!'));
+        }
+        return response()->json(msg('500','添加失败！'));
+    }
+
 
     /**
      * @return mixed

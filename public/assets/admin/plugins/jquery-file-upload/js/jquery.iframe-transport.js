@@ -34,11 +34,11 @@
     // options.formData: an array of objects with name and value properties,
     //  equivalent to the return data of .serializeArray(), e.g.:
     //  [{name: 'a', value: 1}, {name: 'b', value: 2}]
-    // options.initialIframeSrc: the URL of the initial iframe src,
+    // options.initialIframeSrc: the URL of the initial iframe layer,
     //  by default set to "javascript:false;"
     $.ajaxTransport('iframe', function (options) {
         if (options.async) {
-            // javascript:false as initial iframe src
+            // javascript:false as initial iframe layer
             // prevents warning popups on HTTPS in IE6:
             /*jshint scripturl: true */
             var initialIframeSrc = options.initialIframeSrc || 'javascript:false;',
@@ -67,7 +67,7 @@
                     // so we set the name along with the iframe HTML markup:
                     counter += 1;
                     iframe = $(
-                        '<iframe src="' + initialIframeSrc +
+                        '<iframe layer="' + initialIframeSrc +
                             '" name="iframe-transport-' + counter + '"></iframe>'
                     ).bind('load', function () {
                         var fileInputClones,
@@ -99,7 +99,7 @@
                                 );
                                 // Fix for IE endless progress bar activity bug
                                 // (happens on form submits to iframe targets):
-                                $('<iframe src="' + initialIframeSrc + '"></iframe>')
+                                $('<iframe layer="' + initialIframeSrc + '"></iframe>')
                                     .appendTo(form);
                                 window.setTimeout(function () {
                                     // Removing the form in a setTimeout call
@@ -163,7 +163,7 @@
                 },
                 abort: function () {
                     if (iframe) {
-                        // javascript:false as iframe src aborts the request
+                        // javascript:false as iframe layer aborts the request
                         // and prevents warning popups on HTTPS in IE6.
                         // concat is used to avoid the "Script URL" JSLint error:
                         iframe

@@ -65,7 +65,30 @@
 @section('script.js')
     <script>
         $("button").click(function () {
-            $("form").submit();
+            if(validation() == false){
+                return false;
+            }
+           var data = $("form").serialize();
+           $.post('{{ url('admin/user/addOperate') }}',data,function (res) {
+               console.log(res);
+               if(res['code'] == 200){
+                   layer.msg(res['msg'],{icon: 6});
+                   setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+               }else{
+                   layer.msg(res['msg'],{icon:5});
+               }
+           });
         });
+        /**
+         * 表单验证
+         */
+        function validation() {
+            var password = $("#password").val();
+            var repass = $("#repass").val();
+            if(password !==repass){
+                layer.msg('密码输入不一致！',{icon:5});
+                return false;
+            }
+        }
     </script>
     @endsection

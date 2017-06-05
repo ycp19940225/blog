@@ -327,6 +327,9 @@
 <script src="{{ loadStatic('admin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ loadStatic('admin/js/table-manage-default.demo.min.js') }}"></script>
 <!-- ================== END TABLE JS ================== -->
+<!-- ================== BEGIN layer JS ================== -->
+<script src="{{ loadStatic('common/layer/layer.js') }}"></script>
+<!-- ================== END layer JS ================== -->
 
 <script src="{{ loadStatic('admin/js/apps.min.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
