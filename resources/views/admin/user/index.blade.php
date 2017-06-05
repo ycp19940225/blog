@@ -11,7 +11,7 @@
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
         <small>
-            <button class="btn btn-primary m-2">添加用户</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/user/add' ">添加用户</button>
         </small>
     </h1>
     <div class="row">
@@ -26,7 +26,7 @@
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
-                    <h4 class="panel-title">Data Table - Default</h4>
+                    <h4 class="panel-title">{{ $title }}</h4>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
