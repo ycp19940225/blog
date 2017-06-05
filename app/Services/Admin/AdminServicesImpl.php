@@ -38,6 +38,6 @@ class UserServicesImpl implements UserServices
 
     public function select()
     {
-        return $this->userDao->select('id','adminname','updated_at','created_at')->get();
+        return $this->userDao->select('id','adminname','email','updated_at','created_at')->get();
     }
 }

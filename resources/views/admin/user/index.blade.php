@@ -33,10 +33,11 @@
                         <table id="data-table" class="table table-hover table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>id</th>
+                                <th>ID</th>
                                 <th>账号</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,6 +47,10 @@
                                 <td>{{ $v['adminname'] }}</td>
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
+                                <td>
+                                    <a href="" class="btn btn-success btn-xs m-2 detail">编辑</a>
+                                    <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
+                                </td>
                             </tr>
                                 @endforeach
                             </tbody>
@@ -64,34 +69,29 @@
 @section('script.js')
     <script>
         $(function () {
-            var selected = [];
-            var table =$("#data-table");
-            table.dataTable({
-               "language": {
-                   "sProcessing": "读取中...",
-                   "sLengthMenu": "显示 _MENU_ 项结果",
-                   "sZeroRecords": "没有匹配结果",
-                   "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-                   "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-                   "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-                   "sInfoPostFix": "",
-                   "sSearch": "搜索:",
-                   "sUrl": "",
-                   "sEmptyTable": "表中数据为空",
-                   "sLoadingRecords": "载入中...",
-                   "sInfoThousands": ",",
-                   "oPaginate": {
-                       "sFirst": "首页",
-                       "sPrevious": "上页",
-                       "sNext": "下页",
-                       "sLast": "末页"
-                   },
-                   "oAria": {
-                       "sSortAscending": ": 以升序排列此列",
-                       "sSortDescending": ": 以降序排列此列"
-                   }
-               }
-           });
+
         });
+        /**
+         * 删除
+         * @param i
+         */
+        function del(i) {
+            //询问框
+            layer.confirm('是否删除？', {
+                title:'确认操作',
+                btn: ['是','否'] //按钮
+            }, function(){
+                $.post("{:U('delete')}",{id:i},function (res) {
+                    if(res['status'] === 'success'){
+                        layer.msg(res['msg'],{icon:1});
+                    }else{
+                        layer.msg(res['msg'],{icon:2});
+                    }
+                    setTimeout(function () {
+                        window.location.reload();
+                    },2000);
+                },"json");
+            });
+        }
     </script>
     @endsection

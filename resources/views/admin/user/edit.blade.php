@@ -2,12 +2,16 @@
 @section('page.content')
     <ol class="breadcrumb pull-right">
         <li><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;">Extra</a></li>
-        <li class="active">Search Results</li>
+        <li><a href="javascript:;">{{ $title }}</a></li>
+        <li class="active">{{ $title }}</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header">Search Results <small>3 results found</small></h1>
+    <h1 class="page-header">{{ $title }}
+        <small>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:history.go(-1) ">返回列表</button>
+        </small>
+    </h1>
     <div class="row">
         <!-- begin col-12 -->
         <div class="col-md-12">
@@ -20,7 +24,7 @@
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
-                    <h4 class="panel-title">Data Table - Default</h4>
+                    <h4 class="panel-title">{{ $title }}</h4>
                 </div>
                 <div class="panel-body">
                     <div class="row">

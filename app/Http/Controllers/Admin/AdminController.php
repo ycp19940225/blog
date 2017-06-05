@@ -46,7 +46,7 @@ class AdminController extends controller
                exit();
            }
         }
-        return view('admin.user.edit');
+        return view('admin.user.edit',['title'=>'添加用户']);
     }
 
     /**

@@ -23,7 +23,7 @@ class Users extends Base
      *
      * @var array
      */
-    public $fillable = array('id','adminname','password','created_at','updated_at','input_id','token');
+    public $fillable = array('id','adminname','password','email','created_at','updated_at','input_id','token');
 
     /**
      * @param $data
