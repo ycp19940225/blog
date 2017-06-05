@@ -4,16 +4,12 @@
 @section('page.content')
     <ol class="breadcrumb pull-right">
         <li><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;">{{ $title }}</a></li>
-        <li class="active">{{ $title }}</li>
+        <li><a href="javascript:;">Extra</a></li>
+        <li class="active">Search Results</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header">{{ $title }}
-        <small>
-            <button class="btn btn-primary m-2">添加用户</button>
-        </small>
-    </h1>
+    <h1 class="page-header">Search Results <small>3 results found</small></h1>
     <div class="row">
         <!-- begin col-12 -->
         <div class="col-md-12">
@@ -40,14 +36,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $k=>$v)
-                            <tr>
-                                <td>{{ $v['id'] }}</td>
-                                <td>{{ $v['adminname'] }}</td>
-                                <td>{{ $v['created_at'] }}</td>
-                                <td>{{ $v['updated_at'] }}</td>
-                            </tr>
-                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -90,7 +79,19 @@
                        "sSortAscending": ": 以升序排列此列",
                        "sSortDescending": ": 以降序排列此列"
                    }
-               }
+               },
+                serverSide: true,
+                processing: true,
+                ajax: {
+                    url: '/admin/user/tables',
+                },
+               columns: [
+                   { data: 'id', name: 'id' },
+                   { data: 'adminname', name: 'adminname' },
+                   { data: 'created_at', name: 'created_at' },
+                   { data: 'updated_at', name: 'updated_at' }
+               ]
+
            });
         });
     </script>

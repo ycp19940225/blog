@@ -17,7 +17,7 @@ use Yajra\Datatables\Facades\Datatables;
 class Users extends Base
 {
     protected $table = 'blog_admin';
-    protected $dateFormat = 'U' ;
+    protected $dateFormat = 'U';
     /**
      * 可以被集体赋值的表字段
      *
@@ -25,6 +25,21 @@ class Users extends Base
      */
     public $fillable = array('id','adminname','password','created_at','updated_at','input_id','token');
 
+    /**
+     * @param $data
+     * @param string $method
+     * @return
+     * @internal param $处理数据
+     * @desc 处理数据
+     */
+    public function processingData($data,$method =''){
+        switch ($method){
+            case 'add':  $data['password'] = get_md5_password($data['password']) ;
+                break;
+            default:break;
+        }
+        return $data;
+    }
     /**
      * @name 添加后台用户
      * @desc 添加后台用户
@@ -34,8 +49,9 @@ class Users extends Base
      */
     public function addUser(Request $request)
     {
-        if(!$this->checkUnique($request->input('adminname'))){
-            return $this->create($request->input());
+        if($this->checkUnique($request->input('adminname'))){
+            $data = $this->processingData($request->input(),'add');
+            return $this->create($data);
         }else
             return false;
 
@@ -50,19 +66,18 @@ class Users extends Base
      */
     public function checkUnique($field)
     {
-      return $field==$this->where('adminname',$field)->value('adminname');
+      return $field==$this->where('adminname',$field)->value('adminname') ? false:true;
     }
 
     /**
-     * @name 获取表结构
+     * @name 获取信息
      * @desc 获取表结构
      * @author ycp
      * @return mixed
      */
     public function getTables()
     {
-
-      return Datatables::eloquent($this->query())
-          ->make(true);
+       return Datatables::eloquent($this::select('id','adminname','updated_at','created_at'))
+            ->make(true);
     }
 }

@@ -28,19 +28,8 @@ class AdminController extends controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-
-        return view('admin.user.index');
-    }
-
-    /**
-     * @name 获取信息
-     * @desc（表结构）
-     * @author ycp
-     * @param Request $request
-     * @return mixed
-     */
-    public function getTables(){
-        return $this->user->getTables();
+        $data = $this->user->select();
+        return view('admin.user.index',['data'=>$data,'title'=>'用户列表']);
     }
 
     /**
@@ -52,12 +41,22 @@ class AdminController extends controller
     public function add(Request $request)
     {
         if($request->isMethod('post')){
-            $res = $this->user->saveUser($request);
-            if($res){
-             return redirect()
-                 ->route('admin.user.index');
-            }
+           if($this->user->saveUser($request)){
+               return redirect('admin/user/index');
+               exit();
+           }
         }
         return view('admin.user.edit');
     }
+
+    /**
+     * @return mixed
+     * @internal param $获取信息
+     * @desc（表结构）
+     * @author ycp
+     * @internal param Request $request
+     */
+    /*public function getTables(){
+        return $this->user->getTables();
+    }*/
 }

@@ -13,6 +13,6 @@ interface UserServices
 {
     public function saveUser(Request $request);
     public function checkUnique($field);
-
     public function getTables();
+    public function select();
 }

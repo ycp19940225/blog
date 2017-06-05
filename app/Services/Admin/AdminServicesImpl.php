@@ -35,4 +35,9 @@ class UserServicesImpl implements UserServices
     {
         return $this->userDao->getTables();
     }
+
+    public function select()
+    {
+        return $this->userDao->select('id','adminname','updated_at','created_at')->get();
+    }
 }
