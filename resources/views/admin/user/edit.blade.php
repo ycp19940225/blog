@@ -49,8 +49,8 @@
                                 </div>
                             </div>
                             <div class="col-md-offset-5" >
-                                <button type="button" class="btn btn-success m-2" id="repass" name="repass">保存</button>
-                                <button type="reset" class="btn btn-success m-2" id="repass" name="repass">重置</button>
+                                <button type="button" class="btn btn-success m-2" id="submit" name="repass">保存</button>
+                                <button type="reset" class="btn btn-success m-2" id="reset" name="repass">重置</button>
                             </div>
                         </form>
                     </div>
@@ -64,7 +64,7 @@
 @endsection
 @section('script.js')
     <script>
-        $("button").click(function () {
+        $("#submit").click(function () {
             if(validation() == false){
                 return false;
             }
