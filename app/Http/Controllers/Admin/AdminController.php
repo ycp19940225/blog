@@ -59,10 +59,9 @@ class AdminController extends controller
         return response()->json(msg('500','添加失败！'));
     }
 
-    /**
+    /**@name 修改页面
      * @param $id
      * @return \Illuminate\Http\JsonResponse
-     * @desc 修改页面
      * @internal param Request $request
      */
     public function edit($id){
