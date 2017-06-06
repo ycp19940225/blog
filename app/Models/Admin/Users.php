@@ -76,4 +76,14 @@ class Users extends Base
        return Datatables::eloquent($this::select('id','adminname','updated_at','created_at'))
             ->make(true);
     }
+
+    /**
+     * @name 修改信息
+     * @desc 修改信息
+     * @param $data
+     */
+    public function edit($data)
+    {
+        var_dump($data);exit();
+    }
 }

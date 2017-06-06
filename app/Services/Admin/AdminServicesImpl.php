@@ -40,4 +40,14 @@ class UserServicesImpl implements UserServices
     {
         return $this->userDao->select('id','adminname','email','updated_at','created_at')->get();
     }
+
+    public function updateUser($data)
+    {
+        return $this->userDao->edit($data);
+    }
+
+    public function find($id)
+    {
+        return $this->userDao->where('id','=',$id)->first();
+    }
 }

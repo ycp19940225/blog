@@ -31,23 +31,26 @@
                         <form action="" class="form-horizontal" role="form" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
+                                <input type="hidden" name="id" value="{{ $data['id'] }}">
                                 <label for="name" class="col-xs-4 control-label">账号</label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="name" name="adminname" placeholder="请输入名字">
+                                    <input type="text" class="form-control" id="name" name="adminname" value="{{ $data['adminname'] }}" placeholder="请输入名字">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-xs-4 control-label">密码</label>
                                 <div class="col-xs-5">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                                    <input type="password" class="form-control" id="password" name="password" value="{{ $data['password'] }}" placeholder="请输入密码">
                                 </div>
                             </div>
+                            @if( Route::current()->getActionMethod() == 'add')
                             <div class="form-group">
                                 <label for="repass" class="col-xs-4 control-label">确认密码</label>
                                 <div class="col-xs-5">
                                     <input type="password" class="form-control" id="repass" name="repass" placeholder="确认密码">
                                 </div>
                             </div>
+                            @endif
                             <div class="col-md-offset-5" >
                                 <button type="button" class="btn btn-success m-2" id="submit" name="repass">保存</button>
                                 <button type="reset" class="btn btn-success m-2" id="reset" name="repass">重置</button>
@@ -65,19 +68,30 @@
 @section('script.js')
     <script>
         $("#submit").click(function () {
-            if(validation() == false){
-                return false;
-            }
            var data = $("form").serialize();
-           $.post('{{ url('admin/user/addOperate') }}',data,function (res) {
-               console.log(res);
-               if(res['code'] == 200){
-                   layer.msg(res['msg'],{icon: 6});
-                   setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
-               }else{
-                   layer.msg(res['msg'],{icon:5});
-               }
-           });
+            var method = "{{ Route::current()->getActionMethod() }}";
+            if(method === 'edit'){
+                $.post('{{ url('admin/user/editOperate') }}',data,function (res) {
+                    if(res['code'] === 200){
+                        layer.msg(res['msg'],{icon: 6});
+                        setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+                    }else{
+                        layer.msg(res['msg'],{icon:5});
+                    }
+                });
+            }else{
+                if(validation() === false){
+                    return false;
+                }
+                $.post('{{ url('admin/user/addOperate') }}',data,function (res) {
+                    if(res['code'] === 200){
+                        layer.msg(res['msg'],{icon: 6});
+                        setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+                    }else{
+                        layer.msg(res['msg'],{icon:5});
+                    }
+                });
+            }
         });
         /**
          * 表单验证

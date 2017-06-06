@@ -15,4 +15,7 @@ interface UserServices
     public function checkUnique($field);
     public function getTables();
     public function select();
+    public function updateUser($data);
+
+    public function find($id);
 }

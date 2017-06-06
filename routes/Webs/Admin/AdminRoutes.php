@@ -10,3 +10,5 @@ Route::any('/user/add','adminController@add');
 Route::post('/user/addOperate','adminController@addOperate');
 Route::any('/user/index','adminController@index');
 Route::get('/user/tables','adminController@getTables');
+Route::get('/user/edit/{id}','adminController@edit');
+Route::post('/user/editOperate','adminController@editOperate');

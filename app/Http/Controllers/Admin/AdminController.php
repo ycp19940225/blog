@@ -43,6 +43,12 @@ class AdminController extends controller
         return view('admin.user.edit',['title'=>'添加用户']);
     }
 
+    /**
+     * @name 添加操作
+     * @desc 添加操作
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addOperate(Request $request){
         if($this->user->checkUnique($request->input('adminname'))){
             return response()->json(msg('500','该用户名已存在！'));
@@ -52,6 +58,33 @@ class AdminController extends controller
         }
         return response()->json(msg('500','添加失败！'));
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @desc 修改页面
+     * @internal param Request $request
+     */
+    public function edit($id){
+        $data = $this->user->find($id);
+        return view('admin.user.edit',['data'=>$data,'title'=>'编辑用户']);
+    }
+    /**
+     * @name 修改操作
+     * @desc 修改操作
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function editOperate(Request $request){
+        if($this->user->checkUnique($request->input('adminname'))){
+            return response()->json(msg('500','该用户名已存在！'));
+        }
+        if($this->user->updateUser($request->input())){
+            return response()->json(msg('200','添加成功!'));
+        }
+        return response()->json(msg('500','添加失败！'));
+    }
+
 
 
     /**
