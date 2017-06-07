@@ -48,6 +48,6 @@ class UserServicesImpl implements UserServices
 
     public function find($id)
     {
-        return $this->userDao->where('id','=',$id)->first();
+        return $this->userDao->find($id);
     }
 }
