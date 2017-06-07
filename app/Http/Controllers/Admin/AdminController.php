@@ -75,13 +75,13 @@ class AdminController extends controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function editOperate(Request $request){
-        if($this->user->checkUnique($request->input('adminname'))){
+        if($this->user->checkUnique($request->input('adminname'),$request->input('id'))){
             return response()->json(msg('500','该用户名已存在！'));
         }
         if($this->user->updateUser($request->input())){
-            return response()->json(msg('200','添加成功!'));
+            return response()->json(msg('200','修改成功!'));
         }
-        return response()->json(msg('500','添加失败！'));
+        return response()->json(msg('500','修改失败！'));
     }
 
 

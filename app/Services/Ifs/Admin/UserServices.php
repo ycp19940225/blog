@@ -12,10 +12,9 @@ use Illuminate\Http\Request;
 interface UserServices
 {
     public function saveUser(Request $request);
-    public function checkUnique($field);
+    public function checkUnique($field,$id='');
     public function getTables();
     public function select();
     public function updateUser($data);
-
     public function find($id);
 }

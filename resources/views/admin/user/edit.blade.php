@@ -31,16 +31,16 @@
                         <form action="" class="form-horizontal" role="form" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="hidden" name="id" value="{{ $data['id'] }}">
+                                <input type="hidden" name="id" value="{{ $data['id'] or '' }}">
                                 <label for="name" class="col-xs-4 control-label">账号</label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="name" name="adminname" value="{{ $data['adminname'] }}" placeholder="请输入名字">
+                                    <input type="text" class="form-control" id="name" name="adminname" value="{{ $data['adminname'] or ''}}" placeholder="请输入名字">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-xs-4 control-label">密码</label>
                                 <div class="col-xs-5">
-                                    <input type="password" class="form-control" id="password" name="password" value="{{ $data['password'] }}" placeholder="请输入密码">
+                                    <input type="password" class="form-control" id="password" name="password" value="{{ $data['password'] or ''}}" placeholder="请输入密码">
                                 </div>
                             </div>
                             @if( Route::current()->getActionMethod() == 'add')
@@ -67,29 +67,22 @@
 @endsection
 @section('script.js')
     <script>
+        /**
+         * 表单提交
+         */
         $("#submit").click(function () {
            var data = $("form").serialize();
             var method = "{{ Route::current()->getActionMethod() }}";
             if(method === 'edit'){
                 $.post('{{ url('admin/user/editOperate') }}',data,function (res) {
-                    if(res['code'] === 200){
-                        layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
-                    }else{
-                        layer.msg(res['msg'],{icon:5});
-                    }
-                });
+                    handle(res);
+                },"json");
             }else{
                 if(validation() === false){
                     return false;
                 }
                 $.post('{{ url('admin/user/addOperate') }}',data,function (res) {
-                    if(res['code'] === 200){
-                        layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
-                    }else{
-                        layer.msg(res['msg'],{icon:5});
-                    }
+                    handle(res);
                 });
             }
         });
@@ -102,6 +95,18 @@
             if(password !==repass){
                 layer.msg('密码输入不一致！',{icon:5});
                 return false;
+            }
+        }
+        /**
+         * 结果处理
+         */
+        function handle(res){
+            console.log(res);
+            if(res['code'] == 200){
+                layer.msg(res['msg'],{icon: 6});
+                setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+            }else{
+                layer.msg(res['msg'],{icon:5});
             }
         }
     </script>

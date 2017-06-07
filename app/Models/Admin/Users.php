@@ -6,7 +6,7 @@
  * Time: 16:46
  */
 
-namespace App\Http\Models;
+namespace App\Models\Admin;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -20,26 +20,10 @@ class Users extends Base
     protected $dateFormat = 'U';
     /**
      * 可以被集体赋值的表字段
-     *
      * @var array
      */
     public $fillable = array('id','adminname','password','email','created_at','updated_at','input_id','token');
 
-    /**
-     * @param $data
-     * @param string $method
-     * @return
-     * @internal param $处理数据
-     * @desc 处理数据
-     */
-    public function processingData($data,$method =''){
-        switch ($method){
-            case 'add':  $data['password'] = get_md5_password($data['password']) ;
-                break;
-            default:break;
-        }
-        return $data;
-    }
     /**
      * @name 添加后台用户
      * @desc 添加后台用户
@@ -53,16 +37,60 @@ class Users extends Base
         return $this->create($data);
     }
 
+
     /**
      * @name 检测字段是否重复
      * @desc 检测字段是否重复
-     * @author ycp
      * @param $field
+     * @param string $id
      * @return bool
      */
-    public function checkUnique($field)
+    public function checkUnique($field, $id='')
     {
-      return $field==$this->where('adminname',$field)->value('adminname') ;
+        if(!empty($id)){
+            $data = $this->where('id','!=',$id)->get();
+            foreach ($data as $k=>$v){
+                if($v['adminname'] == $field){
+                    return true;
+                }
+            }
+        }else
+            return $field==$this->where(['adminname'=>$field])->value('adminname') ;
+    }
+
+
+    /**
+     * @name 修改信息
+     * @desc 修改信息
+     * @param $data
+     * @return bool
+     */
+    public function edit($data)
+    {
+        return $this->find($data['id'])->update($this->processingData($data,'edit'));
+    }
+
+
+    /**
+     * @name 数据处理
+     * @desc 主要是处理密码
+     * @param $data
+     * @param string $method
+     * @return mixed
+     */
+    public function processingData($data, $method = ''){
+        switch ($method){
+            case 'add':  $data['password'] = get_md5_password($data['password']) ;
+                break;
+            case 'edit':
+                $res = $this->find($data['id']);
+                if($res['password'] !== $data['password']){
+                    $data['password'] = get_md5_password($data['password']);
+                }
+                break;
+            default:break;
+        }
+        return $data;
     }
 
     /**
@@ -73,17 +101,7 @@ class Users extends Base
      */
     public function getTables()
     {
-       return Datatables::eloquent($this::select('id','adminname','updated_at','created_at'))
+        return Datatables::eloquent($this::select('id','adminname','updated_at','created_at'))
             ->make(true);
-    }
-
-    /**
-     * @name 修改信息
-     * @desc 修改信息
-     * @param $data
-     */
-    public function edit($data)
-    {
-        var_dump($data);exit();
     }
 }

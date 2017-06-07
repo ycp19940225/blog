@@ -9,7 +9,7 @@
 namespace App\Services\Admin;
 
 
-use App\Http\Models\Users;
+use App\Models\Admin\Users;
 use App\Services\Ifs\Admin\UserServices;
 use Illuminate\Http\Request;
 
@@ -26,9 +26,9 @@ class UserServicesImpl implements UserServices
         return $this->userDao->addUser($request);
     }
 
-    public function checkUnique($field)
+    public function checkUnique($field,$id='')
     {
-       return $this->userDao->checkUnique($field);
+       return $this->userDao->checkUnique($field,$id);
     }
 
     public function getTables()
