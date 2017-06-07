@@ -102,7 +102,7 @@
          */
         function handle(res){
             console.log(res);
-            if(res['code'] == 200){
+            if(res['code'] == 'success'){
                 layer.msg(res['msg'],{icon: 6});
                 setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
             }else{

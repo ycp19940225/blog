@@ -9,4 +9,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
-/_html
+/html
+.gitignore

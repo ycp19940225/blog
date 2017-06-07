@@ -51,12 +51,12 @@ class AdminController extends controller
      */
     public function addOperate(Request $request){
         if($this->user->checkUnique($request->input('adminname'))){
-            return response()->json(msg('500','该用户名已存在！'));
+            return response()->json(msg('error','该用户名已存在！'));
         }
         if($this->user->saveUser($request)){
-            return response()->json(msg('200','添加成功!'));
+            return response()->json(msg('success','添加成功!'));
         }
-        return response()->json(msg('500','添加失败！'));
+        return response()->json(msg('error','添加失败！'));
     }
 
     /**@name 修改页面
@@ -76,12 +76,12 @@ class AdminController extends controller
      */
     public function editOperate(Request $request){
         if($this->user->checkUnique($request->input('adminname'),$request->input('id'))){
-            return response()->json(msg('500','该用户名已存在！'));
+            return response()->json(msg('error','该用户名已存在！'));
         }
         if($this->user->updateUser($request->input())){
-            return response()->json(msg('200','修改成功!'));
+            return response()->json(msg('success','修改成功!'));
         }
-        return response()->json(msg('500','修改失败！'));
+        return response()->json(msg('error','修改失败！'));
     }
 
 
