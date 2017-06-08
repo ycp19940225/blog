@@ -32,25 +32,11 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <input type="hidden" name="id" value="{{ $data['id'] or '' }}">
-                                <label for="name" class="col-xs-4 control-label">账号</label>
+                                <label for="name" class="col-xs-4 control-label">角色名</label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="name" name="adminname" value="{{ $data['adminname'] or ''}}" placeholder="请输入名字">
+                                    <input type="text" class="form-control" id="name" name="role_name" value="{{ $data['role_name'] or ''}}" placeholder="请输入名字">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="col-xs-4 control-label">密码</label>
-                                <div class="col-xs-5">
-                                    <input type="password" class="form-control" id="password" name="password" value="{{ $data['password'] or ''}}" placeholder="请输入密码">
-                                </div>
-                            </div>
-                            @if( Route::current()->getActionMethod() == 'add')
-                            <div class="form-group">
-                                <label for="repass" class="col-xs-4 control-label">确认密码</label>
-                                <div class="col-xs-5">
-                                    <input type="password" class="form-control" id="repass" name="repass" placeholder="确认密码">
-                                </div>
-                            </div>
-                            @endif
                             <div class="col-md-offset-5" >
                                 <button type="button" class="btn btn-success m-2" id="submit" name="repass">保存</button>
                                 <button type="reset" class="btn btn-success m-2" id="reset" name="repass">重置</button>
@@ -74,14 +60,14 @@
            var data = $("form").serialize();
             var method = "{{ Route::current()->getActionMethod() }}";
             if(method === 'edit'){
-                $.post('{{ url('admin/user/editOperate') }}',data,function (res) {
+                $.post('{{ url('admin/role/editOperate') }}',data,function (res) {
                     handle(res);
                 },"json");
             }else{
                 if(validation() === false){
                     return false;
                 }
-                $.post('{{ url('admin/user/addOperate') }}',data,function (res) {
+                $.post('{{ url('admin/role/addOperate') }}',data,function (res) {
                     handle(res);
                 });
             }
@@ -104,7 +90,7 @@
             console.log(res);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{icon: 6});
-                setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+                setTimeout('location.href="{{ url('admin/role/index') }}"',2000);
             }else{
                 layer.msg(res['msg'],{icon:5});
             }

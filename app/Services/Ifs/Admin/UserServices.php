@@ -17,4 +17,5 @@ interface UserServices
     public function select();
     public function updateUser($data);
     public function find($id);
+    public function delete($id);
 }

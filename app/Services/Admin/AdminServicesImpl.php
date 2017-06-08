@@ -38,7 +38,7 @@ class UserServicesImpl implements UserServices
 
     public function select()
     {
-        return $this->userDao->select('id','adminname','email','updated_at','created_at')->get();
+        return $this->userDao->where('deleted_at',0)->select('id','adminname','email','updated_at','created_at')->get();
     }
 
     public function updateUser($data)
@@ -49,5 +49,10 @@ class UserServicesImpl implements UserServices
     public function find($id)
     {
         return $this->userDao->find($id);
+    }
+
+    public function delete($id)
+    {
+        return $this->userDao->where('id',$id)->delete();
     }
 }

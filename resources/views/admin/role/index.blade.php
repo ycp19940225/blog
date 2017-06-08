@@ -9,7 +9,7 @@
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/user/add' ">添加用户</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/role/add' ">添加角色</button>
         </small>
     </h1>
     <div class="row">
@@ -32,7 +32,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>账号</th>
+                                <th>角色名</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
                                 <th>操作</th>
@@ -42,11 +42,11 @@
                             @foreach($data as $k=>$v)
                             <tr>
                                 <td>{{ $v['id'] }}</td>
-                                <td>{{ $v['adminname'] }}</td>
+                                <td>{{ $v['role_name'] }}</td>
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
                                 <td>
-                                    <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/user/edit',['id'=>$v['id']]) }}" >编辑</a>
+                                    <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/role/edit',['id'=>$v['id']]) }}" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
                                 </td>
                             </tr>
@@ -60,44 +60,6 @@
         </div>
         <!-- end col-12 -->
     </div>
-{{--    <!-- 修改模态框（Modal） -->
-    <div class="modal fade" id="update_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">编辑用户</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" id="update" role="form">
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">物流公司</label>
-                            <div class="col-sm-10">
-                                {{ csrf_field() }}
-                                <label for="id"></label><input type="text" name="id" id="id" style="display: none">
-                                <div class="form-group">
-                                    <label for="name" class="col-xs-4 control-label">账号</label>
-                                    <div class="col-xs-5">
-                                        <input type="text" class="form-control" id="name" name="adminname" placeholder="请输入名字">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-xs-4 control-label">密码</label>
-                                    <div class="col-xs-5">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary save">保存</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>--}}
 
 @endsection
 @section('page.js')
@@ -120,11 +82,11 @@
                     _token: _token
                 };
                 console.log(data);
-                $.post("{{ url('admin/user/delete') }}",data,function (res) {
+                $.post("{{ url('admin/role/delete') }}",data,function (res) {
                     console.log(res);
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+                        setTimeout('location.href="{{ url('admin/role/index') }}"',2000);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }

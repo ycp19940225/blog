@@ -10,6 +10,7 @@ namespace App\Models\Admin;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use App\Models\Base;
 use Yajra\Datatables\Facades\Datatables;
@@ -18,6 +19,7 @@ class Users extends Base
 {
     protected $table = 'blog_admin';
     protected $dateFormat = 'U';
+
     /**
      * 可以被集体赋值的表字段
      * @var array
