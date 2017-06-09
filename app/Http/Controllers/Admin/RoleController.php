@@ -83,10 +83,21 @@ class RoleController extends controller
         return response()->json(msg('error','修改失败！'));
     }
 
+    /**
+     * @name 删除角色
+     * @desc 删除角色
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete(Request $request){
         if($this->role->delete($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else
             return response()->json(msg('error','删除失败!'));
+    }
+
+    public function addUser(){
+        $data = $this->role->getAll();
+        return view('admin.role.add_user',['data'=>$data,'title'=>'编辑角色']);
     }
 }

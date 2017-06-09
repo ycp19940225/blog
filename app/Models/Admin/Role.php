@@ -23,6 +23,14 @@ class Role extends Base
      * @var array
      */
     public $fillable = array('id','role_name','created_at','updated_at','input_id','deleted');
+    /**
+     * 关联模型
+     * 属于该用户的身份。
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\Admin\Users','admin_role','role_id','admin_id');
+    }
 
     /**
      * @name 添加后台用户

@@ -27,6 +27,15 @@ class Users extends Base
     public $fillable = array('id','adminname','password','email','created_at','updated_at','input_id','token');
 
     /**
+     * 关联模型
+     * 属于该用户的身份。
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Admin\Role','blog_admin_role','admin_id','role_id');
+    }
+
+    /**
      * @name 添加后台用户
      * @desc 添加后台用户
      * @author ycp

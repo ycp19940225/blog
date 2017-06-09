@@ -17,8 +17,10 @@ Route::post('/user/delete','adminController@delete');
 //角色
 Route::any('/role/add','roleController@add');
 Route::post('/role/addOperate','roleController@addOperate');
-Route::any('/role/index','roleController@index');
+Route::get('/role/index','roleController@index');
 Route::get('/role/edit/{id}','roleController@edit');
 Route::post('/role/editOperate','roleController@editOperate');
 Route::post('/role/delete','roleController@delete');
+//管理员——角色
+Route::get('/role/user/{id}','roleController@addUser');
 

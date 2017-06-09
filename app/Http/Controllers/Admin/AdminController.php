@@ -10,16 +10,21 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class AdminController extends controller
 {
     protected $user;
-    public function __construct(UserServices $userServices)
+    protected $role;
+
+    public function __construct(UserServices $userServices,RoleServices $roleServices)
     {
         $this->user=$userServices;
+        $this->role=$roleServices;
     }
     /**
      * @name 后台管理员首页
@@ -40,7 +45,8 @@ class AdminController extends controller
      */
     public function add()
     {
-        return view('admin.user.edit',['title'=>'添加用户']);
+        $roles =$this->role->getAll();
+        return view('admin.user.edit',['roles'=>$roles,'title'=>'添加用户']);
     }
 
     /**
@@ -96,4 +102,5 @@ class AdminController extends controller
         } else
             return response()->json(msg('error','删除失败!'));
     }
+
 }

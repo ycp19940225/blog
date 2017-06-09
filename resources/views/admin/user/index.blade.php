@@ -33,6 +33,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>账号</th>
+                                <th>角色</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
                                 <th>操作</th>
@@ -43,11 +44,17 @@
                             <tr>
                                 <td>{{ $v['id'] }}</td>
                                 <td>{{ $v['adminname'] }}</td>
+                                <td>
+                                    @foreach($v->roles as $role)
+                                    {{ $role->role_name or '' }}
+                                        @endforeach
+                                </td>
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
                                 <td>
-                                    <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/user/edit',['id'=>$v['id']]) }}" >编辑</a>
+                                    <a class="btn btn-info btn-xs m-2 detail" href="{{ url('admin/user/edit',['id'=>$v['id']]) }}" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
+                                    <a href="{{ url('admin/role/user',['id'=>$v['id']]) }}" class="btn btn-success btn-xs m-2 delete" >角色</a>
                                 </td>
                             </tr>
                                 @endforeach
