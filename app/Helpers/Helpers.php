@@ -43,7 +43,7 @@ if ( ! function_exists('msg'))
     }
 }
 /**
- * 自定义消息数组
+ * 检测用户拥有的角色
  */
 if ( ! function_exists('check_roles'))
 {
