@@ -59,7 +59,7 @@ class PrivilegeController extends controller
     public function add()
     {
         $roles =$this->role->getAll();
-        return view('admin.user.edit',['roles'=>$roles,'title'=>'添加用户']);
+        return view('admin.user.add',['roles'=>$roles,'title'=>'添加用户']);
     }
 
     /**
