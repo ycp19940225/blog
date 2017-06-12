@@ -23,4 +23,7 @@ Route::post('/role/editOperate','roleController@editOperate');
 Route::post('/role/delete','roleController@delete');
 //管理员——角色
 Route::get('/role/user/{id}','roleController@addUser');
+Route::post('/user/addUserOperate','roleController@addUserOperate');
+//权限
+Route::get('/pri/index','PrivilegeController@index');
 

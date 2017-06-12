@@ -11,14 +11,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\Ifs\Admin\RoleServices;
+use App\Services\Ifs\Admin\UserServices;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class RoleController extends controller
 {
     protected $role;
-    public function __construct(RoleServices $roleServices)
+    protected $user;
+
+    public function __construct(RoleServices $roleServices,UserServices $userServices)
     {
         $this->role=$roleServices;
+        $this->user=$userServices;
     }
     /**
      * @name 后台管理员首页
@@ -96,8 +102,41 @@ class RoleController extends controller
             return response()->json(msg('error','删除失败!'));
     }
 
-    public function addUser(){
+    /**
+     * @name 为管理员分配角色(列表)
+     * @desc   foreach($role_user->roles as $k=>$v){
+     *          dd($v->id);
+     *         }
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addUser($id){
         $data = $this->role->getAll();
-        return view('admin.role.add_user',['data'=>$data,'title'=>'编辑角色']);
+        $user = $this->user->find($id);
+        $data = check_roles($data,$user);
+        return view('admin.role.add_user',['data'=>$data,'user_id'=>$id,'title'=>'编辑角色']);
     }
+
+    /**
+     * @name为管理员分配角色 (操作)
+     * @desc
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addUserOperate(Request $request)
+    {
+        $data = $request->input();
+        unset($data['status'],$data['_token']);
+        if($request->input('status') == 0){
+            $rs =DB::table('blog_admin_role')->where($data)->delete();
+            if(!$rs) {
+                return response()->json(msg('error', '修改失败!'.$rs));
+            }
+        }else{
+            $rs =DB::table('blog_admin_role')->insert($data);
+            if(!$rs){
+                return response()->json(msg('error','添加失败!'));
+            }
+        }
+        return response()->json(msg('success','修改成功!'));
+    }
+
 }

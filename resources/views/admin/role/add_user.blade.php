@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('page.css')
-    <link href="{{ loadStatic('admin/plugins/switchery/switchery.min.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" />
     @endsection
 @section('page.content')
     <ol class="breadcrumb pull-right">
@@ -48,7 +48,9 @@
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>
                                     <p>
-                                        <input type="checkbox" class="js-switch" checked />
+                                        <label>
+                                            <input type="checkbox" name="status" class="js-switch " value="1" {{ $v['checked'] }} data-id="{{ $v['id'] }}"/>
+                                        </label>
                                     </p>
                                 </td>
                             </tr>
@@ -64,43 +66,55 @@
     </div>
 @endsection
 @section('page.js')
-    <script src="{{ loadStatic('admin/plugins/switchery/switchery.min.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
 @endsection
 @section('script.js')
 
     <script>
         $(function () {
-            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-            elems.forEach(function(html) {
-                var switchery = new Switchery(html);
-            });
+
+            $('[name="status"]').bootstrapSwitch({
+                onText:"开启",
+                offText:"关闭",
+                onColor:"success",
+                offColor:"info",
+                size:"small",
+                onSwitchChange:function(event,state){
+                    var id = $(this).attr('data-id');
+                    var data;
+                    if(state==true){
+                        $(this).val("1");
+                        data = {
+                            role_id:id,
+                            admin_id:'{{ $user_id }}',
+                            status:$(this).val(),
+                            _token:'{{ csrf_token() }}'
+                        };
+                        console.log(data);
+                        $.post("{{ url('admin/user/addUserOperate') }}",data,function (res) {
+                            
+                        });
+                    }else{
+                        $(this).val("0");
+                        data = {
+                            role_id:id,
+                            admin_id:'{{ $user_id }}',
+                            status:$(this).val(),
+                            _token:'{{ csrf_token() }}'
+                        };
+                        $.post("{{ url('admin/user/addUserOperate') }}",data,function (res) {
+
+                        });
+                    }
+                }
+            })
         });
         /**
          * 删除
          * @param i
          */
-        function del(i) {
-            //询问框
-            layer.confirm('是否删除？', {
-                title:'确认操作',
-                btn: ['是','否'] //按钮
-            }, function(){
-                var _token =  "{{ csrf_token() }}";
-                var data = {
-                    id:i,
-                    _token: _token
-                };
-                console.log(data);
-                $.post("{{ url('admin/role/delete') }}",data,function (res) {
-                    console.log(res);
-                    if(res['code'] === 'success'){
-                        layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/role/index') }}"',2000);
-                    }else{
-                        layer.msg(res['msg'],{icon:5});
-                    }
-                },"json");
-            });
-        }
+        $("input[type='checkbox']").click(function () {
+            
+        });
     </script>
     @endsection

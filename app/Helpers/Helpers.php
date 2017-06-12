@@ -42,4 +42,23 @@ if ( ! function_exists('msg'))
        return ['code' =>$code,'msg'=>$msg,'data'=>$array];
     }
 }
+/**
+ * 自定义消息数组
+ */
+if ( ! function_exists('check_roles'))
+{
+    function check_roles($roles,$user)
+    {
+        foreach ($roles as $k=>$v){
+            foreach ($user->roles as $role){
+                if($v['id'] == $role->id){
+                    $roles[$k]['checked'] = 'checked';
+                }else{
+                    $roles[$k]['checked'] = '';
+                }
+            }
+        }
+        return $roles;
+    }
+}
 

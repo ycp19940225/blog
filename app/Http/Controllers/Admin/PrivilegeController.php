@@ -15,8 +15,9 @@ use App\Services\Ifs\Admin\UserServices;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use ReflectionClass;
 
-class AdminController extends controller
+class PrivilegeController extends controller
 {
     protected $user;
     protected $role;
@@ -27,19 +28,31 @@ class AdminController extends controller
         $this->role=$roleServices;
     }
     /**
-     * @name 后台管理员首页
-     * @desc 后台管理员首页
+     * @name 权限首页
+     * @desc 权限首页
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-        $data = $this->user->select();
-        return view('admin.user.index',['data'=>$data,'title'=>'用户列表']);
+        $ref = new ReflectionClass('App\Http\Controllers\Admin\RoleController');
+        $ref2 = new ReflectionClass('App\Http\Controllers\Controller');
+        $methods = $ref->getMethods();
+        $rem = get_class_methods('App\Http\Controllers\Admin\RoleController');
+        $rem2 = get_class_methods('App\Http\Controllers\Controller');
+        $test = app_path('Http\Controllers');
+        var_dump($test);
+        var_dump($rem);
+        var_dump($rem2);
+        foreach($methods as $method){
+            var_dump($method->getName()) ;
+        }
     }
 
+
+
     /**
-     * @name 添加管理员页面
-     * @desc 添加管理员
+     * @name 添加权限页面
+     * @desc 添加权限页面
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -91,26 +104,15 @@ class AdminController extends controller
     }
 
     /**
-     * @name 删除用户
-     * @desc 删除用户
+     * @name 删除权限
+     * @desc 删除权限
      * @param Request $request
      * @return mixed
      */
     public function delete(Request $request){
-        if($this->user->delete($request->input('id'))){
+        if($this->user->updatePri($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else
             return response()->json(msg('error','删除失败!'));
     }
-
-    /**
-     * @name table 后端分页
-     * @desc
-     * @return mixed
-     */
-    /*public function getTables()
-    {
-        return $this->user->getTables();
-    }*/
-
 }
