@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Services\Ifs\Admin\PriServices;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use DB;
@@ -21,11 +22,13 @@ class PrivilegeController extends controller
 {
     protected $user;
     protected $role;
+    protected $pri;
 
-    public function __construct(UserServices $userServices,RoleServices $roleServices)
+    public function __construct(UserServices $userServices,RoleServices $roleServices,PriServices $priServices)
     {
         $this->user=$userServices;
         $this->role=$roleServices;
+        $this->pri=$priServices;
     }
     /**
      * @name 权限首页
@@ -33,19 +36,9 @@ class PrivilegeController extends controller
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
-        $ref = new ReflectionClass('App\Http\Controllers\Admin\RoleController');
-        $ref2 = new ReflectionClass('App\Http\Controllers\Controller');
-        $methods = $ref->getMethods();
-        $rem = get_class_methods('App\Http\Controllers\Admin\RoleController');
-        $rem2 = get_class_methods('App\Http\Controllers\Controller');
-        $test = app_path('Http\Controllers');
-        var_dump($test);
-        var_dump($rem);
-        var_dump($rem2);
-        foreach($methods as $method){
-            var_dump($method->getName()) ;
-        }
+    public function index($role_id){
+        $role = $this->role->getOne($role_id);
+        return view('admin.pri.index',['role'=>$role,'title'=>'权限列表']);
     }
 
 
@@ -58,8 +51,8 @@ class PrivilegeController extends controller
      */
     public function add()
     {
-        $roles =$this->role->getAll();
-        return view('admin.user.add',['roles'=>$roles,'title'=>'添加用户']);
+        $res =$this->pri->save();
+        return view('admin.user.edit',['title'=>'添加用户']);
     }
 
     /**

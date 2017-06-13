@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 use Yajra\Datatables\Facades\Datatables;
 
-class Role extends Base
+class Pri extends Base
 {
     protected $table = 'blog_privilege';
     protected $dateFormat = 'U';
@@ -22,26 +22,64 @@ class Role extends Base
      * 可以被集体赋值的表字段
      * @var array
      */
-    public $fillable = array('id','role_name','created_at','updated_at','input_id','deleted');
+    public $fillable = array('id','pri_name','module_name','controller','action_name','parent_id','created_at','updated_at','deleted_at');
     /**
      * 关联模型
      * 属于该用户的身份。
      */
-    public function users()
+    public function roles()
     {
-        return $this->belongsToMany('App\Models\Admin\Users','admin_role','role_id','admin_id');
+        return $this->belongsToMany('App\Models\Admin\Role','admin_role','pri_id','role_id');
     }
 
     /**
-     * @name 添加后台用户
-     * @desc 添加后台用户
-     * @author ycp
-     * @param Request $request
+     * @name 获取所有权限
+     * @desc 获取所有权限
      * @return mixed
      */
-    public function addRole(Request $request)
+    public function getAll()
     {
-        return $this->create($request->input());
+        return $this->where('deleted_at',0)->select('id','pri_name','module_name','controller','action_name','parent_id','created_at')->get();
+    }
+    /**
+     * @name 系统权限添加入库
+     * @desc 系统权限添加入库
+     * @return mixed
+     */
+    public function addAppPri()
+    {
+        //1.获取所有控制器
+        $root_dir = app_path('Http\Controllers');
+        $this->getController();
+    }
+
+    /**
+     * 获取所有控制器名称 
+     * @param string $module
+     * @return array
+     */
+    protected function getController($module='Admin'){
+
+        if(empty($module)){
+            return ['o'=>'0'];
+        }
+        $module_path = app_path().'/'.$module.'/Controllers/';//控制器路径 
+
+        if(!is_dir($module_path)) {
+            return ['o'=>'0'];
+        };
+        $module_path .= '/*Controller.php';
+
+        $ary_files = glob($module_path);
+        var_dump($ary_files);exit();
+        foreach ($ary_files as $file){
+            if(is_dir($file)){
+                continue;
+            }else{
+                $files[]=basename($file,C('DEFAULT_C_LAYER').'.class.php');
+            }
+        }
+        return $files;
     }
 
 
@@ -77,13 +115,5 @@ class Role extends Base
         return $this->find($data['id'])->update($data);
     }
 
-    /**
-     * @name 获取所有角色
-     * @desc 获取所有角色
-     * @return mixed
-     */
-    public function getAll()
-    {
-        return $this->where('deleted_at',0)->select('id','role_name','created_at','updated_at')->get();
-    }
+
 }

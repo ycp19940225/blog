@@ -9,22 +9,20 @@
 namespace App\Services\Admin;
 
 
-use App\Models\Admin\Users;
+use App\Models\Admin\Pri;
 use App\Services\Ifs\Admin\PriServices;
-use App\Services\Ifs\Admin\UserServices;
-use Illuminate\Http\Request;
 
 class PriServicesImpl implements PriServices
 {
-    protected $userDao;
+    protected $priDao;
     public function __construct()
     {
-        $this->userDao = new Users();
+        $this->priDao = new Pri();
     }
 
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        $this->priDao->getAll();
     }
 
     public function getOne($id)
@@ -32,12 +30,12 @@ class PriServicesImpl implements PriServices
         // TODO: Implement getOne() method.
     }
 
-    public function saveRole(Request $request)
+    public function save()
     {
-        // TODO: Implement saveRole() method.
+        $this->priDao->addAppPri();
     }
 
-    public function updateRole($data)
+    public function update($data)
     {
         // TODO: Implement updateRole() method.
     }

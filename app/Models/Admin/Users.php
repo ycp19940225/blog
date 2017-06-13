@@ -26,6 +26,7 @@ class Users extends Base
      */
     public $fillable = array('id','adminname','password','email','created_at','updated_at','input_id','token');
 
+
     /**
      * 关联模型
      * 属于该用户的身份。
