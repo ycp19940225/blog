@@ -27,34 +27,45 @@
                     <h4 class="panel-title">{{ $title }}</h4>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="data-table" class="table table-hover table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>角色名</th>
-                                <th>创建时间</th>
-                                <th>修改时间</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($data as $k=>$v)
-                            <tr>
-                                <td>{{ $v['id'] }}</td>
-                                <td>{{ $v['role_name'] }}</td>
-                                <td>{{ $v['created_at'] }}</td>
-                                <td>{{ $v['updated_at'] }}</td>
-                                <td>
-                                    <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/role/edit',['id'=>$v['id']]) }}" >编辑</a>
-                                    <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
-                                    <a href="{{ route('pri-index',['role_id'=>$v['id']]) }}"  class="btn btn-danger btn-xs m-2 delete" >权限</a>
-                                </td>
-                            </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <button class="btn btn-info" onclick="location.href='{{ route('pri-add') }}'">刷新权限</button>
+                        <form method="post" action="" class="form-horizontal" data-parsley-validate="true">
+                            <input type="hidden" name="appid" value="{:I('get.appid')}">
+                            <input type="hidden" name="id" value="{:I('get.id')}">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">当前角色</label>
+                                <div class="col-md-9">
+                                    <label>
+                                        <input type="text" class="form-control" disabled="disabled"
+                                               value="{{ $role['role_name'] }}">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">权限选择</label>
+                                <div class="col-md-9">
+                                    <select id="accessTree" name="access[]" multiple="multiple" class="form-control">
+                                        <volist name="list" id="vo">
+                                            <option value="{$vo.id}"
+                                                    data-id="{$vo.id}"
+                                                    data-pid="{$vo.parent_id}"
+                                                    {$vo.selected}
+                                                    {$vo.disabled}>{$vo.name}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-9">
+                                    <button type="submit" class="btn btn-sm btn-success">确定提交</button>
+                                </div>
+                            </div>
+
+                        </form>
+
                 </div>
             </div>
             <!-- end panel -->

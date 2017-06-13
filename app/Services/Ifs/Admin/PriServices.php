@@ -7,7 +7,6 @@
  */
 
 namespace App\Services\Ifs\Admin;
-use Illuminate\Http\Request;
 
 interface PriServices
 {
@@ -16,9 +15,9 @@ interface PriServices
     //获取一个
     public function getOne($id);
     //添加
-    public function saveRole(Request $request);
+    public function save();
     //更新
-    public function updateRole($data);
+    public function update($data);
 
     public function delete($id);
 }

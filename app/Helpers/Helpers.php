@@ -53,6 +53,7 @@ if ( ! function_exists('check_roles'))
             foreach ($user->roles as $role){
                 if($v['id'] == $role->id){
                     $roles[$k]['checked'] = 'checked';
+                    break;
                 }else{
                     $roles[$k]['checked'] = '';
                 }
