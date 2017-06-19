@@ -27,7 +27,7 @@
                     <h4 class="panel-title">{{ $title }}</h4>
                 </div>
                 <div class="panel-body">
-                    <button class="btn btn-info" onclick="location.href='{{ route('pri-add') }}'">刷新权限</button>
+                    <button class="btn btn-info" href="javaScript:void(0);" onclick="refresh()">刷新权限</button>
                         <form method="post" action="" class="form-horizontal" data-parsley-validate="true">
                             <input type="hidden" name="appid" value="{:I('get.appid')}">
                             <input type="hidden" name="id" value="{:I('get.id')}">
@@ -103,6 +103,19 @@
                         layer.msg(res['msg'],{icon:5});
                     }
                 },"json");
+            });
+        }
+        /**
+         * 刷新权限
+         */
+        function refresh() {
+            $.get('{{ route('pri-add') }}',function (res) {
+                if(res['code'] === 'success'){
+                    layer.msg(res['msg'],{icon: 6});
+                    setTimeout('window.location.reload()',1000);
+                }else{
+                    layer.msg(res['msg'],{icon:5});
+                }
             });
         }
     </script>

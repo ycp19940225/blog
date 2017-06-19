@@ -32,7 +32,7 @@ class PriServicesImpl implements PriServices
 
     public function save()
     {
-        $this->priDao->addAppPri();
+        return $this->priDao->addAppPri();
     }
 
     public function update($data)

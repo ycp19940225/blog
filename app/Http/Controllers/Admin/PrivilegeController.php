@@ -51,8 +51,10 @@ class PrivilegeController extends controller
      */
     public function add()
     {
-        $res =$this->pri->save();
-        return view('admin.user.edit',['title'=>'添加用户']);
+        if($this->pri->save()){
+            return response()->json(msg('success','刷新成功!'));
+        }
+        return response()->json(msg('error','刷新失败！'));
     }
 
     /**
@@ -62,13 +64,10 @@ class PrivilegeController extends controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function addOperate(Request $request){
-        if($this->user->checkUnique($request->input('adminname'))){
-            return response()->json(msg('error','该用户名已存在！'));
+        if($this->pri->save()){
+            return response()->json(msg('success','刷新成功!'));
         }
-        if($this->user->saveUser($request)){
-            return response()->json(msg('success','添加成功!'));
-        }
-        return response()->json(msg('error','添加失败！'));
+        return response()->json(msg('error','刷新失败！'));
     }
 
     /**
