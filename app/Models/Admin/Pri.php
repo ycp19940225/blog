@@ -94,6 +94,7 @@ class Pri extends Base
      * @return array
      */
     private function getAccess(){
+
         //1.获取所有控制器
         $modules = config('app.ACCESS_CHECK_MODULE');
         $modules = explode(',',$modules);
@@ -111,8 +112,20 @@ class Pri extends Base
         }
         //循环模块
         foreach ($modules as $mk=>$mv){
-            //添加获取模块并获取ID
-            $modules_id = $this->create(['module_name'=>$mv,'pri_name'=>$mv,'pri_desc'=>$mv])->id;
+            //判断是否已经才在该模块
+            $check_unique_module = $this->where([
+                'module_name'=>$mv,
+                'pri_name'=>$mv,
+                'pri_desc'=>$mv,
+                'parent_id' => 0
+
+            ])->first();
+            if(!$check_unique_module){
+                //添加获取模块并获取ID
+                $modules_id = $this->create(['module_name'=>$mv,'pri_name'=>$mv,'pri_desc'=>$mv])->id;
+            } else{
+                $modules_id = $check_unique_module->id;
+            }
             $controllers = $this->getController($mv);
             if($controllers == null){
                 continue;
