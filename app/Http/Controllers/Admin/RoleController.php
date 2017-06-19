@@ -27,8 +27,8 @@ class RoleController extends controller
         $this->user=$userServices;
     }
     /**
-     * @name 后台管理员首页
-     * @desc 后台管理员首页
+     * @name 后台角色首页
+     * @desc 后台角色首页
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -38,8 +38,8 @@ class RoleController extends controller
     }
 
     /**
-     * @name 添加管理员页面
-     * @desc 添加管理员
+     * @name 添加角色页面
+     * @desc 添加角色
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -64,7 +64,8 @@ class RoleController extends controller
         return response()->json(msg('error','添加失败！'));
     }
 
-    /**@name 修改页面
+    /**
+     * @name 修改页面
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      * @internal param Request $request
@@ -103,7 +104,7 @@ class RoleController extends controller
     }
 
     /**
-     * @name 为管理员分配角色(列表)
+     * @name 为角色分配角色(列表)
      * @desc   foreach($role_user->roles as $k=>$v){
      *          dd($v->id);
      *         }
@@ -117,7 +118,7 @@ class RoleController extends controller
     }
 
     /**
-     * @name为管理员分配角色 (操作)
+     * @name 为角色分配角色 (操作)
      * @desc
      * @return \Illuminate\Http\JsonResponse
      */

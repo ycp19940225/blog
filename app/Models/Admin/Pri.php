@@ -9,6 +9,7 @@
 namespace App\Models\Admin;
 
 
+use App\Models\Rbac;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Base;
@@ -22,7 +23,7 @@ class Pri extends Base
      * 可以被集体赋值的表字段
      * @var array
      */
-    public $fillable = array('id','pri_name','module_name','controller','action_name','parent_id','created_at','updated_at','deleted_at');
+    public $fillable = array('id','pri_name','pri_desc','module_name','controller','action_name','parent_id','created_at','updated_at','deleted_at');
     /**
      * 关联模型
      * 属于该用户的身份。
@@ -48,39 +49,12 @@ class Pri extends Base
      */
     public function addAppPri()
     {
-        //1.获取所有控制器
-        $root_dir = app_path('Http\Controllers');
-        $this->getController();
+        $model = new Rbac();
+        $pris = $model->getAccess();
+        dd($pris);
     }
 
-    /**
-     * 获取所有控制器名称 
-     * @param string $module
-     * @return array
-     */
-    protected function getController($module='Admin'){
 
-        if(empty($module)){
-            return ['o'=>'0'];
-        }
-        $module_path = app_path().'/'.$module.'/Controllers/';//控制器路径 
-
-        if(!is_dir($module_path)) {
-            return ['o'=>'0'];
-        };
-        $module_path .= '/*Controller.php';
-
-        $ary_files = glob($module_path);
-        var_dump($ary_files);exit();
-        foreach ($ary_files as $file){
-            if(is_dir($file)){
-                continue;
-            }else{
-                $files[]=basename($file,C('DEFAULT_C_LAYER').'.class.php');
-            }
-        }
-        return $files;
-    }
 
 
     /**
