@@ -24,7 +24,7 @@ class RoleServicesImpl implements RoleServices
 
     public function getAll()
     {
-       return $this->roleDao->getAll();
+        return $this->roleDao->getAll();
     }
 
     public function getOne($id)
@@ -50,5 +50,10 @@ class RoleServicesImpl implements RoleServices
     public function delete($id)
     {
         return $this->roleDao->where('id',$id)->delete();
+    }
+
+    public function updateRolePri($data)
+    {
+        return $this->roleDao->updateRolePri($data);
     }
 }

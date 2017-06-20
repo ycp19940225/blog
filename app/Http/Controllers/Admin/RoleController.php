@@ -14,7 +14,6 @@ use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class RoleController extends controller
 {
@@ -27,19 +26,20 @@ class RoleController extends controller
         $this->user=$userServices;
     }
     /**
-     * @name 后台管理员首页
-     * @desc 后台管理员首页
+     * @name 后台角色首页
+     * @desc 后台角色首页
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
+    public function index()
+    {
         $data = $this->role->getAll();
         return view('admin.role.index',['data'=>$data,'title'=>'角色列表']);
     }
 
     /**
-     * @name 添加管理员页面
-     * @desc 添加管理员
+     * @name 添加角色页面
+     * @desc 添加角色
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -54,7 +54,8 @@ class RoleController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addOperate(Request $request){
+    public function addOperate(Request $request)
+    {
         if($this->role->checkUnique($request->input('role_name'))){
             return response()->json(msg('error','该角色已存在！'));
         }
@@ -64,12 +65,15 @@ class RoleController extends controller
         return response()->json(msg('error','添加失败！'));
     }
 
-    /**@name 修改页面
+    /**
+     * @name 修改页面
+     * @desc 修改页面
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      * @internal param Request $request
      */
-    public function edit($id){
+    public function edit($id)
+    {
         $data = $this->role->getOne($id);
         return view('admin.role.edit',['data'=>$data,'title'=>'编辑角色']);
     }
@@ -79,7 +83,8 @@ class RoleController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function editOperate(Request $request){
+    public function editOperate(Request $request)
+    {
         if($this->role->checkUnique($request->input('role_name'),$request->input('id'))){
             return response()->json(msg('error','该角色已存在！'));
         }
@@ -95,7 +100,8 @@ class RoleController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         if($this->role->delete($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else
@@ -103,13 +109,15 @@ class RoleController extends controller
     }
 
     /**
-     * @name 为管理员分配角色(列表)
-     * @desc   foreach($role_user->roles as $k=>$v){
+     * @name 为管理员分配角色列表
+     * @desc 为管理员分配角色
+     *  foreach($role_user->roles as $k=>$v){
      *          dd($v->id);
      *         }
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function addUser($id){
+    public function addUser($id)
+    {
         $data = $this->role->getAll();
         $user = $this->user->find($id);
         $data = check_roles($data,$user);
@@ -117,8 +125,8 @@ class RoleController extends controller
     }
 
     /**
-     * @name为管理员分配角色 (操作)
-     * @desc
+     * @name 为管理员分配角色操作
+     * @desc 为管理员分配角色
      * @return \Illuminate\Http\JsonResponse
      */
     public function addUserOperate(Request $request)

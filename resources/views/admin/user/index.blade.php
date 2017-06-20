@@ -54,7 +54,7 @@
                                 <td>
                                     <a class="btn btn-info btn-xs m-2 detail" href="{{ url('admin/user/edit',['id'=>$v['id']]) }}" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
-                                    <a href="{{ url('admin/role/user',['id'=>$v['id']]) }}" class="btn btn-success btn-xs m-2 delete" >角色</a>
+                                    <a href="{{ url('admin/role/addUser',['id'=>$v['id']]) }}" class="btn btn-success btn-xs m-2 delete" >角色</a>
                                 </td>
                             </tr>
                                 @endforeach

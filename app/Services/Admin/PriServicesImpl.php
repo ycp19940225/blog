@@ -22,7 +22,7 @@ class PriServicesImpl implements PriServices
 
     public function getAll()
     {
-        $this->priDao->getAll();
+        return $this->priDao->getAll();
     }
 
     public function getOne($id)
@@ -32,16 +32,17 @@ class PriServicesImpl implements PriServices
 
     public function save()
     {
-        $this->priDao->addAppPri();
+        // TODO: Implement getOne() method.
     }
 
-    public function update($data)
+    public function update()
     {
-        // TODO: Implement updateRole() method.
+        return $this->priDao->refreshPri();
     }
 
-    public function delete($id)
+
+    public function getRolePris($role_id)
     {
-        // TODO: Implement delete() method.
+        return $this->priDao->getRolePris($role_id);
     }
 }

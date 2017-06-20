@@ -1,16 +1,17 @@
 @extends('admin.layouts.app')
+@section('page.css')
+    <link href="{{ loadStatic('admin/css/multree.css') }}" rel="stylesheet" />
+@endsection
 @section('page.content')
     <ol class="breadcrumb pull-right">
-        <li><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;">{{ $title }}</a></li>
+        <li><a href="javascript:">Home</a></li>
+        <li><a href="javascript:">{{ $title }}</a></li>
         <li class="active">{{ $title }}</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
-        <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/role/add' ">添加角色</button>
-        </small>
+
     </h1>
     <div class="row">
         <!-- begin col-12 -->
@@ -19,18 +20,18 @@
             <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
                     <h4 class="panel-title">{{ $title }}</h4>
                 </div>
                 <div class="panel-body">
-                    <button class="btn btn-info" onclick="location.href='{{ route('pri-add') }}'">刷新权限</button>
-                        <form method="post" action="" class="form-horizontal" data-parsley-validate="true">
-                            <input type="hidden" name="appid" value="{:I('get.appid')}">
-                            <input type="hidden" name="id" value="{:I('get.id')}">
+                    <button class="btn btn-info" href="javaScript:void(0);" onclick="refresh()">刷新权限</button>
+                        <form method="post" action="{{ route('update_pri_role') }}" class="form-horizontal" >
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $role_id }}">
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">当前角色</label>
@@ -45,14 +46,16 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">权限选择</label>
                                 <div class="col-md-9">
+                                    <label for="accessTree"></label>
                                     <select id="accessTree" name="access[]" multiple="multiple" class="form-control">
-                                        <volist name="list" id="vo">
-                                            <option value="{$vo.id}"
-                                                    data-id="{$vo.id}"
-                                                    data-pid="{$vo.parent_id}"
-                                                    {$vo.selected}
-                                                    {$vo.disabled}>{$vo.name}</option>
-                                        </volist>
+                                        @foreach($pris as $v)
+                                            <option value="{{ $v['id'] or ''}}"
+                                                    data-id="{{ $v['id'] or ''}}"
+                                                    data-pid="{{ $v['parent_id'] or ''}}"
+                                                    {{ $v['selected'] or ''}}
+                                                    {{ $v['disabled']  or ''}}
+                                                    >{{ $v['pri_name'] or ''}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -75,6 +78,7 @@
 
 @endsection
 @section('page.js')
+    <script src="{{ loadStatic('admin/js/multree.js') }}"></script>
 @endsection
 @section('script.js')
     <script>
@@ -105,5 +109,22 @@
                 },"json");
             });
         }
+        /**
+         * 刷新权限
+         */
+        function refresh() {
+            $.get('{{ route('pri-refresh') }}',function (res) {
+                if(res['code'] === 'success'){
+                    layer.msg(res['msg'],{icon: 6});
+                    setTimeout('window.location.reload()',1000);
+                }else{
+                    layer.msg(res['msg'],{icon:5});
+                }
+            });
+        }
+        /**
+         * 初始化树形结构
+         */
+        $("#accessTree").mulTree();
     </script>
     @endsection

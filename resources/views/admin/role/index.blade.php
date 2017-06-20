@@ -46,9 +46,9 @@
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
                                 <td>
+                                    <a href="{{ route('pri-index',['role_id'=>$v['id']]) }}"  class="btn btn-info btn-xs m-2 delete" >权限</a>
                                     <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/role/edit',['id'=>$v['id']]) }}" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
-                                    <a href="{{ route('pri-index',['role_id'=>$v['id']]) }}"  class="btn btn-danger btn-xs m-2 delete" >权限</a>
                                 </td>
                             </tr>
                                 @endforeach

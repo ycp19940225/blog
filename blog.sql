@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-06-13 18:02:22
+Date: 2017-06-20 14:46:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,6 +61,7 @@ CREATE TABLE `blog_admin_role` (
 -- ----------------------------
 INSERT INTO `blog_admin_role` VALUES ('29', '4');
 INSERT INTO `blog_admin_role` VALUES ('20', '4');
+INSERT INTO `blog_admin_role` VALUES ('20', '5');
 
 -- ----------------------------
 -- Table structure for blog_privilege
@@ -68,20 +69,37 @@ INSERT INTO `blog_admin_role` VALUES ('20', '4');
 DROP TABLE IF EXISTS `blog_privilege`;
 CREATE TABLE `blog_privilege` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Id',
-  `pri_name` varchar(30) NOT NULL COMMENT '权限名称',
+  `pri_name` varchar(30) NOT NULL DEFAULT '' COMMENT '权限名称',
+  `pri_desc` varchar(30) NOT NULL DEFAULT '' COMMENT '权限描述',
   `module_name` varchar(30) NOT NULL DEFAULT '' COMMENT '权限名称',
   `controller` varchar(30) NOT NULL DEFAULT '' COMMENT '控制器名称',
   `action_name` varchar(30) NOT NULL DEFAULT '' COMMENT '方法名称',
-  `parent_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '父类Id',
   `created_at` int(10) NOT NULL DEFAULT '0',
   `updated_at` int(10) NOT NULL DEFAULT '0',
   `deleted_at` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 -- ----------------------------
 -- Records of blog_privilege
 -- ----------------------------
+INSERT INTO `blog_privilege` VALUES ('77', '后台管理员首页', '后台管理员首页', 'Admin', 'Admin', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('78', '添加管理员页面', '添加管理员', 'Admin', 'Admin', 'add', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('79', '添加操作', '添加操作', 'Admin', 'Admin', 'addOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('80', '修改页面', '修改页面', 'Admin', 'Admin', 'edit', '1497927205', '1497927324', '0');
+INSERT INTO `blog_privilege` VALUES ('81', '修改操作', '修改操作', 'Admin', 'Admin', 'editOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('82', '删除用户', '删除用户', 'Admin', 'Admin', 'delete', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('83', '后台首页', '后台首页', 'Admin', 'Index', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('84', '权限首页', '权限首页', 'Admin', 'Privilege', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('86', '刷新权限', '刷新权限', 'Admin', 'Privilege', 'addOperate', '1497927205', '1497940866', '0');
+INSERT INTO `blog_privilege` VALUES ('90', '后台角色首页', '后台角色首页', 'Admin', 'Role', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('91', '添加角色页面', '添加角色', 'Admin', 'Role', 'add', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('92', '添加操作', '添加操作', 'Admin', 'Role', 'addOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('93', '修改页面', '修改页面', 'Admin', 'Role', 'edit', '1497927205', '1497941141', '0');
+INSERT INTO `blog_privilege` VALUES ('94', '修改操作', '修改操作', 'Admin', 'Role', 'editOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('95', '删除角色', '删除角色', 'Admin', 'Role', 'delete', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('96', '为管理员分配角色', '为管理员分配角色', 'Admin', 'Role', 'addUser', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('98', '为管理员分配角色', '为管理员分配角色', 'Admin', 'Role', 'addUserOperate', '1497930208', '1497941079', '0');
 
 -- ----------------------------
 -- Table structure for blog_role
@@ -95,12 +113,12 @@ CREATE TABLE `blog_role` (
   `input_id` int(11) NOT NULL DEFAULT '0' COMMENT '录入人ID',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0' COMMENT '删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色表';
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色表';
 
 -- ----------------------------
 -- Records of blog_role
 -- ----------------------------
-INSERT INTO `blog_role` VALUES ('4', 'tttt', '1496909974', '1496909974', '0', '0');
+INSERT INTO `blog_role` VALUES ('5', 'ffff', '1497939509', '1497939509', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_role_pri

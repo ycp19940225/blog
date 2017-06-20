@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'ycp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,6 +123,15 @@ return [
     'log' => env('APP_LOG', 'single'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
+
+     /**
+     * 自定义配置
+     */
+
+    'ACCESS_CHECK_MODULE' => env('ACCESS_CHECK_MODULE','admin'),
+
+    'name_space' =>'App\Http\Controllers',
 
     /*
     |--------------------------------------------------------------------------

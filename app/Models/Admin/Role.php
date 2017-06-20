@@ -25,11 +25,11 @@ class Role extends Base
     public $fillable = array('id','role_name','created_at','updated_at','input_id','deleted');
     /**
      * 关联模型
-     * 属于该用户的身份。
+     * 属于该用户的权限。
      */
-    public function users()
+    public function pris()
     {
-        return $this->belongsToMany('App\Models\Admin\Users','admin_role','role_id','admin_id');
+        return $this->belongsToMany('App\Models\Admin\Users','blog_role_pri','role_id','pri_id');
     }
 
     /**
@@ -85,5 +85,24 @@ class Role extends Base
     public function getAll()
     {
         return $this->where('deleted_at',0)->select('id','role_name','created_at','updated_at')->get();
+    }
+
+    /**
+     * @name 更新角色权限
+     * @desc 更新角色权限
+     * @param $data
+     */
+    public function updateRolePri($data)
+    {
+        $role = $this->find($data['id']);
+        $pris_id = [];
+        if(isset($data['access'])){
+            foreach ($data['access'] as $v){
+                if(is_numeric($v)){
+                    $pris_id[]=$v;
+                }
+            }
+        }
+        return $role->pris()->sync($pris_id);
     }
 }

@@ -17,7 +17,7 @@ interface PriServices
     //添加
     public function save();
     //更新
-    public function update($data);
+    public function update();
 
-    public function delete($id);
+    public function getRolePris($role_id);
 }
