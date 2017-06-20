@@ -14,9 +14,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
-use DB;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class AdminController extends controller
 {

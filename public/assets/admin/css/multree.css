@@ -1,0 +1,59 @@
+/* CSS Document */
+.multree{
+	width:200px;
+	height:300px!important;
+	float:left;
+	border:1px solid #ccd0d4;
+	overflow-y:scroll;
+	border-radius:3px;
+	color:#333;	
+}
+
+.multree .disabled{
+	color:#ddd	
+}
+
+.treeTool{
+	float:left;
+	text-align:center;
+	padding:0 10px;
+}
+
+.treeTool button{
+	display:block;
+	margin-bottom:10px
+}
+
+.multree .treeOption span{
+	cursor:pointer;
+	display:block;
+	padding:3px 0px;
+}
+
+.multree .treeOption span:hover{
+	background-color:#ddd;
+	color:#fff;
+}
+
+.multree .treeOption{
+	text-indent:20px;
+	position:relative;
+}
+
+.multree>.treeOption .sub-room{
+	padding-left:10px;	
+}
+
+
+.multree .choose{
+	background-color:#999;
+	color:#fff;	
+}
+
+.multree .treeText .downIcon{
+	position:absolute;
+	display:block;
+	margin-left:-13px;
+	margin-top:3px;
+	width:10px;
+}

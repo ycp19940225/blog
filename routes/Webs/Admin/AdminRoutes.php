@@ -26,5 +26,5 @@ Route::get('/role/addUser/{id}','RoleController@addUser')->name('add-user');
 Route::post('/user/addUserOperate','RoleController@addUserOperate');
 //权限
 Route::get('/Privilege/index/{role_id}','PrivilegeController@index')->name('pri-index');
-Route::get('/Privilege/add','PrivilegeController@add')->name('pri-add');
+Route::get('/Privilege/addOperate','PrivilegeController@addOperate')->name('pri-add');
 

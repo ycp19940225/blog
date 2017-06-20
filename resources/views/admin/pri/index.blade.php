@@ -1,16 +1,17 @@
 @extends('admin.layouts.app')
+@section('page.css')
+    <link href="{{ loadStatic('admin/css/multree.css') }}" rel="stylesheet" />
+@endsection
 @section('page.content')
     <ol class="breadcrumb pull-right">
-        <li><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;">{{ $title }}</a></li>
+        <li><a href="javascript:">Home</a></li>
+        <li><a href="javascript:">{{ $title }}</a></li>
         <li class="active">{{ $title }}</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
-        <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/role/add' ">添加角色</button>
-        </small>
+
     </h1>
     <div class="row">
         <!-- begin col-12 -->
@@ -19,10 +20,10 @@
             <div class="panel panel-inverse">
                 <div class="panel-heading">
                     <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
                     <h4 class="panel-title">{{ $title }}</h4>
                 </div>
@@ -75,6 +76,7 @@
 
 @endsection
 @section('page.js')
+    <script src="{{ loadStatic('admin/js/multree.js') }}"></script>
 @endsection
 @section('script.js')
     <script>
@@ -118,5 +120,9 @@
                 }
             });
         }
+        /**
+         * 初始化树形结构
+         */
+        $('#accessTree').mulTree();
     </script>
     @endsection

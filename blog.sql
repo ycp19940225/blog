@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-06-19 17:38:27
+Date: 2017-06-20 14:46:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,6 +61,7 @@ CREATE TABLE `blog_admin_role` (
 -- ----------------------------
 INSERT INTO `blog_admin_role` VALUES ('29', '4');
 INSERT INTO `blog_admin_role` VALUES ('20', '4');
+INSERT INTO `blog_admin_role` VALUES ('20', '5');
 
 -- ----------------------------
 -- Table structure for blog_privilege
@@ -73,43 +74,32 @@ CREATE TABLE `blog_privilege` (
   `module_name` varchar(30) NOT NULL DEFAULT '' COMMENT '权限名称',
   `controller` varchar(30) NOT NULL DEFAULT '' COMMENT '控制器名称',
   `action_name` varchar(30) NOT NULL DEFAULT '' COMMENT '方法名称',
-  `parent_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '父类Id',
   `created_at` int(10) NOT NULL DEFAULT '0',
   `updated_at` int(10) NOT NULL DEFAULT '0',
   `deleted_at` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=500 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 -- ----------------------------
 -- Records of blog_privilege
 -- ----------------------------
-INSERT INTO `blog_privilege` VALUES ('473', 'Admin', 'Admin', 'Admin', '', '', '0', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('474', 'Admin', '', 'Admin', 'Admin', '', '473', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('475', '后台管理员首页', '后台管理员首页', 'Admin', 'Admin', 'index', '474', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('476', '添加管理员页面', '添加管理员', 'Admin', 'Admin', 'add', '474', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('477', '添加操作', '添加操作', 'Admin', 'Admin', 'addOperate', '474', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('478', '修改页面', '', 'Admin', 'Admin', 'edit', '474', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('479', '修改操作', '修改操作', 'Admin', 'Admin', 'editOperate', '474', '1497864989', '1497864989', '0');
-INSERT INTO `blog_privilege` VALUES ('480', '删除用户', '删除用户', 'Admin', 'Admin', 'delete', '474', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('481', 'Admin', '', 'Admin', 'Index', '', '473', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('482', '后台首页', '后台首页', 'Admin', 'Index', 'index', '481', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('483', 'Admin', '', 'Admin', 'Privilege', '', '473', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('484', '权限首页', '权限首页', 'Admin', 'Privilege', 'index', '483', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('485', '添加权限页面', '添加权限页面', 'Admin', 'Privilege', 'add', '483', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('486', '添加操作', '添加操作', 'Admin', 'Privilege', 'addOperate', '483', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('487', '修改页面', '', 'Admin', 'Privilege', 'edit', '483', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('488', '修改操作', '修改操作', 'Admin', 'Privilege', 'editOperate', '483', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('489', '删除权限', '删除权限', 'Admin', 'Privilege', 'delete', '483', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('490', 'Admin', '', 'Admin', 'Role', '', '473', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('491', '后台角色首页', '后台角色首页', 'Admin', 'Role', 'index', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('492', '添加角色页面', '添加角色', 'Admin', 'Role', 'add', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('493', '添加操作', '添加操作', 'Admin', 'Role', 'addOperate', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('494', '修改页面', '', 'Admin', 'Role', 'edit', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('495', '修改操作', '修改操作', 'Admin', 'Role', 'editOperate', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('496', '删除角色', '删除角色', 'Admin', 'Role', 'delete', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('497', '为角色分配角色', 'foreach', 'Admin', 'Role', 'addUser', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('498', '为角色分配角色', '', 'Admin', 'Role', 'addUserOperate', '490', '1497864990', '1497864990', '0');
-INSERT INTO `blog_privilege` VALUES ('499', 'Home', 'Home', 'Home', '', '', '0', '1497864990', '1497864990', '0');
+INSERT INTO `blog_privilege` VALUES ('77', '后台管理员首页', '后台管理员首页', 'Admin', 'Admin', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('78', '添加管理员页面', '添加管理员', 'Admin', 'Admin', 'add', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('79', '添加操作', '添加操作', 'Admin', 'Admin', 'addOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('80', '修改页面', '修改页面', 'Admin', 'Admin', 'edit', '1497927205', '1497927324', '0');
+INSERT INTO `blog_privilege` VALUES ('81', '修改操作', '修改操作', 'Admin', 'Admin', 'editOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('82', '删除用户', '删除用户', 'Admin', 'Admin', 'delete', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('83', '后台首页', '后台首页', 'Admin', 'Index', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('84', '权限首页', '权限首页', 'Admin', 'Privilege', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('86', '刷新权限', '刷新权限', 'Admin', 'Privilege', 'addOperate', '1497927205', '1497940866', '0');
+INSERT INTO `blog_privilege` VALUES ('90', '后台角色首页', '后台角色首页', 'Admin', 'Role', 'index', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('91', '添加角色页面', '添加角色', 'Admin', 'Role', 'add', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('92', '添加操作', '添加操作', 'Admin', 'Role', 'addOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('93', '修改页面', '修改页面', 'Admin', 'Role', 'edit', '1497927205', '1497941141', '0');
+INSERT INTO `blog_privilege` VALUES ('94', '修改操作', '修改操作', 'Admin', 'Role', 'editOperate', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('95', '删除角色', '删除角色', 'Admin', 'Role', 'delete', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('96', '为管理员分配角色', '为管理员分配角色', 'Admin', 'Role', 'addUser', '1497927205', '1497927205', '0');
+INSERT INTO `blog_privilege` VALUES ('98', '为管理员分配角色', '为管理员分配角色', 'Admin', 'Role', 'addUserOperate', '1497930208', '1497941079', '0');
 
 -- ----------------------------
 -- Table structure for blog_role
@@ -123,12 +113,12 @@ CREATE TABLE `blog_role` (
   `input_id` int(11) NOT NULL DEFAULT '0' COMMENT '录入人ID',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0' COMMENT '删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色表';
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色表';
 
 -- ----------------------------
 -- Records of blog_role
 -- ----------------------------
-INSERT INTO `blog_role` VALUES ('4', 'tttt', '1496909974', '1496909974', '0', '0');
+INSERT INTO `blog_role` VALUES ('5', 'ffff', '1497939509', '1497939509', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_role_pri

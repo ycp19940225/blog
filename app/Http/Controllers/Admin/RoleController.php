@@ -14,7 +14,6 @@ use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class RoleController extends controller
 {
@@ -66,6 +65,7 @@ class RoleController extends controller
 
     /**
      * @name 修改页面
+     * @desc 修改页面
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      * @internal param Request $request
@@ -119,10 +119,10 @@ class RoleController extends controller
     }
 
     /**
- * @name 为管理员分配角色 (操作)
- * @desc 为管理员分配角色re
- * @return \Illuminate\Http\JsonResponse
- */
+     * @name 为管理员分配角色 (操作)
+     * @desc 为管理员分配角色
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addUserOperate(Request $request)
     {
         $data = $request->input();
