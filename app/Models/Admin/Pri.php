@@ -10,6 +10,7 @@ namespace App\Models\Admin;
 
 
 use App\Models\Rbac;
+use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Base;
@@ -41,7 +42,7 @@ class Pri extends Base
      */
     public function getAll()
     {
-        return $this->where('deleted_at',0)->select('id','pri_name','module_name','controller','action_name','parent_id','created_at')->get();
+        return $this->where('deleted_at',0)->select('id','pri_name','module_name','controller','action_name','created_at')->get();
     }
     /**
      * @name 系统权限添加入库
@@ -72,5 +73,69 @@ class Pri extends Base
             $this->destroy($v);
         }
         return true;
+    }
+
+    /**
+     * @name 获取角色权限
+     * @desc 获取角色权限
+     * @param $role_id
+     * @return array
+     */
+    public function getRolePris($role_id)
+    {
+        $list=[];
+        //查询出此角色已经用用的权限
+        $roleAccess = DB::table('blog_role_pri')
+            ->where('role_id',$role_id)
+            ->where('status',0)
+            ->get();
+        $access = $this->getAll();
+        foreach ($access as $key => $val) {
+
+            //修改选中状态
+            foreach ($roleAccess as $k => $v) {
+                if ($v['pri_id'] == $val['id']) {
+                    $val['selected'] = 'selected="selected"';
+                }
+            }
+            //如果不存在根节点
+            if(empty($list[$val['module_name']])){
+                //创建根节点
+                $list['APP_'.$val['module_name']] = array(
+                    'id' => 'APP_'.$val['module_name'],
+                    'parent_id' => 0,
+                    'pri_name' => 'APP_'.$val['module_name'],
+                );
+            }
+            //如果不存在枝节点
+            if(empty($list['m_'.$val['module_name'].'_'.$val['controller']])){
+                //创建枝节点
+                $list['m_'.$val['module_name'].'_'.$val['controller']] = array(
+                    'id' => 'm_'.$val['module_name'].'_'.$val['controller'],
+                    'parent_id' => 'APP_'.$val['module_name'],
+                    'pri_name' => '模块_'.$val['controller'] ,
+                    'selected' => 'selected="selected"',//默认选中
+                );
+            }
+            //添加到展示项里
+            $val['parent_id'] = 'm_'.$val['module_name'].'_'.$val['controller'];
+
+            if(empty($val['selected'])){
+                unset($list['m_'.$val['module_name'].'_'.$val['controller']]['selected']);
+            }
+
+            $list[] = $val;
+        }
+        return $list;
+    }
+
+    /**
+     * @name 更新角色权限
+     * @desc 更新角色权限
+     * @param $data
+     */
+    public function updateRolePri($data)
+    {
+        dd($data);
     }
 }

@@ -32,7 +32,8 @@ class AdminController extends controller
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
+    public function index()
+    {
         $data = $this->user->select();
         return view('admin.user.index',['data'=>$data,'title'=>'用户列表']);
     }
@@ -55,7 +56,8 @@ class AdminController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addOperate(Request $request){
+    public function addOperate(Request $request)
+    {
         if($this->user->checkUnique($request->input('adminname'))){
             return response()->json(msg('error','该用户名已存在！'));
         }
@@ -72,7 +74,8 @@ class AdminController extends controller
      * @return \Illuminate\Http\JsonResponse
      * @internal param Request $request
      */
-    public function edit($id){
+    public function edit($id)
+    {
         $data = $this->user->find($id);
         return view('admin.user.edit',['data'=>$data,'title'=>'编辑用户']);
     }
@@ -82,7 +85,8 @@ class AdminController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function editOperate(Request $request){
+    public function editOperate(Request $request)
+    {
         if($this->user->checkUnique($request->input('adminname'),$request->input('id'))){
             return response()->json(msg('error','该用户名已存在！'));
         }
@@ -98,7 +102,8 @@ class AdminController extends controller
      * @param Request $request
      * @return mixed
      */
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         if($this->user->delete($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else

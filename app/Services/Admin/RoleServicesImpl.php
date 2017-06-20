@@ -24,7 +24,7 @@ class RoleServicesImpl implements RoleServices
 
     public function getAll()
     {
-       return $this->roleDao->getAll();
+        return $this->roleDao->getAll();
     }
 
     public function getOne($id)

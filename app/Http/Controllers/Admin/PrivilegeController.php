@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\Ifs\Admin\PriServices;
 use App\Services\Ifs\Admin\RoleServices;
+use Illuminate\Http\Request;
 
 class PrivilegeController extends controller
 {
@@ -29,9 +30,11 @@ class PrivilegeController extends controller
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($role_id){
+    public function index($role_id)
+    {
         $role = $this->role->getOne($role_id);
-        return view('admin.pri.index',['role'=>$role,'title'=>'权限列表']);
+        $pris = $this->pri->getRolePris($role_id);
+        return view('admin.pri.index',['role'=>$role,'role_id'=>$role_id,'pris'=>$pris,'title'=>'权限列表']);
     }
 
     /**
@@ -39,10 +42,28 @@ class PrivilegeController extends controller
      * @desc 刷新权限
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addOperate(){
+    public function refresh()
+    {
         if($this->pri->update()){
             return response()->json(msg('success','刷新成功!'));
         }
         return response()->json(msg('error','刷新失败！'));
+    }
+
+    /**
+     * @name 更新添加角色权限
+     * @desc 更新添加角色权限
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateRolePri(Request $request)
+    {
+        if($request->method() === 'POST'){
+            $data = $request->input('access');
+            unset($data['_token']);
+           if($this->pri->updateRolePri($data)){
+               return response()->json(msg('success','操作成功!'));
+           }
+        }
+        return response()->json(msg('success','操作失败!'));
     }
 }

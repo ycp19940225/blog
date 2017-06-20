@@ -31,7 +31,8 @@ class RoleController extends controller
      * @author ycp
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
+    public function index()
+    {
         $data = $this->role->getAll();
         return view('admin.role.index',['data'=>$data,'title'=>'角色列表']);
     }
@@ -53,7 +54,8 @@ class RoleController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addOperate(Request $request){
+    public function addOperate(Request $request)
+    {
         if($this->role->checkUnique($request->input('role_name'))){
             return response()->json(msg('error','该角色已存在！'));
         }
@@ -70,7 +72,8 @@ class RoleController extends controller
      * @return \Illuminate\Http\JsonResponse
      * @internal param Request $request
      */
-    public function edit($id){
+    public function edit($id)
+    {
         $data = $this->role->getOne($id);
         return view('admin.role.edit',['data'=>$data,'title'=>'编辑角色']);
     }
@@ -80,7 +83,8 @@ class RoleController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function editOperate(Request $request){
+    public function editOperate(Request $request)
+    {
         if($this->role->checkUnique($request->input('role_name'),$request->input('id'))){
             return response()->json(msg('error','该角色已存在！'));
         }
@@ -96,7 +100,8 @@ class RoleController extends controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         if($this->role->delete($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else
@@ -104,14 +109,15 @@ class RoleController extends controller
     }
 
     /**
-     * @name 为管理员分配角色(列表)
+     * @name 为管理员分配角色列表
      * @desc 为管理员分配角色
      *  foreach($role_user->roles as $k=>$v){
      *          dd($v->id);
      *         }
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function addUser($id){
+    public function addUser($id)
+    {
         $data = $this->role->getAll();
         $user = $this->user->find($id);
         $data = check_roles($data,$user);
@@ -119,7 +125,7 @@ class RoleController extends controller
     }
 
     /**
-     * @name 为管理员分配角色 (操作)
+     * @name 为管理员分配角色操作
      * @desc 为管理员分配角色
      * @return \Illuminate\Http\JsonResponse
      */
