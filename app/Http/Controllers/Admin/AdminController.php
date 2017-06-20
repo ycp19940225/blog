@@ -69,6 +69,7 @@ class AdminController extends controller
 
     /**
      * @name 修改页面
+     * @desc 修改页面
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      * @internal param Request $request

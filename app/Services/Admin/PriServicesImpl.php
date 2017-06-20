@@ -35,9 +35,9 @@ class PriServicesImpl implements PriServices
         return $this->priDao->addAppPri();
     }
 
-    public function update($data)
+    public function update()
     {
-        // TODO: Implement updateRole() method.
+        return $this->priDao->refreshPri();
     }
 
     public function delete($id)

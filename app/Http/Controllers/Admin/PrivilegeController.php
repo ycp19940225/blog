@@ -51,7 +51,7 @@ class PrivilegeController extends controller
      */
     public function add()
     {
-        if($this->pri->save()){
+        if($this->pri->update()){
             return response()->json(msg('success','刷新成功!'));
         }
         return response()->json(msg('error','刷新失败！'));

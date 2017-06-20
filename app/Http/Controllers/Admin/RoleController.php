@@ -104,8 +104,9 @@ class RoleController extends controller
     }
 
     /**
-     * @name 为角色分配角色(列表)
-     * @desc   foreach($role_user->roles as $k=>$v){
+     * @name 为管理员分配角色(列表)
+     * @desc 为管理员分配角色
+     *  foreach($role_user->roles as $k=>$v){
      *          dd($v->id);
      *         }
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -118,10 +119,10 @@ class RoleController extends controller
     }
 
     /**
-     * @name 为角色分配角色 (操作)
-     * @desc
-     * @return \Illuminate\Http\JsonResponse
-     */
+ * @name 为管理员分配角色 (操作)
+ * @desc 为管理员分配角色re
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function addUserOperate(Request $request)
     {
         $data = $request->input();
