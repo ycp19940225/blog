@@ -58,12 +58,12 @@ class PrivilegeController extends controller
     public function updateRolePri(Request $request)
     {
         if($request->method() === 'POST'){
-            $data = $request->input('access');
+            $data = $request->input();
             unset($data['_token']);
-           if($this->pri->updateRolePri($data)){
-               return response()->json(msg('success','操作成功!'));
+           if($this->role->updateRolePri($data)){
+               redirect('index');
            }
         }
-        return response()->json(msg('success','操作失败!'));
+        redirect('index');
     }
 }

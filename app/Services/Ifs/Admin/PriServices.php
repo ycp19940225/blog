@@ -20,6 +20,4 @@ interface PriServices
     public function update();
 
     public function getRolePris($role_id);
-
-    public function updateRolePri($data);
 }

@@ -23,4 +23,6 @@ interface RoleServices
     public function checkUnique($field,$id='');
 
     public function delete($id);
+
+    public function updateRolePri($data);
 }

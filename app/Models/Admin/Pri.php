@@ -14,7 +14,6 @@ use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\Base;
-use ReflectionClass;
 use Yajra\Datatables\Facades\Datatables;
 
 class Pri extends Base
@@ -26,14 +25,7 @@ class Pri extends Base
      * @var array
      */
     public $fillable = array('id','pri_name','pri_desc','module_name','controller','action_name','parent_id','created_at','updated_at','deleted_at');
-    /**
-     * 关联模型
-     * 属于该用户的身份。
-     */
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Admin\Role','admin_role','pri_id','role_id');
-    }
+
 
     /**
      * @name 获取所有权限
@@ -94,7 +86,7 @@ class Pri extends Base
 
             //修改选中状态
             foreach ($roleAccess as $k => $v) {
-                if ($v['pri_id'] == $val['id']) {
+                if ($v->pri_id == $val['id']) {
                     $val['selected'] = 'selected="selected"';
                 }
             }
@@ -123,19 +115,8 @@ class Pri extends Base
             if(empty($val['selected'])){
                 unset($list['m_'.$val['module_name'].'_'.$val['controller']]['selected']);
             }
-
             $list[] = $val;
         }
         return $list;
-    }
-
-    /**
-     * @name 更新角色权限
-     * @desc 更新角色权限
-     * @param $data
-     */
-    public function updateRolePri($data)
-    {
-        dd($data);
     }
 }

@@ -45,9 +45,4 @@ class PriServicesImpl implements PriServices
     {
         return $this->priDao->getRolePris($role_id);
     }
-
-    public function updateRolePri($data)
-    {
-        return $this->priDao->updateRolePri($data);
-    }
 }

@@ -51,4 +51,9 @@ class RoleServicesImpl implements RoleServices
     {
         return $this->roleDao->where('id',$id)->delete();
     }
+
+    public function updateRolePri($data)
+    {
+        return $this->roleDao->updateRolePri($data);
+    }
 }
