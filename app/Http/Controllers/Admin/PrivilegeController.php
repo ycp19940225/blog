@@ -34,7 +34,7 @@ class PrivilegeController extends controller
     {
         $role = $this->role->getOne($role_id);
         $pris = $this->pri->getRolePris($role_id);
-        return view('admin.pri.index',['role'=>$role,'role_id'=>$role_id,'pris'=>$pris,'title'=>'权限列表']);
+        return view('admin.pri.index',['role'   =>$role,'role_id'=>$role_id,'pris'=>$pris,'title'=>'权限列表']);
     }
 
     /**
@@ -61,9 +61,9 @@ class PrivilegeController extends controller
             $data = $request->input();
             unset($data['_token']);
            if($this->role->updateRolePri($data)){
-               redirect('index');
+               return redirect()->action('Admin\RoleController@index')->with('status', '编辑成功!');
            }
         }
-        redirect('index');
+        return redirect()->action('Admin\PrivilegeController@index')->with('status', '编辑失败!');
     }
 }

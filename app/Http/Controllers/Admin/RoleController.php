@@ -34,6 +34,8 @@ class RoleController extends controller
     public function index()
     {
         $data = $this->role->getAll();
+//        $test = config('nav.NAV');
+//        dd($test);
         return view('admin.role.index',['data'=>$data,'title'=>'角色列表']);
     }
 
