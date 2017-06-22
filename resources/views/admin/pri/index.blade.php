@@ -126,5 +126,10 @@
          * 初始化树形结构
          */
         $("#accessTree").mulTree();
+        $("submit").click(function () {
+            var url = $("form").attr('action');
+            console.log(url);return;
+
+        });
     </script>
     @endsection

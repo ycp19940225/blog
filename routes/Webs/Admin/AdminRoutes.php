@@ -25,7 +25,7 @@ Route::post('/role/delete','RoleController@delete');
 Route::get('/role/addUser/{id}','RoleController@addUser')->name('add-user');
 Route::post('/user/addUserOperate','RoleController@addUserOperate');
 //权限
-Route::get('/Privilege/index/{role_id}','PrivilegeController@index')->name('pri-index');
-Route::get('/Privilege/refresh','PrivilegeController@refresh')->name('pri-refresh');
-Route::post('/Privilege/updateRolePri','PrivilegeController@updateRolePri')->name('update_pri_role');
+Route::get('/privilege/index/{role_id}','PrivilegeController@index')->name('pri-index');
+Route::get('/privilege/refresh','PrivilegeController@refresh')->name('pri-refresh');
+Route::post('/privilege/updateRolePri','PrivilegeController@updateRolePri')->name('update_pri_role');
 

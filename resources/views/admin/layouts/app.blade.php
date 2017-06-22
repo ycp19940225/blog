@@ -35,7 +35,6 @@
     <!-- ================== BEGIN TABLE JS ================== -->
     <link href="{{ loadStatic('admin/plugins/DataTables/css/data-table.css') }}" rel="stylesheet" />
     <!-- ================== END TABLE JS ================== -->
-
     @yield('page.css')
 </head>
 <body>
@@ -51,7 +50,7 @@
         <div class="container-fluid">
             <!-- begin mobile sidebar expand / collapse button -->
             <div class="navbar-header">
-                <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> Color Admin</a>
+                <a href="/" class="navbar-brand"><span class="navbar-logo"></span> Color Admin</a>
                 <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -169,33 +168,22 @@
             </ul>
             <!-- end sidebar user -->
             <!-- begin sidebar nav -->
-            <ul class="nav">
-                <li class="nav-header">Navigation</li>
-                <li class="has-sub active">
-                    <a href="javascript:;">
-                        <b class="caret pull-right"></b>
-                        <i class="fa fa-laptop"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="active"><a href="index.html">Dashboard v1</a></li>
-                        <li><a href="index_v2.html">Dashboard v2</a></li>
-                    </ul>
-                </li>
+            <ul class="nav" id="nav">
+                <li class="nav-header">菜单</li>
+                @foreach(config('nav.NAV') as $k=>$v)
                 <li class="has-sub">
                     <a href="javascript:;">
-                        <span class="badge pull-right">10</span>
-                        <i class="fa fa-inbox"></i>
-                        <span>Email</span>
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-{{ $v['icon'] }}"></i>
+                        <span>{{ $v['name'] }}</span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="email_inbox.html">Inbox v1</a></li>
-                        <li><a href="email_inbox_v2.html">Inbox v2</a></li>
-                        <li><a href="email_compose.html">Compose</a></li>
-                        <li><a href="email_detail.html">Detail</a></li>
+                        @foreach($v['access'] as $access)
+                        <li ><a href="{{ url($access['access']) }}">{{ $access['name'] }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
-
+            @endforeach
                 <!-- begin sidebar minify button -->
                 <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
                 <!-- end sidebar minify button -->
@@ -321,7 +309,7 @@
 <script src="{{ loadStatic('admin/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ loadStatic('admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ loadStatic('admin/js/dashboard.min.js') }}"></script>
-
+<script src="{{ loadStatic('admin/js/apps.min.js') }}"></script>
 <!-- ================== BEGIN TABLE JS ================== -->
 <script src="{{ loadStatic('admin/plugins/DataTables/js/jquery.dataTables.js') }}"></script>
 <script src="{{ loadStatic('admin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -331,7 +319,7 @@
 <script src="{{ loadStatic('common/layer/layer.js') }}"></script>
 <!-- ================== END layer JS ================== -->
 
-<script src="{{ loadStatic('admin/js/apps.min.js') }}"></script>
+
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 
@@ -340,7 +328,35 @@
 
 <script>
     $(document).ready(function() {
+        var handleSidebarMenu = function () {
+            "use strict";
+            $(".sidebar .nav > .has-sub > a").click(function () {
+                var e = $(this).next(".sub-menu");
+                var t = ".sidebar .nav > li.has-sub > .sub-menu";
+                if ($(".page-sidebar-minified").length === 0) {
+                    $(t).not(e).slideUp(250, function () {
+                        $(this).closest("li").removeClass("expand")
+                    });
+                    $(e).slideToggle(250, function () {
+                        var e = $(this).closest("li");
+                        if ($(e).hasClass("expand")) {
+                            $(e).removeClass("expand")
+                        } else {
+                            $(e).addClass("expand")
+                        }
+                    })
+                }
+            });
+            $(".sidebar .nav > .has-sub .sub-menu li.has-sub > a").click(function () {
+                if ($(".page-sidebar-minified").length === 0) {
+                    var e = $(this).next(".sub-menu");
+                    $(e).slideToggle(250)
+                }
+            })
+        };
+        handleSidebarMenu();
         App.init();
+        $('.dropdown-toggle').dropdown();
         //初始化table
         var table =$("#data-table");
         table.dataTable({
