@@ -106,6 +106,16 @@ class Users extends Base
     }
 
     /**
+     * 判断用户合法性
+     * @param $password
+     * @param $username
+     */
+    public function doLogin($password,$username)
+    {
+        return $this->where('adminname',$username)->where('password',get_md5_password($password))->first();
+    }
+
+    /**
      * @name 获取信息
      * @desc 获取表结构
      * @author ycp

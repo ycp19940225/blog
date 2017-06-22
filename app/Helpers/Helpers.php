@@ -4,6 +4,8 @@
  *
  * @param string $file 所要加载的资源
  */
+use App\Services\Admin\SC;
+
 if ( ! function_exists('loadStatic'))
 {
     function loadStatic($file)
@@ -60,6 +62,16 @@ if ( ! function_exists('check_roles'))
             }
         }
         return $roles;
+    }
+}
+/**
+ * 获取用户信息
+ */
+if ( ! function_exists('get_user'))
+{
+    function get_user()
+    {
+       return SC::getLoginSession()->adminname;
     }
 }
 

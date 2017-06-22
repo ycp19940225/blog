@@ -55,4 +55,9 @@ class UserServicesImpl implements UserServices
     {
         return $this->userDao->where('id',$id)->delete();
     }
+
+    public function getInfoByFiled($adminname)
+    {
+        return $this->userDao->where('adminname',$adminname)->first();
+    }
 }
