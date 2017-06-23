@@ -9,7 +9,7 @@
     <h1 class="page-header"><?php echo e($title); ?>
 
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/user/add' ">添加用户</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/admin/add' ">添加用户</button>
         </small>
     </h1>
     <div class="row">
@@ -53,7 +53,7 @@
                                 <td><?php echo e($v['created_at']); ?></td>
                                 <td><?php echo e($v['updated_at']); ?></td>
                                 <td>
-                                    <a class="btn btn-info btn-xs m-2 detail" href="<?php echo e(url('admin/user/edit',['id'=>$v['id']])); ?>" >编辑</a>
+                                    <a class="btn btn-info btn-xs m-2 detail" href="<?php echo e(url('admin/admin/edit',['id'=>$v['id']])); ?>" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del(<?php echo e($v['id']); ?>)" class="btn btn-danger btn-xs m-2 delete" >删除</a>
                                     <a href="<?php echo e(url('admin/role/addUser',['id'=>$v['id']])); ?>" class="btn btn-success btn-xs m-2 delete" >角色</a>
                                 </td>
@@ -91,11 +91,11 @@
                     _token: _token
                 };
                 console.log(data);
-                $.post("<?php echo e(url('admin/user/delete')); ?>",data,function (res) {
+                $.post("<?php echo e(url('admin/admin/delete')); ?>",data,function (res) {
                     console.log(res);
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="<?php echo e(url('admin/user/index')); ?>"',2000);
+                        setTimeout('location.href="<?php echo e(url('admin/admin/index')); ?>"',2000);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }

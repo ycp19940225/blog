@@ -9,6 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.1",
+        "vinkla/pusher": "^2.5",
         "yajra/laravel-datatables-oracle": "7.5"
     },
     "require-dev": {

@@ -194,7 +194,9 @@ return [
         //laravel-data——tables
         Yajra\Datatables\DatatablesServiceProvider::class,
         //Captcha
-         Mews\Captcha\CaptchaServiceProvider::class
+         Mews\Captcha\CaptchaServiceProvider::class,
+        //pusher
+        Vinkla\Pusher\PusherServiceProvider::class,
 
     ],
 

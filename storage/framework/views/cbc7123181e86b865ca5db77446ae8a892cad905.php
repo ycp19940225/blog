@@ -75,14 +75,14 @@
            var data = $("form").serialize();
             var method = "<?php echo e(Route::current()->getActionMethod()); ?>";
             if(method === 'edit'){
-                $.post('<?php echo e(url('admin/user/editOperate')); ?>',data,function (res) {
+                $.post('<?php echo e(url('admin/admin/editOperate')); ?>',data,function (res) {
                     handle(res);
                 },"json");
             }else{
                 if(validation() === false){
                     return false;
                 }
-                $.post('<?php echo e(url('admin/user/addOperate')); ?>',data,function (res) {
+                $.post('<?php echo e(url('admin/admin/addOperate')); ?>',data,function (res) {
                     handle(res);
                 });
             }
@@ -105,7 +105,7 @@
             console.log(res);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{icon: 6});
-                setTimeout('location.href="<?php echo e(url('admin/user/index')); ?>"',2000);
+                setTimeout('location.href="<?php echo e(url('admin/admin/index')); ?>"',2000);
             }else{
                 layer.msg(res['msg'],{icon:5});
             }

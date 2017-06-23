@@ -149,7 +149,6 @@
         <!-- end container-fluid -->
     </div>
     <!-- end #header -->
-
     <!-- begin #sidebar -->
     <div id="sidebar" class="sidebar">
         <!-- begin sidebar scrollbar -->
@@ -180,7 +179,11 @@
                     </a>
                     <ul class="sub-menu">
                         <?php $__currentLoopData = $v['access']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $access): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li ><a href="<?php echo e(url($access['access'])); ?>"><?php echo e($access['name']); ?></a></li>
+                            <?php if(!checkPri($access['access'])): ?>
+                               <li ><a href="<?php echo e(url($access['access'])); ?>"><?php echo e($access['name']); ?></a></li>
+                                <?php else: ?>
+                                <?php continue; ?>
+                            <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </li>
@@ -197,6 +200,12 @@
     <!-- end #sidebar -->
 
     <div id="content" class="content">
+        <?php if(session('SYS_INFO')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('SYS_INFO')); ?>
+
+            </div>
+        <?php endif; ?>
         <?php echo $__env->yieldContent('page.content'); ?>
     </div>
     <!-- end #content -->
