@@ -74,14 +74,14 @@
            var data = $("form").serialize();
             var method = "{{ Route::current()->getActionMethod() }}";
             if(method === 'edit'){
-                $.post('{{ url('admin/user/editOperate') }}',data,function (res) {
+                $.post('{{ url('admin/admin/editOperate') }}',data,function (res) {
                     handle(res);
                 },"json");
             }else{
                 if(validation() === false){
                     return false;
                 }
-                $.post('{{ url('admin/user/addOperate') }}',data,function (res) {
+                $.post('{{ url('admin/admin/addOperate') }}',data,function (res) {
                     handle(res);
                 });
             }
@@ -104,7 +104,7 @@
             console.log(res);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{icon: 6});
-                setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+                setTimeout('location.href="{{ url('admin/admin/index') }}"',2000);
             }else{
                 layer.msg(res['msg'],{icon:5});
             }

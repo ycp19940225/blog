@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //backend  , 'middleware'=>'admin'
-Route::group(['prefix'=>'admin','middleware'=>'admin.auth', 'namespace'=>'Admin'], function(){
+Route::group(['prefix'=>'admin','middleware'=>'admin', 'namespace'=>'Admin'], function(){
     require (__DIR__ . '/Webs/Admin/AdminRoutes.php');
 });
 //登陆

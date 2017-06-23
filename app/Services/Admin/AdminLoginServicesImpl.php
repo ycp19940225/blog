@@ -57,6 +57,6 @@ class AdminLoginServicesImpl implements AdminLoginServices
 
     public function logout()
     {
-        return SC::delLoginSession();
+        SC::delLoginSession();
     }
 }

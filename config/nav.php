@@ -8,7 +8,7 @@ return [
             'access'=>[
                 [
                 'name'=>'管理员列表',
-                'access'=>'admin/user/index',
+                'access'=>'admin/admin/index',
                 'icon'=>''
                 ],
                 [

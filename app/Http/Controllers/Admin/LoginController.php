@@ -14,6 +14,7 @@ use App\Services\Admin\AdminLoginServicesImpl;
 use App\Services\Admin\SC;
 use App\Services\Ifs\Admin\AdminLoginServices;
 use App\Services\Ifs\Admin\UserServices;
+use DB;
 use Illuminate\Http\Request;
 
 
@@ -47,13 +48,19 @@ class loginController extends controller
     {
         $adminname = $request->input('adminname');
         $password = $request->input('password');
-        $user_info = $this->user->getInfoByFiled($adminname);
         if(!captcha_check($request->input('captcha'))){
             return back()->withInput()->with('error','验证码错误！');
         }
         $is_login = $this->loginServices->check($password,$adminname);
         if($is_login){
-            SC::setLoginSession($user_info);
+            SC::setLoginSession($is_login);
+            $admin_id = $is_login->id;
+            $access = DB::table('blog_admin_role as a')
+                ->Join('blog_role_pri as b','a.role_id','=','b.role_id')
+                ->Join('blog_privilege as c','b.pri_id','=','c.id')
+                ->where('admin_id',$admin_id)
+                ->get();
+            SC::setUserAccess($access->toArray());
             return redirect('admin');
         }
         return back()->withInput()->with('error','用户名或密码错误！');

@@ -149,7 +149,6 @@
         <!-- end container-fluid -->
     </div>
     <!-- end #header -->
-
     <!-- begin #sidebar -->
     <div id="sidebar" class="sidebar">
         <!-- begin sidebar scrollbar -->
@@ -179,7 +178,11 @@
                     </a>
                     <ul class="sub-menu">
                         @foreach($v['access'] as $access)
-                        <li ><a href="{{ url($access['access']) }}">{{ $access['name'] }}</a></li>
+                            @if(!checkPri($access['access']))
+                               <li ><a href="{{ url($access['access']) }}">{{ $access['name'] }}</a></li>
+                                @else
+                                @continue
+                            @endif
                         @endforeach
                     </ul>
                 </li>
@@ -196,6 +199,11 @@
     <!-- end #sidebar -->
 
     <div id="content" class="content">
+        @if (session('SYS_INFO'))
+            <div class="alert alert-danger">
+                {{ session('SYS_INFO') }}
+            </div>
+        @endif
         @yield('page.content')
     </div>
     <!-- end #content -->
