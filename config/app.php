@@ -196,7 +196,6 @@ return [
         //Captcha
          Mews\Captcha\CaptchaServiceProvider::class,
         //pusher
-        Vinkla\Pusher\PusherServiceProvider::class,
 
     ],
 
