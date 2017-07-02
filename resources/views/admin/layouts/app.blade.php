@@ -17,7 +17,7 @@
     <link href="{{ loadStatic('admin/css/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/css/style.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/css/style-responsive.min.css') }}" rel="stylesheet" />
-    <link href="{{ loadStatic('admin/css/theme/default.css') }}" rel="stylesheet" id="theme" />
+    <link href="{{ loadStatic('admin/css/theme2/default.css') }}" rel="stylesheet" id="theme" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
@@ -131,7 +131,7 @@
                 <li class="dropdown navbar-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ loadStatic('admin/img/user-13.jpg') }}}" alt="" />
-                        <span class="hidden-xs">Adam Schwartz</span> <b class="caret"></b>
+                        <span class="hidden-xs"> {{  get_user() }}</span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInLeft">
                         <li class="arrow"></li>
@@ -140,7 +140,7 @@
                         <li><a href="javascript:;">Calendar</a></li>
                         <li><a href="javascript:;">Setting</a></li>
                         <li class="divider"></li>
-                        <li><a href="javascript:;">Log Out</a></li>
+                        <li><a href="{{ url('admin/logout') }}">Log Out</a></li>
                     </ul>
                 </li>
             </ul>
@@ -149,7 +149,6 @@
         <!-- end container-fluid -->
     </div>
     <!-- end #header -->
-
     <!-- begin #sidebar -->
     <div id="sidebar" class="sidebar">
         <!-- begin sidebar scrollbar -->
@@ -161,7 +160,7 @@
                         <a href="javascript:;"><img src="{{ loadStatic('admin/img/user-13.jpg') }}}" alt="" /></a>
                     </div>
                     <div class="info">
-                        Sean Ngu
+                        {{  get_user() }}
                         <small>Front end developer</small>
                     </div>
                 </li>
@@ -179,7 +178,11 @@
                     </a>
                     <ul class="sub-menu">
                         @foreach($v['access'] as $access)
-                        <li ><a href="{{ url($access['access']) }}">{{ $access['name'] }}</a></li>
+                            @if(!checkPri($access['access']))
+                               <li ><a href="{{ url($access['access']) }}">{{ $access['name'] }}</a></li>
+                                @else
+                                @continue
+                            @endif
                         @endforeach
                     </ul>
                 </li>
@@ -195,8 +198,12 @@
     <div class="sidebar-bg"></div>
     <!-- end #sidebar -->
 
-    <!-- begin #content -->
     <div id="content" class="content">
+        @if (session('SYS_INFO'))
+            <div class="alert alert-danger">
+                {{ session('SYS_INFO') }}
+            </div>
+        @endif
         @yield('page.content')
     </div>
     <!-- end #content -->

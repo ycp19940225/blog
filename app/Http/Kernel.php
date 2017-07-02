@@ -36,6 +36,12 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        'admin' => [
+            'web',
+            'admin.auth',
+            'admin.check.pris'
+        ],
+
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -56,5 +62,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin.auth' => \App\Http\Middleware\AdminAuth::class,
+        'admin.check.pris' => \App\Http\Middleware\AdminNeedsPermission::class,
     ];
 }

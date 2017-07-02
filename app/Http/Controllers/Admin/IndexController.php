@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\SC;
 
 class IndexController extends controller
 {
@@ -21,6 +22,7 @@ class IndexController extends controller
      */
     public function index()
     {
-        return view('admin.index.index');
+        return view('admin.index.index',['adminname'=>SC::getLoginSession()->adminname]);
     }
+
 }

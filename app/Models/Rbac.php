@@ -77,12 +77,12 @@ class Rbac
      * @param string $module
      * @return array
      */
-    protected function getController($module='Admin'){
+    protected function getController($module){
 
         if(empty($module)){
             return null;
         }
-        $module_path = app_path('Http\Controllers').'/'.$module;//控制器路径 
+        $module_path = app_path('Http\Controllers').'/'.$module;//模块路径 
         $module_path = str_replace('\\','/',$module_path);
 //        var_dump($module_path);exit();
 
@@ -95,7 +95,7 @@ class Rbac
 //        var_dump($ary_files);exit();
         $files= [];
         foreach ($ary_files as $file){
-            if(is_dir($file)){
+            if(is_dir($file) || basename($file,'.php') =='LoginController'){
                 continue;
             }else{
                 $files[]=config('app.name_space').'\\'.$module.'\\'.basename($file,'.php');

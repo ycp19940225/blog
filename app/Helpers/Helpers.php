@@ -4,6 +4,8 @@
  *
  * @param string $file 所要加载的资源
  */
+use App\Services\Admin\SC;
+
 if ( ! function_exists('loadStatic'))
 {
     function loadStatic($file)
@@ -60,6 +62,41 @@ if ( ! function_exists('check_roles'))
             }
         }
         return $roles;
+    }
+}
+/**
+ * 获取用户信息
+ */
+if ( ! function_exists('get_user'))
+{
+    function get_user()
+    {
+       return SC::getLoginSession()->adminname;
+    }
+}
+/**
+ * 检测权限
+ */
+if ( ! function_exists('checkPri')){
+    function checkPri($url){
+        if($url == 'admin'){//首页不验证
+            return false;
+        }
+        $pris = SC::getUserAccess();
+        if(count($pris)>0){
+            if(!is_array($url)){
+                $url = explode('/',$url);
+            }
+            foreach ($pris as $pri){
+                if($pri->admin_id ===1){
+                    return false;
+                }
+                if(strtolower($url[0]) == strtolower($pri->module_name) && strtolower($url[1]) == strtolower($pri->controller) && strtolower($url[2]) == strtolower($pri->action_name)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

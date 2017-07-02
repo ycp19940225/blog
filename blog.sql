@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-06-20 14:46:09
+Date: 2017-06-21 18:01:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,7 +61,7 @@ CREATE TABLE `blog_admin_role` (
 -- ----------------------------
 INSERT INTO `blog_admin_role` VALUES ('29', '4');
 INSERT INTO `blog_admin_role` VALUES ('20', '4');
-INSERT INTO `blog_admin_role` VALUES ('20', '5');
+INSERT INTO `blog_admin_role` VALUES ('78', '5');
 
 -- ----------------------------
 -- Table structure for blog_privilege
@@ -78,7 +78,7 @@ CREATE TABLE `blog_privilege` (
   `updated_at` int(10) NOT NULL DEFAULT '0',
   `deleted_at` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 -- ----------------------------
 -- Records of blog_privilege
@@ -91,15 +91,16 @@ INSERT INTO `blog_privilege` VALUES ('81', '修改操作', '修改操作', 'Admi
 INSERT INTO `blog_privilege` VALUES ('82', '删除用户', '删除用户', 'Admin', 'Admin', 'delete', '1497927205', '1497927205', '0');
 INSERT INTO `blog_privilege` VALUES ('83', '后台首页', '后台首页', 'Admin', 'Index', 'index', '1497927205', '1497927205', '0');
 INSERT INTO `blog_privilege` VALUES ('84', '权限首页', '权限首页', 'Admin', 'Privilege', 'index', '1497927205', '1497927205', '0');
-INSERT INTO `blog_privilege` VALUES ('86', '刷新权限', '刷新权限', 'Admin', 'Privilege', 'addOperate', '1497927205', '1497940866', '0');
 INSERT INTO `blog_privilege` VALUES ('90', '后台角色首页', '后台角色首页', 'Admin', 'Role', 'index', '1497927205', '1497927205', '0');
 INSERT INTO `blog_privilege` VALUES ('91', '添加角色页面', '添加角色', 'Admin', 'Role', 'add', '1497927205', '1497927205', '0');
 INSERT INTO `blog_privilege` VALUES ('92', '添加操作', '添加操作', 'Admin', 'Role', 'addOperate', '1497927205', '1497927205', '0');
 INSERT INTO `blog_privilege` VALUES ('93', '修改页面', '修改页面', 'Admin', 'Role', 'edit', '1497927205', '1497941141', '0');
 INSERT INTO `blog_privilege` VALUES ('94', '修改操作', '修改操作', 'Admin', 'Role', 'editOperate', '1497927205', '1497927205', '0');
 INSERT INTO `blog_privilege` VALUES ('95', '删除角色', '删除角色', 'Admin', 'Role', 'delete', '1497927205', '1497927205', '0');
-INSERT INTO `blog_privilege` VALUES ('96', '为管理员分配角色', '为管理员分配角色', 'Admin', 'Role', 'addUser', '1497927205', '1497927205', '0');
-INSERT INTO `blog_privilege` VALUES ('98', '为管理员分配角色', '为管理员分配角色', 'Admin', 'Role', 'addUserOperate', '1497930208', '1497941079', '0');
+INSERT INTO `blog_privilege` VALUES ('96', '为管理员分配角色列表', '为管理员分配角色', 'Admin', 'Role', 'addUser', '1497927205', '1497946911', '0');
+INSERT INTO `blog_privilege` VALUES ('100', '刷新权限', '刷新权限', 'Admin', 'Privilege', 'refresh', '1497946735', '1497946735', '0');
+INSERT INTO `blog_privilege` VALUES ('102', '为管理员分配角色操作', '为管理员分配角色', 'Admin', 'Role', 'addUserOperate', '1497946855', '1497946911', '0');
+INSERT INTO `blog_privilege` VALUES ('103', '更新添加角色权限', '更新添加角色权限', 'Admin', 'Privilege', 'updateRolePri', '1498008120', '1498008120', '0');
 
 -- ----------------------------
 -- Table structure for blog_role
@@ -118,7 +119,7 @@ CREATE TABLE `blog_role` (
 -- ----------------------------
 -- Records of blog_role
 -- ----------------------------
-INSERT INTO `blog_role` VALUES ('5', 'ffff', '1497939509', '1497939509', '0', '0');
+INSERT INTO `blog_role` VALUES ('5', '测试管理员', '1497939509', '1498025253', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_role_pri
@@ -127,6 +128,7 @@ DROP TABLE IF EXISTS `blog_role_pri`;
 CREATE TABLE `blog_role_pri` (
   `pri_id` mediumint(8) unsigned NOT NULL COMMENT '权限Id',
   `role_id` mediumint(8) unsigned NOT NULL COMMENT '角色Id',
+  `status` tinyint(5) NOT NULL DEFAULT '0',
   KEY `pri_id` (`pri_id`),
   KEY `role_id` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色权限表';
@@ -134,6 +136,24 @@ CREATE TABLE `blog_role_pri` (
 -- ----------------------------
 -- Records of blog_role_pri
 -- ----------------------------
+INSERT INTO `blog_role_pri` VALUES ('77', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('78', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('79', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('80', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('81', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('82', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('83', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('84', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('90', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('91', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('92', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('93', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('94', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('95', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('96', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('100', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('102', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('103', '5', '0');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -165,8 +185,9 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$De1MgZ4mmCTBnk071DAbNe4U0rV4rQBh9h7ef4MRCJjX5goNCMep.', '8M0frWPSi46lPqNew5s0vC0S4sE91uFFRMlpZx1F7zRsYsgnYN7z3gPLCXgN', '2017-06-20 09:53:51', '2017-06-20 09:53:51');

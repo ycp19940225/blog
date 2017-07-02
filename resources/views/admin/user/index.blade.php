@@ -9,7 +9,7 @@
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/user/add' ">添加用户</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/admin/add' ">添加用户</button>
         </small>
     </h1>
     <div class="row">
@@ -52,7 +52,7 @@
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs m-2 detail" href="{{ url('admin/user/edit',['id'=>$v['id']]) }}" >编辑</a>
+                                    <a class="btn btn-info btn-xs m-2 detail" href="{{ url('admin/admin/edit',['id'=>$v['id']]) }}" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
                                     <a href="{{ url('admin/role/addUser',['id'=>$v['id']]) }}" class="btn btn-success btn-xs m-2 delete" >角色</a>
                                 </td>
@@ -127,11 +127,11 @@
                     _token: _token
                 };
                 console.log(data);
-                $.post("{{ url('admin/user/delete') }}",data,function (res) {
+                $.post("{{ url('admin/admin/delete') }}",data,function (res) {
                     console.log(res);
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/user/index') }}"',2000);
+                        setTimeout('location.href="{{ url('admin/admin/index') }}"',2000);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }

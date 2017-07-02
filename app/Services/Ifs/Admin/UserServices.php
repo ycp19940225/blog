@@ -18,4 +18,6 @@ interface UserServices
     public function updateUser($data);
     public function find($id);
     public function delete($id);
+
+    public function getInfoByFiled($adminname);
 }
