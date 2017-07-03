@@ -23,7 +23,14 @@ Route::get('/admin/login','Admin\LoginController@login');
 Route::post('/admin/doLogin','Admin\LoginController@doLogin');
 Route::get('/admin/logout','Admin\LoginController@logout');
 
+//pusher
 
+
+
+//vue
+Route::get('/test', function () {
+    return view('test');
+});
 
 Auth::routes();
 
