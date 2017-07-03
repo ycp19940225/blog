@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -196,7 +196,6 @@ return [
         //Captcha
          Mews\Captcha\CaptchaServiceProvider::class,
         //pusher
-
     ],
 
     /*
