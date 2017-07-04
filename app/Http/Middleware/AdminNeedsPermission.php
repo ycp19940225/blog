@@ -21,12 +21,12 @@ class AdminNeedsPermission
         if($request->is('common/*')){
             return $next($request);
         }
-        if(checkPri($request->path())){
+       /* if(checkPri($request->path())){
             if(\Request::ajax()){
                 return response()->json(msg('error','您没有权限访问！'));
             }
             return redirect('admin')->with(['SYS_INFO'=>'您没有权限访问！']);
-        }
+        }*/
         return $next($request);
     }
 }

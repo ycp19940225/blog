@@ -196,6 +196,9 @@ return [
         //Captcha
          Mews\Captcha\CaptchaServiceProvider::class,
         //pusher
+
+        //qiniu image
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
     ],
 
     /*

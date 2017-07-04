@@ -14,6 +14,7 @@ use App\Services\Admin\SC;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use Illuminate\Http\Request;
+use Storage;
 
 class CommonController extends controller
 {
@@ -55,7 +56,20 @@ class CommonController extends controller
 
     public function uploadLogo()
     {
-        
+        return view('admin.user.user_logo',['title'=>'修改头像']);
+    }
+
+    public function uploadQiniuImg(Request $request)
+    {
+        $disk = Storage::disk('qiniu'); //使用七牛云上传
+        $time = date('Y/m/d-H:i:s-');
+        $filename = $disk->put($time, $request->file('img'));//上传
+        dd($filename);
+        if(!$filename) {
+            return response()->json(msg('error','上传失败！'));
+        }
+        $img_url = $disk->getDriver()->downloadUrl($filename); //获取下载链接
+        return response()->json(msg('success','上传成功!'));
     }
 
 }

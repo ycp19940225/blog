@@ -1,7 +1,7 @@
 <?php
 /**
- * @name:
- * @desc:
+ * @name 利用反射获取权限树(路由)
+ * @author [ycp] <[820363773@qq.com]>
  * Author: ycp
  * Date: 2017/6/14
  * Time: 10:35
@@ -11,10 +11,7 @@
 namespace App\Models;
 use ReflectionClass;
 
-/**
- * @name 利用反射获取权限树(路由)
- * @author [ycp] <[820363773@qq.com]>
- */
+
 class Rbac
 {
     public function getAccess(){
