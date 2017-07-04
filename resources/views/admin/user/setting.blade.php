@@ -9,7 +9,7 @@
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:history.go(-1) ">修改头像</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:window.location.href='{{ url('common/uploadLogo') }}' ">修改头像</button>
         </small>
     </h1>
     <div class="row">

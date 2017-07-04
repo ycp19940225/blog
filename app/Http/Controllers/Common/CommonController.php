@@ -36,6 +36,12 @@ class CommonController extends controller
         return view('admin.user.setting',['data'=>$user_info,'title'=>'个人中心']);
     }
 
+    /**
+     * @name 个人设置
+     * @desc 个人设置
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function doSetting(Request $request)
     {
         if($this->user->checkUnique($request->input('adminname'),$request->input('id'))){
@@ -45,6 +51,11 @@ class CommonController extends controller
             return response()->json(msg('success','修改成功!'));
         }
         return response()->json(msg('error','修改失败！'));
+    }
+
+    public function uploadLogo()
+    {
+        
     }
 
 }

@@ -23,7 +23,9 @@ Route::group(['prefix'=>'common','middleware'=>'admin', 'namespace'=>'Common'], 
     //个人设置
     Route::get('/setting','CommonController@setting');
     Route::post('/doSetting','CommonController@doSetting');
+    Route::match(['get','post'],'/uploadLogo','CommonController@uploadLogo');
 });
+
 //不做权限，登陆
 Route::group(['prefix'=>'admin','middleware'=>'web', 'namespace'=>'Admin'], function(){
     //后台登陆
