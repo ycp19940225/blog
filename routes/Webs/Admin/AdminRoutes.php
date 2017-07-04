@@ -14,6 +14,7 @@ Route::get('/admin/tables','AdminController@getTables');
 Route::get('/admin/edit/{id}','AdminController@edit');
 Route::post('/admin/editOperate','AdminController@editOperate');
 Route::post('/admin/delete','AdminController@delete');
+Route::get('/admin/setting','AdminController@setting');
 //角色
 Route::any('/role/add','RoleController@add');
 Route::post('/role/addOperate','RoleController@addOperate');

@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\SC;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use Illuminate\Http\Request;
@@ -108,6 +109,17 @@ class AdminController extends controller
             return response()->json(msg('success','删除成功!'));
         } else
             return response()->json(msg('error','删除失败!'));
+    }
+
+    /**
+     * @name 个人中心
+     * @desc 个人中心
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function setting()
+    {
+       $user_info = SC::getLoginSession();
+       return view('admin.user.setting',['userInfo'=>$user_info,'title'=>'个人中心']);
     }
 
     /**
