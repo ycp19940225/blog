@@ -24,7 +24,7 @@ class Users extends Base
      * 可以被集体赋值的表字段
      * @var array
      */
-    public $fillable = array('id','adminname','password','email','created_at','updated_at','input_id','token');
+    public $fillable = array('id','adminname','password','email','logo','created_at','updated_at','input_id','token');
 
 
     /**
@@ -96,8 +96,11 @@ class Users extends Base
                 break;
             case 'edit':
                 $res = $this->find($data['id']);
-                if($res['password'] !== $data['password']){
+                if(isset($res['password']) && $res['password'] !== $data['password']){
                     $data['password'] = get_md5_password($data['password']);
+                }
+                if(!isset($data['email'])){
+                    $data['email'] = '';
                 }
                 break;
             default:break;

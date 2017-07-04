@@ -34,7 +34,7 @@
                                 <input type="hidden" name="id" value="{{ $data['id'] or '' }}">
                                 <label for="name" class="col-xs-4 control-label">角色名</label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="name" name="role_name" value="{{ $data['role_name'] or ''}}" placeholder="请输入名字">
+                                    <input type="text" class="form-control" id="name" name="role_name" value="{{ $data['role_name'] or ''}}" placeholder="请输入名字" required>
                                 </div>
                             </div>
                             <div class="col-md-offset-5" >
