@@ -34,20 +34,20 @@
                                 <input type="hidden" name="id" value="{{ $data['id'] or '' }}">
                                 <label for="name" class="col-xs-4 control-label">账号</label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="name" name="adminname" value="{{ $data['adminname'] or ''}}" placeholder="请输入名字">
+                                    <input type="text" class="form-control" id="name" name="adminname" value="{{ $data['adminname'] or ''}}" placeholder="请输入名字" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-xs-4 control-label">密码</label>
                                 <div class="col-xs-5">
-                                    <input type="password" class="form-control" id="password" name="password" value="{{ $data['password'] or ''}}" placeholder="请输入密码">
+                                    <input type="password" class="form-control" id="password" name="password" value="{{ $data['password'] or ''}}" placeholder="请输入密码" required>
                                 </div>
                             </div>
                             @if( Route::current()->getActionMethod() == 'add')
                             <div class="form-group">
                                 <label for="repass" class="col-xs-4 control-label">确认密码</label>
                                 <div class="col-xs-5">
-                                    <input type="password" class="form-control" id="repass" name="repass" placeholder="确认密码">
+                                    <input type="password" class="form-control" id="repass" name="repass" placeholder="确认密码" required>
                                 </div>
                             </div>
                             @endif

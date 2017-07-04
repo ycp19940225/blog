@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-06-21 18:01:48
+Date: 2017-07-04 16:01:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,17 +33,19 @@ CREATE TABLE `blog_admin` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `adminname` (`adminname`),
   KEY `role_id` (`role_id`) COMMENT '角色'
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 -- ----------------------------
 -- Records of blog_admin
 -- ----------------------------
-INSERT INTO `blog_admin` VALUES ('20', 'test2ssd', '447910ff7241c373129b8761cc312c78', '', '1496653451', '1496827637', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('1', 'ycp', '447910ff7241c373129b8761cc312c78', '', '1498118813', '1498118813', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('20', 'test2ssdk', '447910ff7241c373129b8761cc312c78', '', '1496653451', '1498201884', '0', '0', '0', '0');
 INSERT INTO `blog_admin` VALUES ('27', 'test2ssrrr', 'fed6fb05c04e7e31bc5a91b25834281f', '', '1496818749', '1496823066', '0', '0', '0', '0');
 INSERT INTO `blog_admin` VALUES ('28', 'afafa', '220a942773547a88f1aa3b73938103f5', '', '1496818812', '1496818812', '0', '0', '0', '0');
 INSERT INTO `blog_admin` VALUES ('29', 'afafad', '220a942773547a88f1aa3b73938103f5', '', '1496818822', '1496818822', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('30', 'fa', 'a964973f5c5d142c6c23c6809d8bfd46', '', '1496818829', '1496818829', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('31', 'ddd', '8870e3955bd21061393b59c7ed98de25', '', '1496818849', '1496818849', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('30', 'fa22233333ff', 'a964973f5c5d142c6c23c6809d8bfd46', '', '1496818829', '1498816152', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('33', 'test', 'cb3b3845bf2402c6f436aac097332517', '', '1498188532', '1498203875', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('35', 'dd', 'cfcda2fb6e3d1f00505962a486e9c5ae', '', '1498201721', '1498201721', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_admin_role
@@ -62,6 +64,9 @@ CREATE TABLE `blog_admin_role` (
 INSERT INTO `blog_admin_role` VALUES ('29', '4');
 INSERT INTO `blog_admin_role` VALUES ('20', '4');
 INSERT INTO `blog_admin_role` VALUES ('78', '5');
+INSERT INTO `blog_admin_role` VALUES ('20', '5');
+INSERT INTO `blog_admin_role` VALUES ('1', '1');
+INSERT INTO `blog_admin_role` VALUES ('33', '6');
 
 -- ----------------------------
 -- Table structure for blog_privilege
@@ -114,12 +119,13 @@ CREATE TABLE `blog_role` (
   `input_id` int(11) NOT NULL DEFAULT '0' COMMENT '录入人ID',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0' COMMENT '删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色表';
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='角色表';
 
 -- ----------------------------
 -- Records of blog_role
 -- ----------------------------
-INSERT INTO `blog_role` VALUES ('5', '测试管理员', '1497939509', '1498025253', '0', '0');
+INSERT INTO `blog_role` VALUES ('1', '超级管理员', '1497939509', '1498025253', '0', '0');
+INSERT INTO `blog_role` VALUES ('6', 'test', '1498188946', '1498188946', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_role_pri
@@ -154,6 +160,70 @@ INSERT INTO `blog_role_pri` VALUES ('96', '5', '0');
 INSERT INTO `blog_role_pri` VALUES ('100', '5', '0');
 INSERT INTO `blog_role_pri` VALUES ('102', '5', '0');
 INSERT INTO `blog_role_pri` VALUES ('103', '5', '0');
+INSERT INTO `blog_role_pri` VALUES ('77', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('78', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('79', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('80', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('81', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('82', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('83', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('84', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('90', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('91', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('92', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('93', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('94', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('95', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('96', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('100', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('102', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('103', '1', '0');
+INSERT INTO `blog_role_pri` VALUES ('77', '6', '0');
+INSERT INTO `blog_role_pri` VALUES ('78', '6', '0');
+INSERT INTO `blog_role_pri` VALUES ('79', '6', '0');
+INSERT INTO `blog_role_pri` VALUES ('80', '6', '0');
+INSERT INTO `blog_role_pri` VALUES ('81', '6', '0');
+INSERT INTO `blog_role_pri` VALUES ('82', '6', '0');
+
+-- ----------------------------
+-- Table structure for chat_messages
+-- ----------------------------
+DROP TABLE IF EXISTS `chat_messages`;
+CREATE TABLE `chat_messages` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of chat_messages
+-- ----------------------------
+INSERT INTO `chat_messages` VALUES ('1', 'Howdy everyone', '2', '2017-07-03 16:43:42', '2017-07-03 16:43:42');
+INSERT INTO `chat_messages` VALUES ('2', 'Howdy everyone', '2', '2017-07-03 16:44:42', '2017-07-03 16:44:42');
+INSERT INTO `chat_messages` VALUES ('3', 'Howdy everyone', '2', '2017-07-03 16:47:07', '2017-07-03 16:47:07');
+INSERT INTO `chat_messages` VALUES ('4', 'Howdy everyone', '2', '2017-07-03 16:47:28', '2017-07-03 16:47:28');
+INSERT INTO `chat_messages` VALUES ('5', 'Howdy everyone', '2', '2017-07-03 16:48:52', '2017-07-03 16:48:52');
+INSERT INTO `chat_messages` VALUES ('6', 'Howdy everyone', '2', '2017-07-03 16:49:02', '2017-07-03 16:49:02');
+INSERT INTO `chat_messages` VALUES ('7', 'Howdy everyone', '2', '2017-07-03 16:49:26', '2017-07-03 16:49:26');
+INSERT INTO `chat_messages` VALUES ('8', 'Howdy everyone', '2', '2017-07-03 16:50:33', '2017-07-03 16:50:33');
+INSERT INTO `chat_messages` VALUES ('9', 'Howdy everyone', '2', '2017-07-03 16:51:16', '2017-07-03 16:51:16');
+INSERT INTO `chat_messages` VALUES ('10', 'Howdy everyone', '2', '2017-07-03 17:03:21', '2017-07-03 17:03:21');
+INSERT INTO `chat_messages` VALUES ('11', 'Howdy everyone', '2', '2017-07-03 17:05:54', '2017-07-03 17:05:54');
+INSERT INTO `chat_messages` VALUES ('12', 'Howdy everyone', '2', '2017-07-03 17:07:04', '2017-07-03 17:07:04');
+INSERT INTO `chat_messages` VALUES ('13', 'Howdy everyone', '2', '2017-07-03 17:07:14', '2017-07-03 17:07:14');
+INSERT INTO `chat_messages` VALUES ('14', 'Howdy everyone', '2', '2017-07-03 17:08:06', '2017-07-03 17:08:06');
+INSERT INTO `chat_messages` VALUES ('15', 'Howdy everyone', '2', '2017-07-03 17:11:05', '2017-07-03 17:11:05');
+INSERT INTO `chat_messages` VALUES ('16', 'Howdy everyone', '2', '2017-07-03 17:11:41', '2017-07-03 17:11:41');
+INSERT INTO `chat_messages` VALUES ('17', 'Howdy everyone', '2', '2017-07-03 17:14:19', '2017-07-03 17:14:19');
+INSERT INTO `chat_messages` VALUES ('18', 'Howdy everyone', '2', '2017-07-03 17:14:57', '2017-07-03 17:14:57');
+INSERT INTO `chat_messages` VALUES ('19', 'Howdy everyone', '2', '2017-07-03 17:15:10', '2017-07-03 17:15:10');
+INSERT INTO `chat_messages` VALUES ('20', 'Howdy everyone', '2', '2017-07-03 17:15:21', '2017-07-03 17:15:21');
+INSERT INTO `chat_messages` VALUES ('21', 'Howdy everyone', '2', '2017-07-03 17:15:45', '2017-07-03 17:15:45');
+INSERT INTO `chat_messages` VALUES ('22', 'Howdy everyone', '2', '2017-07-03 17:18:44', '2017-07-03 17:18:44');
+INSERT INTO `chat_messages` VALUES ('23', 'Howdy everyone', '2', '2017-07-03 17:30:13', '2017-07-03 17:30:13');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -164,13 +234,14 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
 -- ----------------------------
 INSERT INTO `migrations` VALUES ('1', '2014_10_12_100000_create_password_resets_table', '1');
 INSERT INTO `migrations` VALUES ('2', '2017_06_08_061045_create_role_table', '1');
+INSERT INTO `migrations` VALUES ('3', '2017_07_03_163619_create_chat_messages_table', '2');
 
 -- ----------------------------
 -- Table structure for users
@@ -190,4 +261,4 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$De1MgZ4mmCTBnk071DAbNe4U0rV4rQBh9h7ef4MRCJjX5goNCMep.', '8M0frWPSi46lPqNew5s0vC0S4sE91uFFRMlpZx1F7zRsYsgnYN7z3gPLCXgN', '2017-06-20 09:53:51', '2017-06-20 09:53:51');
+INSERT INTO `users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$De1MgZ4mmCTBnk071DAbNe4U0rV4rQBh9h7ef4MRCJjX5goNCMep.', 'AeVgvdf1mS6udHrPNAbZEsn00nepdeqrH07RN11cmIXCJ38lYNUyVYABVw9I', '2017-06-20 09:53:51', '2017-06-20 09:53:51');

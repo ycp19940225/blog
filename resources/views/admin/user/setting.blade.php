@@ -9,7 +9,7 @@
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:history.go(-1) ">返回主页</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:history.go(-1) ">修改头像</button>
         </small>
     </h1>
     <div class="row">
