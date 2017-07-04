@@ -9,7 +9,7 @@
     <h1 class="page-header"><?php echo e($title); ?>
 
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/admin/add' ">添加用户</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/admin/add' ">添加管理员</button>
         </small>
     </h1>
     <div class="row">

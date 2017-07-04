@@ -36,7 +36,7 @@ class AdminController extends controller
     public function index()
     {
         $data = $this->user->select();
-        return view('admin.user.index',['data'=>$data,'title'=>'用户列表']);
+        return view('admin.user.index',['data'=>$data,'title'=>'管理员列表']);
     }
 
     /**
@@ -48,7 +48,7 @@ class AdminController extends controller
     public function add()
     {
         $roles =$this->role->getAll();
-        return view('admin.user.edit',['roles'=>$roles,'title'=>'添加用户']);
+        return view('admin.user.edit',['roles'=>$roles,'title'=>'添加管理员']);
     }
 
     /**
@@ -60,7 +60,7 @@ class AdminController extends controller
     public function addOperate(Request $request)
     {
         if($this->user->checkUnique($request->input('adminname'))){
-            return response()->json(msg('error','该用户名已存在！'));
+            return response()->json(msg('error','该管理员已存在！'));
         }
         if($this->user->saveUser($request)){
             return response()->json(msg('success','添加成功!'));
@@ -78,7 +78,7 @@ class AdminController extends controller
     public function edit($id)
     {
         $data = $this->user->find($id);
-        return view('admin.user.edit',['data'=>$data,'title'=>'编辑用户']);
+        return view('admin.user.edit',['data'=>$data,'title'=>'编辑管理员']);
     }
     /**
      * @name 修改操作
@@ -89,7 +89,7 @@ class AdminController extends controller
     public function editOperate(Request $request)
     {
         if($this->user->checkUnique($request->input('adminname'),$request->input('id'))){
-            return response()->json(msg('error','该用户名已存在！'));
+            return response()->json(msg('error','该管理员已存在！'));
         }
         if($this->user->updateUser($request->input())){
             return response()->json(msg('success','修改成功!'));
