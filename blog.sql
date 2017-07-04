@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-04 16:01:48
+Date: 2017-07-04 17:56:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,7 @@ CREATE TABLE `blog_admin` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Id',
   `adminname` varchar(32) NOT NULL DEFAULT '' COMMENT '管理员名',
   `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
+  `logo` varchar(255) NOT NULL DEFAULT '' COMMENT '头像',
   `email` varchar(255) NOT NULL DEFAULT '' COMMENT '邮箱',
   `created_at` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
@@ -38,14 +39,14 @@ CREATE TABLE `blog_admin` (
 -- ----------------------------
 -- Records of blog_admin
 -- ----------------------------
-INSERT INTO `blog_admin` VALUES ('1', 'ycp', '447910ff7241c373129b8761cc312c78', '', '1498118813', '1498118813', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('20', 'test2ssdk', '447910ff7241c373129b8761cc312c78', '', '1496653451', '1498201884', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('27', 'test2ssrrr', 'fed6fb05c04e7e31bc5a91b25834281f', '', '1496818749', '1496823066', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('28', 'afafa', '220a942773547a88f1aa3b73938103f5', '', '1496818812', '1496818812', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('29', 'afafad', '220a942773547a88f1aa3b73938103f5', '', '1496818822', '1496818822', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('30', 'fa22233333ff', 'a964973f5c5d142c6c23c6809d8bfd46', '', '1496818829', '1498816152', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('33', 'test', 'cb3b3845bf2402c6f436aac097332517', '', '1498188532', '1498203875', '0', '0', '0', '0');
-INSERT INTO `blog_admin` VALUES ('35', 'dd', 'cfcda2fb6e3d1f00505962a486e9c5ae', '', '1498201721', '1498201721', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('1', 'ycp', '447910ff7241c373129b8761cc312c78', '', '820363773@qq.com', '1498118813', '1499161329', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('20', 'test2ssdkfffff', '79729544f5269e36f51cf9c18b1a9a72', '', '', '1496653451', '1499161319', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('27', 'test2ssrrr', 'fed6fb05c04e7e31bc5a91b25834281f', '', '', '1496818749', '1496823066', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('28', 'afafa', '220a942773547a88f1aa3b73938103f5', '', '', '1496818812', '1496818812', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('29', 'afafad', '220a942773547a88f1aa3b73938103f5', '', '', '1496818822', '1496818822', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('30', 'fa22233333ff', 'a964973f5c5d142c6c23c6809d8bfd46', '', '', '1496818829', '1498816152', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('33', 'test', 'cb3b3845bf2402c6f436aac097332517', '', '', '1498188532', '1498203875', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('35', 'dd', 'cfcda2fb6e3d1f00505962a486e9c5ae', '', '', '1498201721', '1498201721', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_admin_role
