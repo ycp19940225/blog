@@ -99,6 +99,9 @@ class Users extends Base
                 if(isset($res['password']) && $res['password'] !== $data['password']){
                     $data['password'] = get_md5_password($data['password']);
                 }
+                if(!isset($data['email'])){
+                    $data['email'] = '';
+                }
                 break;
             default:break;
         }

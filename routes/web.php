@@ -14,18 +14,26 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-//backend  , 'middleware'=>'admin'
+/*******************************backend*********************************/
 Route::group(['prefix'=>'admin','middleware'=>'admin', 'namespace'=>'Admin'], function(){
     require (__DIR__ . '/Webs/Admin/AdminRoutes.php');
 });
-//后台登陆
-Route::get('/admin/login','Admin\LoginController@login');
-Route::post('/admin/doLogin','Admin\LoginController@doLogin');
-Route::get('/admin/logout','Admin\LoginController@logout');
+//不做权限公共部分
+Route::group(['prefix'=>'common','middleware'=>'admin', 'namespace'=>'Common'], function(){
+    //个人设置
+    Route::get('/setting','CommonController@setting');
+    Route::post('/doSetting','CommonController@doSetting');
+});
+//不做权限，登陆
+Route::group(['prefix'=>'admin','middleware'=>'web', 'namespace'=>'Admin'], function(){
+    //后台登陆
+    Route::get('/login','LoginController@login');
+    Route::post('/doLogin','LoginController@doLogin');
+    Route::get('/logout','LoginController@logout');
+});
 
-//pusher
 
-//blog
+/********************************blog**********************************/
 //backend  , 'middleware'=>'admin'
 Route::group(['prefix'=>'blog','middleware'=>'web', 'namespace'=>'Blog'], function(){
     require (__DIR__ . '/Webs/Blog/BlogRoutes.php');

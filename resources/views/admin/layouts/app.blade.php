@@ -138,7 +138,7 @@
                         <li><a href="javascript:;">Edit Profile</a></li>
                         <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
                         <li><a href="javascript:;">Calendar</a></li>
-                        <li><a href="{{ url('admin/admin/setting') }}">Setting</a></li>
+                        <li><a href="{{ url('common/setting') }}">Setting</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ url('admin/logout') }}">Log Out</a></li>
                     </ul>

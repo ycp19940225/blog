@@ -112,17 +112,6 @@ class AdminController extends controller
     }
 
     /**
-     * @name 个人中心
-     * @desc 个人中心
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function setting()
-    {
-       $user_info = SC::getLoginSession();
-       return view('admin.user.setting',['userInfo'=>$user_info,'title'=>'个人中心']);
-    }
-
-    /**
      * @name table 后端分页
      * @desc
      * @return mixed

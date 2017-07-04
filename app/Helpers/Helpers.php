@@ -88,7 +88,7 @@ if ( ! function_exists('checkPri')){
                 $url = explode('/',$url);
             }
             foreach ($pris as $pri){
-                if($pri->admin_id === 1){
+                if($pri->admin_id ===1){
                     return false;
                 }
                 if(strtolower($url[0]) == strtolower($pri->module_name) && strtolower($url[1]) == strtolower($pri->controller) && strtolower($url[2]) == strtolower($pri->action_name)){
