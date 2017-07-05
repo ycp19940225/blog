@@ -96,7 +96,7 @@ class Users extends Base
                 break;
             case 'edit':
                 $res = $this->find($data['id']);
-                if(isset($res['password']) && $res['password'] !== $data['password']){
+                if(isset($data['password']) && $res['password'] !== $data['password']){
                     $data['password'] = get_md5_password($data['password']);
                 }
                 if(!isset($data['email'])){

@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
 use App\Services\Admin\SC;
+use App\Services\Common\UploadServicesImpl;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use Illuminate\Http\Request;
@@ -54,22 +55,30 @@ class CommonController extends controller
         return response()->json(msg('error','修改失败！'));
     }
 
+    /**
+     * @name 头像修改页面
+     * @desc
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function uploadLogo()
     {
         return view('admin.user.user_logo',['title'=>'修改头像']);
     }
 
-    public function uploadQiniuImg(Request $request)
+    /**
+     * @name 上传头像
+     * @desc 本地或者七牛可自由切换
+     * @param Request $request
+     * @param UploadServicesImpl $uploadServicesImpl
+     * @return mixed
+     */
+    public function upLogo(Request $request, UploadServicesImpl $uploadServicesImpl)
     {
-        $disk = Storage::disk('qiniu'); //使用七牛云上传
-        $time = date('Y/m/d-H:i:s-');
-        $filename = $disk->put($time, $request->file('img'));//上传
-        dd($filename);
-        if(!$filename) {
-            return response()->json(msg('error','上传失败！'));
+        $img_path = $uploadServicesImpl->uploadImg($request->file('logo'));
+        if($this->user->updateUser(['id'=>SC::getLoginSession()->id,'logo'=>$img_path])){
+            return redirect('/admin')->with('status','修改成功！');
         }
-        $img_url = $disk->getDriver()->downloadUrl($filename); //获取下载链接
-        return response()->json(msg('success','上传成功!'));
+        return back()->withInput()->with('error','修改失败！');
     }
 
 }

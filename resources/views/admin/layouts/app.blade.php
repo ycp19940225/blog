@@ -130,8 +130,8 @@
                 </li>
                 <li class="dropdown navbar-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ loadStatic('admin/img/user-13.jpg') }}}" alt="" />
-                        <span class="hidden-xs"> {{  get_user() }}</span> <b class="caret"></b>
+                        <img src="{{  get_user()->logo }}" alt="" />
+                        <span class="hidden-xs"> {{  get_user()->adminname }}</span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInLeft">
                         <li class="arrow"></li>
@@ -157,10 +157,10 @@
             <ul class="nav">
                 <li class="nav-profile">
                     <div class="image">
-                        <a href="javascript:;"><img src="{{ loadStatic('admin/img/user-13.jpg') }}}" alt="" /></a>
+                        <a href="{{ url('common/setting') }}"><img src="{{  get_user()->logo }}" alt="" /></a>
                     </div>
                     <div class="info">
-                        {{  get_user() }}
+                        {{  get_user()->adminname }}
                         <small>Front end developer</small>
                     </div>
                 </li>

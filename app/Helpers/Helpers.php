@@ -71,7 +71,7 @@ if ( ! function_exists('get_user'))
 {
     function get_user()
     {
-       return SC::getLoginSession()->adminname;
+       return SC::getLoginSession();
     }
 }
 /**
