@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-04 17:56:47
+Date: 2017-07-05 17:58:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,7 +39,7 @@ CREATE TABLE `blog_admin` (
 -- ----------------------------
 -- Records of blog_admin
 -- ----------------------------
-INSERT INTO `blog_admin` VALUES ('1', 'ycp', '447910ff7241c373129b8761cc312c78', '', '820363773@qq.com', '1498118813', '1499161329', '0', '0', '0', '0');
+INSERT INTO `blog_admin` VALUES ('1', 'ycp', '447910ff7241c373129b8761cc312c78', 'http://oskmbo3g0.bkt.clouddn.com/2017/07/05-17:53:55-/V7oZMskqLiep33XLHdfMZHCqI9SYKc7FGbbFhYO7.jpeg', '', '1498118813', '1499248436', '0', '0', '0', '0');
 INSERT INTO `blog_admin` VALUES ('20', 'test2ssdkfffff', '79729544f5269e36f51cf9c18b1a9a72', '', '', '1496653451', '1499161319', '0', '0', '0', '0');
 INSERT INTO `blog_admin` VALUES ('27', 'test2ssrrr', 'fed6fb05c04e7e31bc5a91b25834281f', '', '', '1496818749', '1496823066', '0', '0', '0', '0');
 INSERT INTO `blog_admin` VALUES ('28', 'afafa', '220a942773547a88f1aa3b73938103f5', '', '', '1496818812', '1496818812', '0', '0', '0', '0');
