@@ -15,7 +15,6 @@ use App\Services\Common\UploadServicesImpl;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use Illuminate\Http\Request;
-use Storage;
 
 class CommonController extends controller
 {
@@ -62,7 +61,7 @@ class CommonController extends controller
      */
     public function uploadLogo()
     {
-        return view('admin.user.user_logo',['title'=>'修改头像']);
+        return view('admin.user.user_logo',['title'=>'修改头像','data'=>SC::getLoginSession()->logo]);
     }
 
     /**
