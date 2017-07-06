@@ -14,7 +14,7 @@
 </head>
 <body>
     <!--begin响应式导航栏-->
-    <nav class="navbar navbar-default " role="navigation">
+    <nav class="navbar navbar-default " role="navigation" id="nav">
         <div class="container">
             <div class="navbar-header ">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -39,15 +39,21 @@
 
     </nav>
     <!-- end nav   -->
-        <div class="panel panel-default col-md-9">
-            <div class="panel-body">
-                这是一个基本的面板222222
-                <p>2</p>
-                <p>2</p>
-                <p>2</p>
-                <p>2</p>
+    <div class="row">
+        <div class="center-block col-md-9 col-md-offset-3" >
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">面板标题</h3>
+                </div>
+                <div class="panel-body">
+                    这是一个基本的面板
+                </div>
             </div>
         </div>
+    </div>
+    
+
+    <a id="scrollUp" href="#nav" style="position: fixed; z-index: 2147483647; display: block;"><i class="fa fa-angle-up"></i></a>
 </body>
 
 <!-- ================== BEGIN BASE JS ================== -->
