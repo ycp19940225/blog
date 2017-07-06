@@ -9,7 +9,7 @@
     <h1 class="page-header"><?php echo e($title); ?>
 
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:history.go(-1) ">返回列表</button>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:window.location.href='<?php echo e(url('common/uploadLogo')); ?>' ">修改头像</button>
         </small>
     </h1>
     <div class="row">
@@ -33,9 +33,21 @@
 
                             <div class="form-group">
                                 <input type="hidden" name="id" value="<?php echo e(isset($data['id']) ? $data['id'] : ''); ?>">
-                                <label for="name" class="col-xs-4 control-label">角色名</label>
+                                <label for="name" class="col-xs-4 control-label">账号</label>
                                 <div class="col-xs-5">
-                                    <input type="text" class="form-control" id="name" name="role_name" value="<?php echo e(isset($data['role_name']) ? $data['role_name'] : ''); ?>" placeholder="请输入名字" required>
+                                    <input type="text" class="form-control" id="name" name="adminname" value="<?php echo e(isset($data['adminname']) ? $data['adminname'] : ''); ?>" placeholder="请输入名字" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-xs-4 control-label">密码</label>
+                                <div class="col-xs-5">
+                                    <input type="password" class="form-control" id="password" name="password" value="<?php echo e(isset($data['password']) ? $data['password'] : ''); ?>" placeholder="请输入密码" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-xs-4 control-label">邮箱</label>
+                                <div class="col-xs-5">
+                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo e(isset($data['email']) ? $data['email'] : ''); ?>" placeholder="请输入邮箱" >
                                 </div>
                             </div>
                             <div class="col-md-offset-5" >
@@ -58,20 +70,10 @@
          * 表单提交
          */
         $("#submit").click(function () {
-           var data = $("form").serialize();
-            var method = "<?php echo e(Route::current()->getActionMethod()); ?>";
-            if(method === 'edit'){
-                $.post('<?php echo e(url('admin/role/editOperate')); ?>',data,function (res) {
-                    handle(res);
-                },"json");
-            }else{
-                if(validation() === false){
-                    return false;
-                }
-                $.post('<?php echo e(url('admin/role/addOperate')); ?>',data,function (res) {
-                    handle(res);
-                });
-            }
+           var data = validation();
+            $.post('<?php echo e(url('common/doSetting')); ?>',data,function (res) {
+                handle(res);
+            },"json");
         });
         /**
          * 表单验证
@@ -79,10 +81,8 @@
         function validation() {
             var password = $("#password").val();
             var repass = $("#repass").val();
-            if(password !==repass){
-                layer.msg('密码输入不一致！',{icon:5});
-                return false;
-            }
+            var email = $("#email").val();
+            return $("form").serialize();
         }
         /**
          * 结果处理
@@ -91,7 +91,7 @@
             console.log(res);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{icon: 6});
-                setTimeout('location.href="<?php echo e(url('admin/role/index')); ?>"',2000);
+                setTimeout('location.href="<?php echo e(url('/admin')); ?>"',2000);
             }else{
                 layer.msg(res['msg'],{icon:5});
             }

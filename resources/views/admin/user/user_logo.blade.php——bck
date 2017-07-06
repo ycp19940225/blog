@@ -1,0 +1,159 @@
+@extends('admin.layouts.app')
+@section('page.css')
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="{{ loadStatic('admin/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/jquery-file-upload/css/jquery.fileupload.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/jquery-file-upload/css/jquery.fileupload-ui.css') }}" rel="stylesheet" />
+    @endsection
+@section('page.content')
+    <ol class="breadcrumb pull-right">
+        <li><a href="javascript:;">Home</a></li>
+        <li><a href="javascript:;">{{ $title }}</a></li>
+        <li class="active">{{ $title }}</li>
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">{{ $title }}
+        <small>
+            <button class="btn btn-primary m-l-20" type="button" onclick=" javascript:window.location.href='{{ url('/admin') }}' ">返回主页</button>
+        </small>
+    </h1>
+    <div class="row">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <!-- end panel -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">{{ $title }}</h4>
+                </div>
+
+                <div class="panel-body">
+                    <form id="fileupload" action="{{ url('common/upLogo') }}" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <form method="post" action="http://localhost/test" enctype="multipart/form-data">
+                            <p>图片预览：</p>
+                            <p><div id="test-image-preview" style="border: 1px solid #ccc; width: 100%; height: 200px; background-size: contain; background-repeat: no-repeat; background-position: center center;"></div></p>
+                            <p>
+                                <input type="file" id="test-image-file" name="test">
+                            </p>
+                            <p id="test-file-info"></p>
+                        </form>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end col-12 -->
+    </div>
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+    <!-- The template to display files available for upload -->
+    <script id="template-upload" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <tr class="template-upload fade">
+                <td class="col-md-1">
+                    <span class="preview"></span>
+                </td>
+                <td>
+                    <p class="name">{%=file.name%}</p>
+                    <strong class="error text-danger"></strong>
+                </td>
+                <td>
+                    <p class="size">Processing...</p>
+                    <div class="progress progress-striped active"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+                </td>
+                <td>
+                    {% if (!i && !o.options.autoUpload) { %}
+                        <button class="btn btn-primary btn-sm start" disabled>
+                            <i class="fa fa-upload"></i>
+                            <span>Start</span>
+                        </button>
+                    {% } %}
+                    {% if (!i) { %}
+                        <button class="btn btn-white btn-sm cancel">
+                            <i class="fa fa-ban"></i>
+                            <span>Cancel</span>
+                        </button>
+                    {% } %}
+                </td>
+            </tr>
+        {% } %}
+    </script>
+    <!-- The template to display files available for download -->
+@endsection
+@section('page.js')
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/vendor/tmpl.min.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/vendor/load-image.min.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload-process.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload-image.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload-audio.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload-video.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload-validate.js') }}"></script>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/jquery.fileupload-ui.js') }}"></script>
+    <!--[if (gte IE 8)&(lt IE 10)]>
+    <script src="{{ loadStatic('admin/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js') }}"></script>
+    <![endif]-->
+    <script src="{{ loadStatic('admin/js/form-multiple-upload.demo.min.js') }}"></script>
+    <script src="{{ loadStatic('admin/js/apps.min.js') }}"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+@endsection
+@section('script.js')
+    <script type="text/javascript">
+        var
+            fileInput = document.getElementById('test-image-file'),
+            info = document.getElementById('test-file-info'),
+            preview = document.getElementById('test-image-preview');
+        // 监听change事件:
+        fileInput.addEventListener('change', function () {
+            // 清除背景图片:
+            preview.style.backgroundImage = '';
+            // 检查文件是否选择:
+            if (!fileInput.value) {
+                info.innerHTML = '没有选择文件';
+                return;
+            }
+            // 获取File引用:
+            var file = fileInput.files[0];
+            // 获取File信息:
+            info.innerHTML = '文件: ' + file.name + '<br>' +
+                '大小: ' + file.size + '<br>' +
+                '修改: ' + file.lastModifiedDate;
+            if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+                alert('不是有效的图片文件!');
+                return;
+            }
+            // 读取文件:
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var
+                    data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+                preview.style.backgroundImage = 'url(' + data + ')';
+            };
+            // 以DataURL的形式读取文件:
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+
+@endsection

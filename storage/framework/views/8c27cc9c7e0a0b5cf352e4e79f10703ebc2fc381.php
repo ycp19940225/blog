@@ -130,8 +130,8 @@
                 </li>
                 <li class="dropdown navbar-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?php echo e(loadStatic('admin/img/user-13.jpg')); ?>}" alt="" />
-                        <span class="hidden-xs"> <?php echo e(get_user()); ?></span> <b class="caret"></b>
+                        <img src="<?php echo e(get_user()->logo); ?>" alt="" />
+                        <span class="hidden-xs"> <?php echo e(get_user()->adminname); ?></span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInLeft">
                         <li class="arrow"></li>
@@ -157,10 +157,10 @@
             <ul class="nav">
                 <li class="nav-profile">
                     <div class="image">
-                        <a href="javascript:;"><img src="<?php echo e(loadStatic('admin/img/user-13.jpg')); ?>}" alt="" /></a>
+                        <a href="<?php echo e(url('common/setting')); ?>"><img src="<?php echo e(get_user()->logo); ?>" alt="" /></a>
                     </div>
                     <div class="info">
-                        <?php echo e(get_user()); ?>
+                        <?php echo e(get_user()->adminname); ?>
 
                         <small>Front end developer</small>
                     </div>
@@ -264,33 +264,6 @@
 
 <script>
     $(document).ready(function() {
-        var handleSidebarMenu = function () {
-            "use strict";
-            $(".sidebar .nav > .has-sub > a").click(function () {
-                var e = $(this).next(".sub-menu");
-                var t = ".sidebar .nav > li.has-sub > .sub-menu";
-                if ($(".page-sidebar-minified").length === 0) {
-                    $(t).not(e).slideUp(250, function () {
-                        $(this).closest("li").removeClass("expand")
-                    });
-                    $(e).slideToggle(250, function () {
-                        var e = $(this).closest("li");
-                        if ($(e).hasClass("expand")) {
-                            $(e).removeClass("expand")
-                        } else {
-                            $(e).addClass("expand")
-                        }
-                    })
-                }
-            });
-            $(".sidebar .nav > .has-sub .sub-menu li.has-sub > a").click(function () {
-                if ($(".page-sidebar-minified").length === 0) {
-                    var e = $(this).next(".sub-menu");
-                    $(e).slideToggle(250)
-                }
-            })
-        };
-        handleSidebarMenu();
         App.init();
         $('.dropdown-toggle').dropdown();
         //初始化table

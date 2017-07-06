@@ -13,7 +13,41 @@
     <!-- ================== END BASE CSS STYLE ================== -->
 </head>
 <body>
-222
+    <!--begin响应式导航栏-->
+    <nav class="navbar navbar-default " role="navigation">
+        <div class="container">
+            <div class="navbar-header ">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#navbar-collapse-blog">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">YCP的博客</a>
+            </div>
+            <div class="navbar-collapse collapse " id="navbar-collapse-blog" role="navigation" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">文章</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <!-- end nav   -->
+        <div class="panel panel-default col-md-9">
+            <div class="panel-body">
+                这是一个基本的面板222222
+                <p>2</p>
+                <p>2</p>
+                <p>2</p>
+                <p>2</p>
+            </div>
+        </div>
 </body>
 
 <!-- ================== BEGIN BASE JS ================== -->
