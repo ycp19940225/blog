@@ -1,8 +1,58 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #333333;
-    background-color: #b9e6eb;
+    background-color: rgb(195, 232, 238);
+    margin-bottom: 200px;
 }
+.blog {
+    background: url(../../admin/img/body_bg.jpg) no-repeat center 0;;
+}
+/****************begin goTop************************/
+#toTop {
+    position:fixed;
+    right:5%;
+    bottom:5%;
+    width:45px;
+    height:45px;
+    opacity:0.5;
+    cursor:pointer;
+    display:none
+}
+/****************end goTop************************/
+/****************begin container************************/
+.line-limit-length {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; //文本不换行，这样超出一行的部分被截取，显示...
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    color:#428bca;
+}
+.article {
+    height: 150px;
+    background-color:rgb(252, 252, 250);
+}
+.author_info {
+    background-color:#d9edf7;
+}
+/****************end container************************/
+/****************begin footer************************/
+.footer {
+    border-top: 1px solid #e5e5e5;
+    color: #777;
+    padding: 19px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+/****************end footer************************/
+
 

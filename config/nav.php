@@ -18,6 +18,17 @@ return [
                 ]
             ]
         ],
+        [
+            'name'=>'博客管理',
+            'icon'=>'book',
+            'access'=>[
+                [
+                    'name'=>'博客列表',
+                    'access'=>'admin/article/index',
+                    'icon'=>''
+                ]
+            ]
+        ],
     ],
 
 ];
