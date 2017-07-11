@@ -88,10 +88,46 @@
             <!--content right-->
             <div class="col-md-3">
                 <div class="panel author_info">
-                    <p>222</p>
-                    <p>222</p>
-                    <p>222</p>
-                    <p>222</p>
+                    <div class="widget-box widget-box--blog-info">
+                        <div class="blog__sidebar-author ">
+                            <button type="button" class="btn btn-sm btn-success follow-user ml10 pull-right" data-do="follow" data-type="user" data-id="1030000000271073">关注作者
+                            </button>
+
+                            <div class="article__widget--author">
+                                <a href="/u/devlevelup">
+                                    <img class="avatar-40" src="https://sfault-avatar.b0.upaiyun.com/838/001/838001092-1030000000271073_big64" alt="技术人攻略">
+                                </a>
+                                <a class="article__widget-author-name" href="/u/devlevelup">
+                                    <strong>技术人攻略</strong>
+                                </a>
+                                <p class="article__widget-author-text-muted mb0">
+                                    <span>1.1k 声望</span>
+
+                                </p>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="blog__sidebar-blog-name">
+                            <p class="article__widget-author-text-muted mt15 mb5">发布于专栏</p>
+
+                            <h4 class="fz16"><a href="/blog/devlevelup">技术人攻略</a></h4>
+                            <p class="article__widget-author-desc">关注技术人的个人成长，讲述技术人自己的故事，传递技术梦想。</p>
+
+                            <p>
+                                <span class="article__widget-author-text-muted">56 人关注</span>
+
+                                <button type="button mb20" class="btn btn-sm btn-default follow-article pull-right" data-do="follow" data-type="blog" data-id="1200000000366060">关注专栏
+                                </button>
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">

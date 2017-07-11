@@ -9,40 +9,40 @@
 namespace App\Services\Admin;
 
 
-use App\Models\Admin\Pri;
-use App\Services\Ifs\Admin\PriServices;
+use App\Models\Admin\Article;
+use App\Services\Ifs\Admin\ArticleServices;
+use Qiniu\Http\Request;
 
-class ArticleServicesImpl implements PriServices
+class ArticleServicesImpl implements ArticleServices
 {
-    protected $priDao;
+    protected $articleDao;
     public function __construct()
     {
-        $this->priDao = new Pri();
+        $this->articleDao = new Article();
     }
 
     public function getAll()
     {
-        return $this->priDao->getAll();
+        return $this->articleDao->getAll();
     }
 
     public function getOne($id)
     {
-        // TODO: Implement getOne() method.
+        return $this->articleDao->find($id);
     }
 
-    public function save()
+    public function save($request)
     {
-        // TODO: Implement getOne() method.
+        return $this->articleDao->addArticle($request);
     }
 
-    public function update()
+    public function update($request)
     {
-        return $this->priDao->refreshPri();
+        return $this->articleDao->updateArticle($request);
     }
 
-
-    public function getRolePris($role_id)
+    public function delete($id)
     {
-        return $this->priDao->getRolePris($role_id);
+        return $this->articleDao->where('id',$id)->update(['deleted_at'=>1]);
     }
 }

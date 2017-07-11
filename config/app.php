@@ -189,6 +189,7 @@ return [
         /******************user-setting************************/
 
         App\Providers\UserServiceProvider::class,
+        App\Providers\BlogServiceProvider::class,
         //ide-helper
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         //laravel-data——tables
@@ -198,7 +199,9 @@ return [
         //pusher
 
         //qiniu image
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        //markdown
+        'YuanChao\Editor\EndaEditorServiceProvider'
     ],
 
     /*
@@ -252,6 +255,8 @@ return [
 
         //Captcha
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        //markdown
+        'EndaEditor' => 'YuanChao\Editor\Facade\EndaEditorFacade'
 
     ],
 

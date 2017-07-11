@@ -17,6 +17,7 @@
 /*******************************backend*********************************/
 Route::group(['prefix'=>'admin','middleware'=>'admin', 'namespace'=>'Admin'], function(){
     require (__DIR__ . '/Webs/Admin/AdminRoutes.php');
+    require (__DIR__ . '/Webs/Admin/BlogRoutes.php');
 });
 //不做权限公共部分
 Route::group(['prefix'=>'common','middleware'=>'admin', 'namespace'=>'Common'], function(){
@@ -25,6 +26,9 @@ Route::group(['prefix'=>'common','middleware'=>'admin', 'namespace'=>'Common'], 
     Route::post('/doSetting','CommonController@doSetting');
     Route::match(['get','post'],'/uploadLogo','CommonController@uploadLogo');
     Route::post('/upLogo','CommonController@upLogo');
+    //博客图片
+    Route::post('/upBlogImg','CommonController@upBlogImg');
+
 });
 
 //不做权限，登陆

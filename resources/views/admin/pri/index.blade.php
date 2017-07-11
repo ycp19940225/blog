@@ -102,7 +102,7 @@
                     console.log(res);
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/role/index') }}"',2000);
+                        setTimeout('location.href="{{ url('admin/role/index') }}"',1000);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }

@@ -10,7 +10,8 @@
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.1",
         "yajra/laravel-datatables-oracle": "7.5",
-        "zgldh/qiniu-laravel-storage": "^0.6.8"
+        "zgldh/qiniu-laravel-storage": "^0.6.8",
+        "yuanchao/laravel-5-markdown-editor": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.3",

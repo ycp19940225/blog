@@ -15,6 +15,7 @@ use App\Services\Common\UploadServicesImpl;
 use App\Services\Ifs\Admin\RoleServices;
 use App\Services\Ifs\Admin\UserServices;
 use Illuminate\Http\Request;
+use YuanChao\Editor\EndaEditor;
 
 class CommonController extends controller
 {
@@ -78,6 +79,21 @@ class CommonController extends controller
             return redirect('/admin')->with('status','修改成功！');
         }
         return back()->withInput()->with('error','修改失败！');
+
+    }
+
+    /**
+     * @name 上传博客图片
+     * @desc 上传博客图片
+     * @return string
+     */
+    public function upBlogImg()
+    {
+        // path 为 public 下面目录，比如我的图片上传到 public/uploads 那么这个参数你传uploads 就行了
+
+        $data = EndaEditor::uploadImgFile('uploads');
+
+        return json_encode($data);
     }
 
 }
