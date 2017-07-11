@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-11 16:12:58
+Date: 2017-07-11 17:59:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,20 +82,18 @@ CREATE TABLE `blog_article` (
   `updated_at` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
   `input_id` int(10) NOT NULL DEFAULT '0' COMMENT '录入人员Id',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0',
-  `tag_id` tinyint(5) NOT NULL DEFAULT '0' COMMENT '标签ID',
   `views` tinyint(5) NOT NULL DEFAULT '0' COMMENT '访问次数',
-  PRIMARY KEY (`id`),
-  KEY `tag_id` (`tag_id`) COMMENT '标签ID'
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='文章表';
 
 -- ----------------------------
 -- Records of blog_article
 -- ----------------------------
-INSERT INTO `blog_article` VALUES ('36', 'test', 'test', 'test![\\145f2234f781de21d1305617ebf5acd2.jpg][0.1659161953890318]\r\n\r\n  [0.1659161953890318]: http://www.blog.com/uploads/2017-07-11/29e4aa85e2a03c7958aeddd15dc9256c.jpg', '1499758458', '1499759889', '0', '1', '0', '0');
-INSERT INTO `blog_article` VALUES ('37', 'test2', 'test2', 'ss', '1499758651', '1499759883', '0', '1', '0', '0');
-INSERT INTO `blog_article` VALUES ('38', 'tttt', 'tttt', 'ttttt', '1499758694', '1499759863', '1', '1', '0', '0');
-INSERT INTO `blog_article` VALUES ('39', 'dd', 'ddd', '![\\3fc8df313a6edcfc93b0429fcb127b1a.jpg][0.00934975749531719]dddd\r\n\r\n  [0.00934975749531719]: http://www.blog.com/uploads/2017-07-11/8969e3d3b6f89de9beaf908dec3abdee.jpg', '1499759897', '1499760114', '1', '0', '0', '0');
-INSERT INTO `blog_article` VALUES ('40', 'dd', 'ddddd', 'dddddd![\\7d62a6ea44c8a8b38ac04c4e3f0154eb.jpg][0.8360272161167559]\r\n\r\n  [0.8360272161167559]: http://www.blog.com/uploads/2017-07-11/d8b7c5fc78243556554a4bcf3c76a2a5.jpg', '1499760131', '1499760147', '1', '1', '0', '0');
+INSERT INTO `blog_article` VALUES ('36', 'test', 'test', 'test![\\145f2234f781de21d1305617ebf5acd2.jpg][0.1659161953890318]\r\n\r\n  [0.1659161953890318]: http://www.blog.com/uploads/2017-07-11/29e4aa85e2a03c7958aeddd15dc9256c.jpg', '1499758458', '1499759889', '0', '1', '0');
+INSERT INTO `blog_article` VALUES ('37', 'test2', 'test2', 'ss', '1499758651', '1499759883', '0', '1', '0');
+INSERT INTO `blog_article` VALUES ('38', 'tttt', 'tttt', 'ttttt', '1499758694', '1499759863', '1', '1', '0');
+INSERT INTO `blog_article` VALUES ('39', 'dd', 'ddd', '![\\3fc8df313a6edcfc93b0429fcb127b1a.jpg][0.00934975749531719]dddd\r\n\r\n  [0.00934975749531719]: http://www.blog.com/uploads/2017-07-11/8969e3d3b6f89de9beaf908dec3abdee.jpg', '1499759897', '1499760114', '1', '0', '0');
+INSERT INTO `blog_article` VALUES ('40', 'dd', 'ddddd', 'dddddd![\\7d62a6ea44c8a8b38ac04c4e3f0154eb.jpg][0.8360272161167559]\r\n\r\n  [0.8360272161167559]: http://www.blog.com/uploads/2017-07-11/d8b7c5fc78243556554a4bcf3c76a2a5.jpg', '1499760131', '1499760147', '1', '1', '0');
 
 -- ----------------------------
 -- Table structure for blog_category
