@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="zh-CN">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
     <title>Color Admin | Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="renderer" content="webkit">
     <meta content="" name="description" />
     <meta content="" name="author" />
 
@@ -17,7 +18,7 @@
     <link href="{{ loadStatic('admin/css/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/css/style.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/css/style-responsive.min.css') }}" rel="stylesheet" />
-    <link href="{{ loadStatic('admin/css/theme2/default.css') }}" rel="stylesheet" id="theme" />
+    <link href="{{ loadStatic('admin/css/theme/default.css') }}" rel="stylesheet" id="theme" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
@@ -25,6 +26,7 @@
     <link href="{{ loadStatic('admin/plugins/bootstrap-datepicker/css/datepicker.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/isotope/isotope.css') }}" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
@@ -150,7 +152,7 @@
     </div>
     <!-- end #header -->
     <!-- begin #sidebar -->
-    <div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar" role="navigation">
         <!-- begin sidebar scrollbar -->
         <div data-scrollbar="true" data-height="100%">
             <!-- begin sidebar user -->
@@ -167,31 +169,8 @@
             </ul>
             <!-- end sidebar user -->
             <!-- begin sidebar nav -->
-            <ul class="nav" id="nav">
-                <li class="nav-header">菜单</li>
-                @foreach(config('nav.NAV') as $k=>$v)
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret pull-right"></b>
-                        <i class="fa fa-{{ $v['icon'] }}"></i>
-                        <span>{{ $v['name'] }}</span>
-                    </a>
-                    <ul class="sub-menu">
-                        @foreach($v['access'] as $access)
-                            @if(!checkPri($access['access']))
-                               <li ><a href="{{ url($access['access']) }}">{{ $access['name'] }}</a></li>
-                                @else
-                                @continue
-                            @endif
-                        @endforeach
-                    </ul>
-                </li>
-            @endforeach
-                <!-- begin sidebar minify button -->
-                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
-                <!-- end sidebar minify button -->
-            </ul>
-            <!-- end sidebar nav -->
+        @include('admin.layouts.nav')
+        <!-- end sidebar nav -->
         </div>
         <!-- end sidebar scrollbar -->
     </div>
@@ -219,7 +198,7 @@
     <!-- end #content -->
 
     <!-- begin theme-panel -->
-{{--<div class="theme-panel">
+<div class="theme-panel">
     <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
     <div class="theme-panel-content">
         <h5 class="m-t-0">Color Theme</h5>
@@ -292,7 +271,7 @@
             </div>
         </div>
     </div>
-</div>--}}
+</div>
 <!-- end theme-panel -->
 
     <!-- begin scroll to top btn -->

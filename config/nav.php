@@ -23,11 +23,21 @@ return [
             'icon'=>'book',
             'access'=>[
                 [
-                    'name'=>'博客列表',
+                    'name'=>'文章列表',
                     'access'=>'admin/article/index',
                     'icon'=>''
-                ]
-            ]
+                ],
+                [
+                    'name'=>'分类管理',
+                    'access'=>'admin/cat/index',
+                    'icon'=>''
+                ],
+                [
+                    'name'=>'标签管理',
+                    'access'=>'admin/tag/index',
+                    'icon'=>''
+                ],
+            ],
         ],
     ],
 
