@@ -52,13 +52,13 @@
     <div class="container blog">
         <div id="content" class="row">
             <!--文章-->
-            <div class="col-md-9" >
-                <div class="panel article">
+            <div class="col-md-8" >
+                <article class="panel article">
                     <div class="content line-limit-length">
                         <h3>我是标题1 h1</h3>
                         <p class="line-limit-length">最新消息：神秘地球黑洞深不可测，不停吸入周围海水。55555555555555555555555555555555555555555555入周围海水5555555555555555555555555555555555555555555555</p>
                     </div>
-                </div>
+                </article>
                 <div class="panel article">
                     <div class="content line-limit-length">
                         <h2>我是标题1 h1</h2>
@@ -94,7 +94,7 @@
             </div>
             <!--end 文章-->
             <!--content right-->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="panel author_info">
                     <div class="widget-box widget-box--blog-info">
                         <div class="blog__sidebar-author ">
@@ -138,21 +138,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="panel author_info">
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                 </div>
-            </div> <div class="col-md-3">
+            </div> <div class="col-md-4">
                 <div class="panel author_info">
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                 </div>
-            </div> <div class="col-md-3">
+            </div> <div class="col-md-4">
                 <div class="panel author_info">
                     <p>222</p>
                     <p>222</p>
