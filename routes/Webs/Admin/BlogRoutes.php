@@ -12,6 +12,7 @@ Route::post('/article/addOperate','ArticleController@addOperate');
 Route::get('/article/edit/{id}','ArticleController@edit')->where('id', '[0-9]+');
 Route::post('/article/editOperate','ArticleController@editOperate');
 Route::post('/article/delete','ArticleController@delete');
+Route::get('/article/getTags','ArticleController@getTags');
 //分类
 Route::get('/cat/index','CatController@index');
 Route::get('/cat/add','CatController@add');

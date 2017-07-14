@@ -10,16 +10,16 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Cat;
+use App\Services\Ifs\Admin\CatServices;
 use Illuminate\Http\Request;
 
 class CatController extends controller
 {
-    protected $model;
+    protected $catService;
 
-    public function __construct()
+    public function __construct(CatServices $catServices)
     {
-        $this->model = new Cat();
+        $this->catService = $catServices;
     }
 
     /**
@@ -29,7 +29,7 @@ class CatController extends controller
      */
     public function index()
     {
-        $data = $this->model->where('deleted_at',0)->get();
+        $data = $this->catService->getAll();
         return view('admin.cat.index',['data'=>$data,'title'=>'分类列表']);
     }
 
@@ -50,7 +50,7 @@ class CatController extends controller
      */
     public function addOperate(Request $request)
     {
-        if($this->model->create($request->input())){
+        if($this->catService->save($request->input())){
             return response()->json(msg('success','添加成功!'));
         }
         return response()->json(msg('error','添加失败！'));
@@ -65,7 +65,7 @@ class CatController extends controller
      */
     public function edit($id)
     {
-        $data = $this->model->find($id);
+        $data = $this->catService->getOne($id);
         return view('admin.cat.edit',['data'=>$data,'title'=>'编辑分类']);
     }
     /**
@@ -76,9 +76,7 @@ class CatController extends controller
      */
     public function editOperate(Request $request)
     {
-        $data = $request->input();
-        unset($data['_token']);
-        if($this->model->where('id',$request->input('id'))->update($data)){
+        if($this->catService->update($request->input())){
             return response()->json(msg('success','修改成功!'));
         }
         return response()->json(msg('error','修改失败！'));
@@ -92,7 +90,7 @@ class CatController extends controller
      */
     public function delete(Request $request)
     {
-        if($this->model->where('id',$request->input('id'))->update(['deleted_at'=>1])){
+        if($this->catService->delete($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else
             return response()->json(msg('error','删除失败!'));

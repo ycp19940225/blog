@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="zh-CN">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
     <title>Color Admin | Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="renderer" content="webkit">
     <meta content="" name="description" />
     <meta content="" name="author" />
 
@@ -36,6 +37,9 @@
     <!-- ================== BEGIN TABLE JS ================== -->
     <link href="<?php echo e(loadStatic('admin/plugins/DataTables/css/data-table.css')); ?>" rel="stylesheet" />
     <!-- ================== END TABLE JS ================== -->
+     <!-- ================== BEGIN TAG_INPUT CSS ================== -->
+    <link href="<?php echo e(loadStatic('common/tag_input/jquery.tagsinput.min.css')); ?>" rel="stylesheet" />
+    <!-- ================== END TAG_INPUT CSS ================== -->
     <?php echo $__env->yieldContent('page.css'); ?>
 </head>
 <body>
@@ -317,6 +321,9 @@
 <!-- ================== BEGIN layer JS ================== -->
 <script src="<?php echo e(loadStatic('common/layer/layer.js')); ?>"></script>
 <!-- ================== END layer JS ================== -->
+<!-- ================== BEGIN tag JS ================== -->
+<script src="<?php echo e(loadStatic('common/tag_input/jquery.tagsinput.min.js')); ?>"></script>
+<!-- ================== END tag JS ================== -->
 
 
 <!-- ================== END PAGE LEVEL JS ================== -->

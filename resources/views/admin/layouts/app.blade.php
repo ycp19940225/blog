@@ -37,6 +37,9 @@
     <!-- ================== BEGIN TABLE JS ================== -->
     <link href="{{ loadStatic('admin/plugins/DataTables/css/data-table.css') }}" rel="stylesheet" />
     <!-- ================== END TABLE JS ================== -->
+     <!-- ================== BEGIN TAG_INPUT CSS ================== -->
+    <link href="{{ loadStatic('common/tag_input/jquery.tagsinput.min.css') }}" rel="stylesheet" />
+    <!-- ================== END TAG_INPUT CSS ================== -->
     @yield('page.css')
 </head>
 <body>
@@ -314,6 +317,9 @@
 <!-- ================== BEGIN layer JS ================== -->
 <script src="{{ loadStatic('common/layer/layer.js') }}"></script>
 <!-- ================== END layer JS ================== -->
+<!-- ================== BEGIN tag JS ================== -->
+<script src="{{ loadStatic('common/tag_input/jquery.tagsinput.min.js') }}"></script>
+<!-- ================== END tag JS ================== -->
 
 
 <!-- ================== END PAGE LEVEL JS ================== -->

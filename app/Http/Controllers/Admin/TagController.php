@@ -11,15 +11,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Tag;
+use App\Services\Admin\TagServicesImpl;
+use App\Services\Ifs\Admin\TagServices;
 use Illuminate\Http\Request;
 
 class TagController extends controller
 {
-    protected $model;
+    protected $tagServices;
 
-    public function __construct()
+    public function __construct(TagServices $tagServices)
     {
-        $this->model = new Tag();
+        $this->tagServices = $tagServices;
     }
 
     /**
@@ -29,7 +31,7 @@ class TagController extends controller
      */
     public function index()
     {
-        $data = $this->model->where('deleted_at',0)->get();
+        $data = $this->tagServices->getAll();
         return view('admin.tag.index',['data'=>$data,'title'=>'标签列表']);
     }
 
@@ -50,7 +52,7 @@ class TagController extends controller
      */
     public function addOperate(Request $request)
     {
-        if($this->model->create($request->input())){
+        if($this->tagServices->save($request->input())){
             return response()->json(msg('success','添加成功!'));
         }
         return response()->json(msg('error','添加失败！'));
@@ -65,7 +67,7 @@ class TagController extends controller
      */
     public function edit($id)
     {
-        $data = $this->model->find($id);
+        $data = $this->tagServices->getOne($id);
         return view('admin.tag.edit',['data'=>$data,'title'=>'编辑标签']);
     }
     /**
@@ -76,9 +78,7 @@ class TagController extends controller
      */
     public function editOperate(Request $request)
     {
-        $data = $request->input();
-        unset($data['_token']);
-        if($this->model->where('id',$request->input('id'))->update($data)){
+        if($this->tagServices->update($request->input())){
             return response()->json(msg('success','修改成功!'));
         }
         return response()->json(msg('error','修改失败！'));
@@ -92,7 +92,7 @@ class TagController extends controller
      */
     public function delete(Request $request)
     {
-        if($this->model->where('id',$request->input('id'))->update(['deleted_at'=>1])){
+        if($this->tagServices->delete($request->input('id'))){
             return response()->json(msg('success','删除成功!'));
         } else
             return response()->json(msg('error','删除失败!'));

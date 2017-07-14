@@ -83,7 +83,6 @@
          * 结果处理
          */
         function handle(res){
-            console.log(res);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{icon: 6});
                 setTimeout('location.href="{{ url('admin/tag/index') }}"',1000);
@@ -91,5 +90,16 @@
                 layer.msg(res['msg'],{icon:5});
             }
         }
+        //禁止回车键提交表单——动态绑定
+        $(function(){
+            $("input").on('keypress',  //所有input标签回车无效，当然，可以根据需求自定义
+                function(e){
+                    var key = window.event ? e.keyCode : e.which;
+                    if(key.toString() === "13"){
+                        return false;
+                    }
+                }
+            );
+        });
     </script>
     @endsection

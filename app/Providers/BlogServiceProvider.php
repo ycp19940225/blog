@@ -4,6 +4,8 @@ namespace App\Providers;
 
 
 use App\Services\Admin\ArticleServicesImpl;
+use App\Services\Admin\CatServicesImpl;
+use App\Services\Admin\TagServicesImpl;
 use Illuminate\Support\ServiceProvider;
 
 class BlogServiceProvider extends ServiceProvider
@@ -28,6 +30,14 @@ class BlogServiceProvider extends ServiceProvider
         //文章
         $this->app->singleton('App\Services\Ifs\Admin\ArticleServices',function(){
             return new ArticleServicesImpl();
+        });
+        //分类
+        $this->app->singleton('App\Services\Ifs\Admin\CatServices',function(){
+            return new CatServicesImpl();
+        });
+        //标签
+        $this->app->singleton('App\Services\Ifs\Admin\TagServices',function(){
+            return new TagServicesImpl();
         });
 
     }

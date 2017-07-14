@@ -40,20 +40,15 @@
                             <div class="form-group">
                                 <label for="name" class="col-xs-3 control-label">分类</label>
                                 <div class="col-xs-2">
-                                        <select name="newsType" class="form-control">
-                                            <option selected="" value="-1">同步头条（选填）</option>
-                                            <option value="1490000006201494">前端</option>
-                                            <option value="1490000006201495">后端</option>
-                                            <option value="1490000006201496">iOS</option>
-                                            <option value="1490000006201502">Android</option>
-                                            <option value="1490000006201507">安全</option>
-                                            <option value="1490000006201510">工具</option>
-                                            <option value="1490000006201514">程序员</option>
-                                            <option value="1490000006218048">行业</option>
-                                        </select>
+                                    <select name="newsType" class="form-control" title="">
+                                        <option selected="" value="-1">默认分类</option>
+                                    @foreach($cats as $v)
+                                            <option value="$v->id">{{ $v->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-xs-3">
-                                    <input type="text" class="form-control" id="intro" name="intro" value="{{ $data['intro'] or ''}}" placeholder="请填写简介">
+                                    <input type="text" class="form-control" id="tags" name="tags" value="{{ $data['intro'] or ''}}" data-id='' placeholder="请填写标签">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -120,6 +115,28 @@
             }else{
                 layer.msg(res['msg'],{icon:5});
             }
+        }
+        /**
+         * 标签
+         */
+        $('#tags').tagsInput({
+            'autocomplete_url':'{{ url('admin/article/getTags') }}',
+            'autocomplete': {selectFirst:true,width:'auto',autoFill:true},
+            'height':'auto',
+            'width':'auto',
+            'interactive':true,
+            'defaultText':'添加标签',
+            'onAddTag':push_tag_id(),
+            /*'onRemoveTag':callback_function,
+            'onChange' : callback_function,*/
+            'delimiter': [','],   // Or a string with a single delimiter. Ex: ';'
+            'removeWithBackspace' : true,
+            'minChars' : 0,
+            'maxChars' : 0, // if not provided there is no limit
+            'placeholderColor' : '#666666'
+        });
+        function push_tag_id(e){
+            console.log(e);
         }
     </script>
     @endsection

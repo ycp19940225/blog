@@ -21,7 +21,7 @@ interface RoleServices
     public function updateRole($data);
     //检测唯一性
     public function checkUnique($field,$id='');
-
+    //删除
     public function delete($id);
 
     public function updateRolePri($data);

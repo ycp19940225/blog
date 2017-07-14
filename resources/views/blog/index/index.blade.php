@@ -32,9 +32,16 @@
                     <li class="active"><a href="#">首页</a></li>
                     <li><a href="#">文章</a></li>
                 </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                 </ul>
+                <form class="navbar-form navbar-right" role="search" method="get" action="https://lufficc.com/search">
+                    <input type="text" class="form-control" name="search" placeholder="搜索" required="">
+                </form>
             </div>
         </div>
 

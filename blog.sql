@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-14 09:31:49
+Date: 2017-07-14 17:20:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,6 +78,7 @@ CREATE TABLE `blog_article` (
   `title` varchar(32) NOT NULL DEFAULT '' COMMENT '标题',
   `intro` varchar(255) NOT NULL DEFAULT '' COMMENT '简介',
   `content` text NOT NULL COMMENT '内容',
+  `cat_id` int(10) NOT NULL DEFAULT '0',
   `created_at` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
   `input_id` int(10) NOT NULL DEFAULT '0' COMMENT '录入人员Id',
@@ -89,7 +90,7 @@ CREATE TABLE `blog_article` (
 -- ----------------------------
 -- Records of blog_article
 -- ----------------------------
-INSERT INTO `blog_article` VALUES ('39', 'dd', 'ddd', '![\\3fc8df313a6edcfc93b0429fcb127b1a.jpg][0.00934975749531719]dddd\r\n\r\n  [0.00934975749531719]: http://www.blog.com/uploads/2017-07-11/8969e3d3b6f89de9beaf908dec3abdee.jpg', '1499759897', '1499760114', '1', '0', '0');
+INSERT INTO `blog_article` VALUES ('39', 'dd', 'ddd', '![\\3fc8df313a6edcfc93b0429fcb127b1a.jpg][0.00934975749531719]dddd\r\n\r\n  [0.00934975749531719]: http://www.blog.com/uploads/2017-07-11/8969e3d3b6f89de9beaf908dec3abdee.jpg', '41', '1499759897', '1499760114', '1', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_category
@@ -103,19 +104,19 @@ CREATE TABLE `blog_category` (
   `updated_at` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
   `input_id` int(10) NOT NULL DEFAULT '0' COMMENT '录入人员Id',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0',
-  `article_id` tinyint(5) NOT NULL DEFAULT '0' COMMENT '文章ID',
-  PRIMARY KEY (`id`),
-  KEY `article_id` (`article_id`) COMMENT '文章ID'
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='文章分类表';
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='文章分类表';
 
 -- ----------------------------
 -- Records of blog_category
 -- ----------------------------
-INSERT INTO `blog_category` VALUES ('36', 'dd', '', '0', '1499916878', '0', '1', '0');
-INSERT INTO `blog_category` VALUES ('37', '', '', '1499916434', '1499916875', '0', '1', '0');
-INSERT INTO `blog_category` VALUES ('38', '', '', '1499916501', '1499916883', '0', '1', '0');
-INSERT INTO `blog_category` VALUES ('39', 'ddffff333', 'ddff333', '1499916623', '1499917665', '0', '0', '0');
-INSERT INTO `blog_category` VALUES ('40', 'ddff', 'fffffff345', '1499916853', '1499917674', '0', '0', '0');
+INSERT INTO `blog_category` VALUES ('36', 'dd', '', '0', '1499916878', '0', '1');
+INSERT INTO `blog_category` VALUES ('37', '', '', '1499916434', '1499916875', '0', '1');
+INSERT INTO `blog_category` VALUES ('38', '', '', '1499916501', '1499916883', '0', '1');
+INSERT INTO `blog_category` VALUES ('39', 'ddffff333ff', 'ddff333ff', '1499916623', '1499997555', '0', '0');
+INSERT INTO `blog_category` VALUES ('40', '中文分类', '中文分类', '1499916853', '1500016222', '0', '0');
+INSERT INTO `blog_category` VALUES ('41', 'dddddd88', 'dddddd88', '1499997125', '1499997315', '0', '1');
+INSERT INTO `blog_category` VALUES ('42', '中文的上下', '中文的上下', '1500016196', '1500016196', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_privilege
@@ -246,14 +247,18 @@ CREATE TABLE `blog_tag` (
   `input_id` int(10) NOT NULL DEFAULT '0' COMMENT '录入人员Id',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='文章标签表';
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='文章标签表';
 
 -- ----------------------------
 -- Records of blog_tag
 -- ----------------------------
 INSERT INTO `blog_tag` VALUES ('36', 'ettff3333', '1499917326', '1499917700', '0', '0');
 INSERT INTO `blog_tag` VALUES ('37', 'dddd', '1499917343', '1499917707', '0', '1');
-INSERT INTO `blog_tag` VALUES ('38', 'f', '1499917739', '1499917739', '0', '0');
+INSERT INTO `blog_tag` VALUES ('38', 'f3', '1499917739', '1499997811', '0', '1');
+INSERT INTO `blog_tag` VALUES ('39', 'df', '1499997800', '1499997828', '0', '1');
+INSERT INTO `blog_tag` VALUES ('40', 'fffff', '1499997868', '1499997872', '0', '1');
+INSERT INTO `blog_tag` VALUES ('41', 'php', '1500023079', '1500023079', '0', '0');
+INSERT INTO `blog_tag` VALUES ('42', 'laravel', '1500023247', '1500023247', '0', '0');
 
 -- ----------------------------
 -- Table structure for blog_tag_article
@@ -267,6 +272,8 @@ CREATE TABLE `blog_tag_article` (
 -- ----------------------------
 -- Records of blog_tag_article
 -- ----------------------------
+INSERT INTO `blog_tag_article` VALUES ('36', '39');
+INSERT INTO `blog_tag_article` VALUES ('37', '39');
 
 -- ----------------------------
 -- Table structure for chat_messages

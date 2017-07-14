@@ -88,10 +88,9 @@
                 };
                 console.log(data);
                 $.post("{{ url('admin/tag/delete') }}",data,function (res) {
-                    console.log(res);
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        setTimeout('lotagion.href="{{ url('admin/tag/index') }}"',1000);
+                        setTimeout('location.href="{{ url('admin/tag/index') }}"',1000);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }

@@ -26,11 +26,19 @@ class Article extends Base
 
     /**
      * 关联模型
-     * 属于该用户的权限。
+     * 属于该文章的分类。
      */
-    public function pris()
+    public function cat()
     {
-        return $this->belongsToMany('App\Models\Admin\Users','blog_role_pri','role_id','pri_id');
+        return $this->belongsTo('App\Models\Admin\Cat');
+    }
+    /**
+     * 关联模型
+     * 属于该文章的标签
+     */
+    public function tag()
+    {
+        return $this->belongsToMany('App\Models\Admin\Tag','blog_tag_article','article_id','tag_id');
     }
 
     /**
