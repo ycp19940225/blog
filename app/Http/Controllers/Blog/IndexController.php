@@ -32,6 +32,13 @@ class IndexController extends controller
         $articles = $this->articles->getAllByPaginate(3);
         return view('blog.index.index',['articles'=>$articles]);
     }
+
+    /**
+     * @name 文章详情
+     * @desc
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function article($id)
     {
         $article = $this->articles->getOne($id);
