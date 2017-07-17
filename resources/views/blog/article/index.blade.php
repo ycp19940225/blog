@@ -5,18 +5,12 @@
     <div id="content" class="row">
         <!--文章-->
         <div class="col-md-9" >
-            @foreach( $articles as $v)
-                <article class="panel article">
-                    <div class="content line-limit-length">
-                        <h3>{{ $v['title'] }}</h3>
-                        <p> {{ $v->author->adminname or ''}} 发布于 {{$v['created_at']}}</p>
-                        <hr>
-                        <p class="line-limit-length">{{$v['content']}}</p>
-                        <a href="{{ url('blog/article',['id'=>$v['id']]) }}"><button type="button" class="btn btn-info">阅读</button></a>
-                    </div>
-                </article>
-            @endforeach
-                {{ $articles->links() }}
+            <article class="article_detail">
+                <h3>{{ $article['title'] }}</h3>
+                <p> {{ $article->author->adminname or ''}} 发布于 {{$article['created_at']}}</p>
+                <hr>
+                {!! $article['content'] !!}
+            </article>
         </div>
         <!--end 文章-->
         <!--content right-->
@@ -34,4 +28,9 @@
     <!-- end scroll to top btn -->
 </div>
 <!--end main container-->
+@endsection
+@section('script.js')
+    <script>
+
+    </script>
     @endsection

@@ -46,4 +46,9 @@ class ArticleServicesImpl implements ArticleServices
         $this->articleDao->find($id)->tag()->detach(); //删除对应标签
         return $this->articleDao->where('id',$id)->update(['deleted_at'=>1]);
     }
+
+    public function getAllByPaginate($num)
+    {
+        return $this->articleDao->where('deleted_at',0)->paginate($num);
+    }
 }

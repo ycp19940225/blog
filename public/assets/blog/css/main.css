@@ -36,7 +36,7 @@ body {
     color:#428bca;
 }
 .article {
-    height: 150px;
+    height: 250px;
     background-color:rgb(252, 252, 250);
 }
 .author_info {
@@ -45,7 +45,7 @@ body {
 /****************end container************************/
 /****************begin footer************************/
 .footer {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid rgb(195, 232, 238);
     color: #777;
     padding: 19px 0;
     position: absolute;
@@ -54,5 +54,7 @@ body {
     height: 50px;
 }
 /****************end footer************************/
-
+.article_detail{
+    background-color:rgb(255, 255, 255)
+}
 

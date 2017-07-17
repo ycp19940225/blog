@@ -55,7 +55,7 @@ class ArticleController extends controller
     /**
      * @name 添加文章操作
      * @desc 添加文章操作
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\JsonResponse
      */
     public function addOperate(Request $request)
     {

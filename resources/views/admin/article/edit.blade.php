@@ -48,7 +48,13 @@
                                     </select>
                                 </div>
                                 <div class="col-xs-3">
-                                    <input type="text" class="form-control" id="tags" name="tags" value="@foreach($data->tag as $tag){{ $tag->name }}, @endforeach" data-id='' placeholder="请填写标签">
+                                    <input type="text" class="form-control" id="tags" name="tags" value="
+                                    @if(isset($data))
+                                    @foreach($data->tag as $tag)
+                                    {{ $tag->name }},
+                                    @endforeach
+                                    @endif
+                                    " data-id='' placeholder="请填写标签">
                                 </div>
                             </div>
                             <div class="form-group">

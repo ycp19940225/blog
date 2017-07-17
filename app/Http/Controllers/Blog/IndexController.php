@@ -10,10 +10,17 @@ namespace App\Http\Controllers\Blog;
 
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\SC;
+use YuanChao\Editor\EndaEditor;
+use App\Services\Ifs\Admin\ArticleServices;
 
 class IndexController extends controller
 {
+    protected $articles;
+
+    public function __construct(ArticleServices $articleServices)
+    {
+        $this->articles = $articleServices;
+    }
     /**
      * @name 后台首页
      * @desc 后台首页
@@ -22,7 +29,14 @@ class IndexController extends controller
      */
     public function index()
     {
-        return view('blog.index.index');
+        $articles = $this->articles->getAllByPaginate(3);
+        return view('blog.index.index',['articles'=>$articles]);
+    }
+    public function article($id)
+    {
+        $article = $this->articles->getOne($id);
+        $article['content'] = EndaEditor::MarkDecode($article->content);
+        return view('blog.article.index',['article'=>$article]);
     }
 
 }

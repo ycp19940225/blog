@@ -40,6 +40,14 @@ class Article extends Base
     {
         return $this->belongsToMany('App\Models\Admin\Tag','blog_tag_article','article_id','tag_id');
     }
+    /**
+     * 关联模型
+     * 属于该文章的作者
+     */
+    public function author()
+    {
+        return $this->belongsTo('App\Models\Admin\Users','input_id');
+    }
 
     /**
      * @name 添加文章

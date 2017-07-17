@@ -20,4 +20,6 @@ interface ArticleServices
     public function getAll();
     //获取一个
     public function getOne($id);
+    //获取全部
+    public function getAllByPaginate($num);
 }
