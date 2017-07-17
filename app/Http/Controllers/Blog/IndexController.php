@@ -45,5 +45,4 @@ class IndexController extends controller
         $article['content'] = EndaEditor::MarkDecode($article->content);
         return view('blog.article.index',['article'=>$article]);
     }
-
 }
