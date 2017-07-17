@@ -43,6 +43,7 @@ class ArticleServicesImpl implements ArticleServices
 
     public function delete($id)
     {
+        $this->articleDao->find($id)->tag()->detach(); //删除对应标签
         return $this->articleDao->where('id',$id)->update(['deleted_at'=>1]);
     }
 }

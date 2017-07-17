@@ -99,4 +99,19 @@ if ( ! function_exists('checkPri')){
         return true;
     }
 }
+/**
+ * 检测下拉框选中
+ */
+if ( ! function_exists('check_select')){
+    function check_select($data,$all){
+        $res = [];
+        foreach ($all as $k=>$v){
+            $res[$k]=$v;
+            if($data->cat_id == $v->id){
+                $res[$k]['selected'] = 'selected="selected"';
+            }
+        }
+        return $res;
+    }
+}
 

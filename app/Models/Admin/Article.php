@@ -21,7 +21,7 @@ class Article extends Base
      * 可以被集体赋值的表字段
      * @var array
      */
-    public $fillable = array('id','title','intro','content','created_at','updated_at','deleted_at','input_id','tag_id','views');
+    public $fillable = array('id','title','intro','content','created_at','updated_at','deleted_at','input_id','cat_id','views');
 
 
     /**
@@ -30,7 +30,7 @@ class Article extends Base
      */
     public function cat()
     {
-        return $this->belongsTo('App\Models\Admin\Cat');
+        return $this->belongsTo('App\Models\Admin\Cat','cat_id');
     }
     /**
      * 关联模型
@@ -52,7 +52,10 @@ class Article extends Base
     {
         $data = $request->input();
         $data['input_id'] = SC::getLoginSession()->id;
-        return $this->create($data);
+        $this_article = $this->create($data);
+        $tags=explode(',',$data['tags']);
+        $tags_id = $this->getTagsID($tags);
+        return $this_article->tag()->attach($tags_id);
     }
 
     /**
@@ -63,7 +66,10 @@ class Article extends Base
      */
     public function updateArticle($data)
     {
-        return $this->find($data['id'])->update($data);
+        $tags=$this->getTagsID(explode(',',$data['tags']));
+        $article = $this->find($data['id']);
+        $article->tag()->sync($tags);
+        return $article->update($data);
     }
 
     /**
@@ -73,6 +79,25 @@ class Article extends Base
      */
     public function getAll()
     {
-        return $this->where('deleted_at',0)->select('id','title','created_at','updated_at')->get();
+        return $this->where('deleted_at',0)->get();
+    }
+
+    /**
+     * @name 根据标签获取id,没有就创建
+     * @desc
+     * @param $tags
+     * @return array
+     */
+    public function getTagsID($tags): array
+    {
+        $tags_model = new Tag();
+        $tags_id = [];
+        if($tags[0]==''){
+            return [];
+        }
+        foreach ($tags as $k => $v) {
+            $tags_id[] = $tags_model->firstOrCreate(['name' => $v])->id;
+        }
+        return $tags_id;
     }
 }

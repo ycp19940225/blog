@@ -59,7 +59,6 @@ class ArticleController extends controller
      */
     public function addOperate(Request $request)
     {
-        dd($request->input('tags'));
         if($this->article->save($request)){
             return response()->json(msg('success','添加成功!'));
         }
@@ -76,7 +75,9 @@ class ArticleController extends controller
     public function edit($id)
     {
         $data = $this->article->getOne($id);
-        return view('admin.article.edit',['data'=>$data,'title'=>'编辑文章']);
+        $cat =  check_select($data,$this->cat->getAll());
+        $tag = $this->tag->getAll();
+        return view('admin.article.edit',['cats'=>$cat,'tags'=>$tag,'data'=>$data,'title'=>'编辑文章']);
     }
     /**
      * @name 修改操作

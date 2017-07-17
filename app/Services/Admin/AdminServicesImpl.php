@@ -38,7 +38,7 @@ class UserServicesImpl implements UserServices
 
     public function select()
     {
-        return $this->userDao->where('deleted_at',0)->select('id','adminname','email','updated_at','created_at')->get();
+        return $this->userDao->where('deleted_at',0)->get();
     }
 
     public function updateUser($data)

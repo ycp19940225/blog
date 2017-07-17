@@ -38,6 +38,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>标题</th>
+                                <th>分类</th>
+                                <th>标签</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
                                 <th>操作</th>
@@ -48,6 +50,12 @@
                             <tr>
                                 <td>{{ $v['id'] }}</td>
                                 <td>{{ $v['title'] }}</td>
+                                <td style="color:#6cc95d">{{ $v->cat->name or '' }}</td>
+                                <td style="color:#2129c9">
+                                    @foreach($v->tag as $tag)
+                                        {{ $tag->name }} &nbsp; &nbsp;
+                                        @endforeach
+                                </td>
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
                                 <td>

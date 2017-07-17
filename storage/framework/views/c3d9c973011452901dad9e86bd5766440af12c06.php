@@ -39,7 +39,7 @@
                                 <div class="col-md-8 img-upload-group">
                                     <span>头像</span>
                                     <p><div id="image-preview" style="border: 1px solid #ccc; width:200px; height: 200px; background: rgb(222, 222, 222)">
-                                        <img id="img" src="" alt="" style="width:200px; height: 200px;">
+                                        <img id="img" src="<?php echo e($data); ?>" alt="" style="width:200px; height: 200px;">
                                     </div>
                                     <p>
                                         <a href="javascript:;" class="file">选择文件

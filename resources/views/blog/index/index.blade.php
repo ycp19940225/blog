@@ -52,7 +52,7 @@
     <div class="container blog">
         <div id="content" class="row">
             <!--文章-->
-            <div class="col-md-8" >
+            <div class="col-md-9" >
                 <article class="panel article">
                     <div class="content line-limit-length">
                         <h3>我是标题1 h1</h3>
@@ -94,7 +94,8 @@
             </div>
             <!--end 文章-->
             <!--content right-->
-            <div class="col-md-4">
+
+            <div class="col-md-3 ">
                 <div class="panel author_info">
                     <div class="widget-box widget-box--blog-info">
                         <div class="blog__sidebar-author ">
@@ -138,21 +139,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel author_info">
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                 </div>
-            </div> <div class="col-md-4">
+            </div> <div class="col-md-3">
                 <div class="panel author_info">
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                     <p>222</p>
                 </div>
-            </div> <div class="col-md-4">
+            </div> <div class="col-md-3">
                 <div class="panel author_info">
                     <p>222</p>
                     <p>222</p>

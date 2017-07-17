@@ -13,12 +13,6 @@
         </small>
     </h1>
     <div class="row">
-        <?php if(session('status')): ?>
-            <div class="alert alert-success">
-                <?php echo e(session('status')); ?>
-
-            </div>
-        <?php endif; ?>
         <!-- begin col-12 -->
         <div class="col-md-12">
             <!-- begin panel -->

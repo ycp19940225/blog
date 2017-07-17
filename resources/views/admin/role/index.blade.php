@@ -13,11 +13,6 @@
         </small>
     </h1>
     <div class="row">
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
         <!-- begin col-12 -->
         <div class="col-md-12">
             <!-- begin panel -->

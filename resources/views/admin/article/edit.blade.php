@@ -40,15 +40,15 @@
                             <div class="form-group">
                                 <label for="name" class="col-xs-3 control-label">分类</label>
                                 <div class="col-xs-2">
-                                    <select name="newsType" class="form-control" title="">
+                                    <select name="cat_id" class="form-control" title="">
                                         <option selected="" value="-1">默认分类</option>
                                     @foreach($cats as $v)
-                                            <option value="$v->id">{{ $v->name }}</option>
+                                            <option value="{{ $v->id }}" {{ $v->selected or '' }}>{{ $v->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-xs-3">
-                                    <input type="text" class="form-control" id="tags" name="tags" value="{{ $data['intro'] or ''}}" data-id='' placeholder="请填写标签">
+                                    <input type="text" class="form-control" id="tags" name="tags" value="@foreach($data->tag as $tag){{ $tag->name }}, @endforeach" data-id='' placeholder="请填写标签">
                                 </div>
                             </div>
                             <div class="form-group">
