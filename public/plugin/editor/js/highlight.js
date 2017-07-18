@@ -113,7 +113,7 @@ $(function() {
                 .on('selectstart', false);
 
             // 添加copy
-            // var _$parent = _$wrap.parents('.widget-highlight');
+            var _$parent = _$wrap.parents('.widget-highlight');
             if(navigator.plugins['Shockwave Flash'] || new ActiveXObject('ShockwaveFlash.shockwaveFlash')) {
                 var _$clip = $('<span class="widget-clipboard hidden"></span>');
                 t.prepend(_$clip);

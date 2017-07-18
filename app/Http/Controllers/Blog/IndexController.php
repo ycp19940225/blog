@@ -30,6 +30,9 @@ class IndexController extends controller
     public function index()
     {
         $articles = $this->articles->getAllByPaginate(3);
+        foreach ($articles as $k=>$v){
+            $articles[$k]['content'] = EndaEditor::MarkDecode($v->content);
+        }
         return view('blog.index.index',['articles'=>$articles]);
     }
 

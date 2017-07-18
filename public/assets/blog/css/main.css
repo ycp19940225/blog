@@ -36,8 +36,10 @@ body {
     color:#428bca;
 }
 .article {
-    height: 250px;
+    height: 350px;
     background-color:rgb(252, 252, 250);
+    position: relative;
+    min-height: 100%;
 }
 .author_info {
     background-color:rgb(252, 252, 250);
@@ -54,7 +56,23 @@ body {
     height: 50px;
 }
 /****************end footer************************/
+.article_content{
+    color:#428bca;
+}
 .article_detail{
-    background-color:rgb(255, 255, 255)
+    background-color:rgb(255, 255, 255);
+}
+.article_detail_footer{
+    border-top: 1px solid rgb(195, 232, 238);
+    color: #777;
+    padding: 19px 0;
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    height: 50px;
+}
+.article_intro{
+    height:auto;
+    overflow-y: auto
 }
 

@@ -132,7 +132,7 @@
             'width':'auto',
             'interactive':true,
             'defaultText':'添加标签',
-            'onAddTag':push_tag_id(),
+            /*'onAddTag':push_tag_id(),*/
             /*'onRemoveTag':callback_function,
             'onChange' : callback_function,*/
             'delimiter': [','],   // Or a string with a single delimiter. Ex: ';'
@@ -141,8 +141,6 @@
             'maxChars' : 0, // if not provided there is no limit
             'placeholderColor' : '#666666'
         });
-        function push_tag_id(e){
-            console.log(e);
-        }
+
     </script>
     @endsection

@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">YCP的博客</a>
+            <a class="navbar-brand" href="{{ url('blog') }}">YCP的博客</a>
         </div>
         <div class="navbar-collapse collapse " id="navbar-collapse-blog" role="navigation" aria-expanded="false" style="height: 1px;">
             <ul class="nav navbar-nav">
@@ -56,7 +56,7 @@
 <div class="footer">
     <div class="container">
         <p style="text-align: center">
-            Copyright © 2012-2016 wenzhixin.net.cn <a href="http://www.miitbeian.gov.cn/">粤ICP备15117953号</a>
+            Copyright © 2012-2016 wenzhixin.net.cn <a href=""></a>
         </p>
     </div>
 </div>
