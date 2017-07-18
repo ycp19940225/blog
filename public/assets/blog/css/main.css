@@ -33,13 +33,15 @@ body {
     display:-webkit-box;
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
-    color:#428bca;
 }
-.article {
+.articles {
     height: 350px;
     background-color:rgb(252, 252, 250);
     position: relative;
     min-height: 100%;
+}
+.article_header {
+    color:#428bca;
 }
 .author_info {
     background-color:rgb(252, 252, 250);
@@ -56,11 +58,27 @@ body {
     height: 50px;
 }
 /****************end footer************************/
+
+
+/******************************begin article detail************************/
+
+.article {
+    background-color:rgb(255, 255, 255);
+}
 .article_content{
-    color:#428bca;
 }
 .article_detail{
     background-color:rgb(255, 255, 255);
+    padding: 19px 22px;
+}
+.article_footer{
+    border-top: 1px solid rgb(195, 232, 238);
+    color: #777;
+    padding: 19px 0;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    height: 50px;
 }
 .article_detail_footer{
     border-top: 1px solid rgb(195, 232, 238);

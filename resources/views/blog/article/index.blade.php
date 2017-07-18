@@ -10,9 +10,9 @@
                 <li><a href="{{ url('blog/articles') }}">article</a></li>
                 <li class="active">{{ $article['title'] }}</li>
             </ol>
-            <article class="article_detail">
+            <article class="article">
                 <div class="content article_content">
-                    <header>
+                    <header class="article_header">
                         <hr>
                         <h3 class=""><strong>&nbsp;&nbsp;{{ $article['title'] }}</strong></h3>
                         <div class="entry-meta text-muted">
@@ -30,9 +30,7 @@
                             </span>
                         </div>
                     </header>
-
                     <hr>
-
                     <div class="article_detail">
                             <p >{!! $article['content'] !!}</p>
                     </div>
@@ -73,6 +71,7 @@
 <!--end main container-->
 @endsection
 @section('script.js')
+
     <script>
 
     </script>

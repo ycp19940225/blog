@@ -6,9 +6,9 @@
         <!--文章-->
         <div class="col-md-9" >
             @foreach( $articles as $v)
-               <article class="panel article">
+               <article class="panel articles">
                     <div class="content article_content">
-                        <header>
+                        <header class="article_header">
                             <h3 class=""><strong>&nbsp;&nbsp;{{ $v['title'] }}</strong></h3>
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
@@ -25,9 +25,7 @@
                             </span>
                             </div>
                         </header>
-
                         <hr>
-
                         <div class="article_intro" id="article_intro">
                             <blockquote>
                             <p >{!! $v['content'] !!}</p>
