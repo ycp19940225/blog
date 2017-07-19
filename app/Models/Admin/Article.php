@@ -87,7 +87,7 @@ class Article extends Base
      */
     public function getAll()
     {
-        return $this->where('deleted_at',0)->get();
+        return $this->where('deleted_at',0)->orderBy('updated_at','desc')->get();
     }
 
     /**

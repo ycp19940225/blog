@@ -114,7 +114,7 @@ $(function() {
 
             // 添加copy
             var _$parent = _$wrap.parents('.widget-highlight');
-            if(navigator.plugins['Shockwave Flash'] || new ActiveXObject('ShockwaveFlash.shockwaveFlash')) {
+            if(navigator.plugins['Shockwave Flash'] ) {
                 var _$clip = $('<span class="widget-clipboard hidden"></span>');
                 t.prepend(_$clip);
                 ZeroClipboard.config({ swfPath: '//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.1.6/ZeroClipboard.swf' });

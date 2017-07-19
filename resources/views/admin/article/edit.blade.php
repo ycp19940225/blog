@@ -1,4 +1,8 @@
 @extends('admin.layouts.app')
+@section('page.js')
+    // 引入编辑器代码
+    @include('editor::head')
+@endsection
 @section('page.content')
     <ol class="breadcrumb pull-right">
         <li><a href="javascript:;">Home</a></li>
@@ -79,10 +83,7 @@
         <!-- end col-12 -->
     </div>
 @endsection
-@section('page.js')
-    // 引入编辑器代码
-    @include('editor::head')
-@endsection
+
 @section('script.js')
     <script>
         /**

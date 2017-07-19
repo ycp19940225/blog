@@ -49,6 +49,6 @@ class ArticleServicesImpl implements ArticleServices
 
     public function getAllByPaginate($num)
     {
-        return $this->articleDao->where('deleted_at',0)->paginate($num);
+        return $this->articleDao->where('deleted_at',0)->orderBy('updated_at','desc')->paginate($num);
     }
 }

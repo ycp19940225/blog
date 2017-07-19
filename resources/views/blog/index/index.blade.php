@@ -9,7 +9,7 @@
                <article class="panel articles">
                     <div class="content article_content">
                         <header class="article_header">
-                            <h3 class=""><strong>&nbsp;&nbsp;{{ $v['title'] }}</strong></h3>
+                            <h3 class=""><strong><a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v['title'] }}</a></strong></h3>
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
@@ -67,6 +67,31 @@
                 <div class="panel-heading">about me</div>
                 <div class="panel-body">
                     <p>phper</p>
+                    <div class="topic-author-box text-center">
+                        <ul class="list-inline">
+                            <li class="popover-with-html" data-content="overtrue" data-original-title="" title="">
+                                <a href="https://github.com/ycp19940225" target="_blank">
+                                    <i class="fa fa-github-alt"></i> GitHub
+                                </a>
+                            </li>
+
+                            <li class="popover-with-html" data-content="杨春坪" data-original-title="" title="">
+                                <a href="http://weibo.com/u/2446608671" rel="nofollow" class="weibo" target="_blank"><i class="fa fa-weibo"></i> Weibo
+                                </a>
+                            </li>
+                            <li class="popover-with-html" data-content="http://yangcp.me" data-original-title="" title="">
+                                <a href="http://yangcp.me" rel="nofollow" target="_blank" class="url">
+                                    <i class="fa fa-globe"></i> Website
+                                </a>
+                            </li>
+                            <li class="popover-with-html" data-content="http://yangcp.me" data-original-title="" title="">
+                                <a href="mailto:820363773@qq.com" rel="nofollow" target="_blank" class="url">
+                                    <i class="fa fa-pencil"></i>Contact Me
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,11 +108,8 @@
     <script>
         $(function () {
             var oBox=document.getElementsByClassName('article_intro');
-
             for(var i=0;i<oBox.length;i++){
                 var Html = oBox[i].innerHTML.slice(0,200)+'...';
-                console.log(Html);
-
                 oBox[i].innerHTML = Html;
             }
 

@@ -3,7 +3,7 @@ html {
     min-height: 100%;
 }
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #333333;
@@ -11,7 +11,16 @@ body {
     margin-bottom: 200px;
 }
 .blog {
-    background: url(../../admin/img/body_bg.jpg) no-repeat center 0;;
+    background: url(../../admin/img/body_bg.jpg) no-repeat center 0;
+}
+#nav {
+    color: #fff;
+    background: #159957 linear-gradient(120deg, #155799, #159957);
+}
+pre {
+    background-color: #F2F2F2;
+    max-height: 460px;
+    overflow: auto;
 }
 /****************begin goTop************************/
 #toTop {
@@ -42,6 +51,7 @@ body {
 }
 .article_header {
     color:#428bca;
+    margin: 10px;
 }
 .author_info {
     background-color:rgb(252, 252, 250);
@@ -66,6 +76,7 @@ body {
     background-color:rgb(255, 255, 255);
 }
 .article_content{
+    padding: 5px;
 }
 .article_detail{
     background-color:rgb(255, 255, 255);
@@ -74,7 +85,7 @@ body {
 .article_footer{
     border-top: 1px solid rgb(195, 232, 238);
     color: #777;
-    padding: 19px 0;
+    padding: 19px 10px;
     position: absolute;
     bottom: 5px;
     width: 100%;
@@ -94,3 +105,7 @@ body {
     overflow-y: auto
 }
 
+.post-nav {
+    position:fixed;
+    margin-top:100px;
+}
