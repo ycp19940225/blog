@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="zh-CN">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
     <title>Color Admin | Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="renderer" content="webkit">
     <meta content="" name="description" />
     <meta content="" name="author" />
 
@@ -17,7 +18,7 @@
     <link href="<?php echo e(loadStatic('admin/css/animate.min.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(loadStatic('admin/css/style.min.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(loadStatic('admin/css/style-responsive.min.css')); ?>" rel="stylesheet" />
-    <link href="<?php echo e(loadStatic('admin/css/theme2/default.css')); ?>" rel="stylesheet" id="theme" />
+    <link href="<?php echo e(loadStatic('admin/css/theme/default.css')); ?>" rel="stylesheet" id="theme" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
@@ -25,6 +26,7 @@
     <link href="<?php echo e(loadStatic('admin/plugins/bootstrap-datepicker/css/datepicker.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(loadStatic('admin/plugins/bootstrap-datepicker/css/datepicker3.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(loadStatic('admin/plugins/gritter/css/jquery.gritter.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(loadStatic('admin/plugins/isotope/isotope.css')); ?>" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
@@ -35,6 +37,9 @@
     <!-- ================== BEGIN TABLE JS ================== -->
     <link href="<?php echo e(loadStatic('admin/plugins/DataTables/css/data-table.css')); ?>" rel="stylesheet" />
     <!-- ================== END TABLE JS ================== -->
+     <!-- ================== BEGIN TAG_INPUT CSS ================== -->
+    <link href="<?php echo e(loadStatic('common/tag_input/jquery.tagsinput.min.css')); ?>" rel="stylesheet" />
+    <!-- ================== END TAG_INPUT CSS ================== -->
     <?php echo $__env->yieldContent('page.css'); ?>
 </head>
 <body>
@@ -130,8 +135,8 @@
                 </li>
                 <li class="dropdown navbar-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?php echo e(loadStatic('admin/img/user-13.jpg')); ?>}" alt="" />
-                        <span class="hidden-xs"> <?php echo e(get_user()); ?></span> <b class="caret"></b>
+                        <img src="<?php echo e(get_user()->logo); ?>" alt="" />
+                        <span class="hidden-xs"> <?php echo e(get_user()->adminname); ?></span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInLeft">
                         <li class="arrow"></li>
@@ -150,17 +155,17 @@
     </div>
     <!-- end #header -->
     <!-- begin #sidebar -->
-    <div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar" role="navigation">
         <!-- begin sidebar scrollbar -->
         <div data-scrollbar="true" data-height="100%">
             <!-- begin sidebar user -->
             <ul class="nav">
                 <li class="nav-profile">
                     <div class="image">
-                        <a href="javascript:;"><img src="<?php echo e(loadStatic('admin/img/user-13.jpg')); ?>}" alt="" /></a>
+                        <a href="<?php echo e(url('common/setting')); ?>"><img src="<?php echo e(get_user()->logo); ?>" alt="" /></a>
                     </div>
                     <div class="info">
-                        <?php echo e(get_user()); ?>
+                        <?php echo e(get_user()->adminname); ?>
 
                         <small>Front end developer</small>
                     </div>
@@ -168,31 +173,8 @@
             </ul>
             <!-- end sidebar user -->
             <!-- begin sidebar nav -->
-            <ul class="nav" id="nav">
-                <li class="nav-header">菜单</li>
-                <?php $__currentLoopData = config('nav.NAV'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret pull-right"></b>
-                        <i class="fa fa-<?php echo e($v['icon']); ?>"></i>
-                        <span><?php echo e($v['name']); ?></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <?php $__currentLoopData = $v['access']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $access): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php if(!checkPri($access['access'])): ?>
-                               <li ><a href="<?php echo e(url($access['access'])); ?>"><?php echo e($access['name']); ?></a></li>
-                                <?php else: ?>
-                                <?php continue; ?>
-                            <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </ul>
-                </li>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <!-- begin sidebar minify button -->
-                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
-                <!-- end sidebar minify button -->
-            </ul>
-            <!-- end sidebar nav -->
+        <?php echo $__env->make('admin.layouts.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <!-- end sidebar nav -->
         </div>
         <!-- end sidebar scrollbar -->
     </div>
@@ -206,12 +188,97 @@
 
             </div>
         <?php endif; ?>
+            <?php if(session('status')): ?>
+                <div class="alert alert-info">
+                    <?php echo e(session('status')); ?>
+
+                </div>
+            <?php endif; ?>
+            <?php if(session('error')): ?>
+                <div class="alert alert-danger">
+                    <?php echo e(session('error')); ?>
+
+                </div>
+            <?php endif; ?>
         <?php echo $__env->yieldContent('page.content'); ?>
     </div>
     <!-- end #content -->
 
     <!-- begin theme-panel -->
-
+<div class="theme-panel">
+    <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+    <div class="theme-panel-content">
+        <h5 class="m-t-0">Color Theme</h5>
+        <ul class="theme-list clearfix">
+            <li class="active"><a href="javascript:;" class="bg-green" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
+            <li><a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+            <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+            <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
+            <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
+            <li><a href="javascript:;" class="bg-black" data-theme="black" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
+        </ul>
+        <div class="divider"></div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label double-line">Header Styling</div>
+            <div class="col-md-7">
+                <select name="header-styling" class="form-control input-sm">
+                    <option value="1">default</option>
+                    <option value="2">inverse</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label">Header</div>
+            <div class="col-md-7">
+                <select name="header-fixed" class="form-control input-sm">
+                    <option value="1">fixed</option>
+                    <option value="2">default</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label double-line">Sidebar Styling</div>
+            <div class="col-md-7">
+                <select name="sidebar-styling" class="form-control input-sm">
+                    <option value="1">default</option>
+                    <option value="2">grid</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label">Sidebar</div>
+            <div class="col-md-7">
+                <select name="sidebar-fixed" class="form-control input-sm">
+                    <option value="1">fixed</option>
+                    <option value="2">default</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label double-line">Sidebar Gradient</div>
+            <div class="col-md-7">
+                <select name="content-gradient" class="form-control input-sm">
+                    <option value="1">disabled</option>
+                    <option value="2">enabled</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label double-line">Content Styling</div>
+            <div class="col-md-7">
+                <select name="content-styling" class="form-control input-sm">
+                    <option value="1">default</option>
+                    <option value="2">black</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-12">
+                <a href="#" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage"><i class="fa fa-refresh m-r-3"></i> Reset Local Storage</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- end theme-panel -->
 
     <!-- begin scroll to top btn -->
@@ -254,6 +321,9 @@
 <!-- ================== BEGIN layer JS ================== -->
 <script src="<?php echo e(loadStatic('common/layer/layer.js')); ?>"></script>
 <!-- ================== END layer JS ================== -->
+<!-- ================== BEGIN tag JS ================== -->
+<script src="<?php echo e(loadStatic('common/tag_input/jquery.tagsinput.min.js')); ?>"></script>
+<!-- ================== END tag JS ================== -->
 
 
 <!-- ================== END PAGE LEVEL JS ================== -->

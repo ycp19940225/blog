@@ -7,7 +7,7 @@
         <div class="col-md-9" >
             @foreach( $articles as $v)
                <article class="panel articles">
-                    <div class="content article_content">
+                    <div class="content articles_content">
                         <header class="article_header">
                             <h3 class=""><strong><a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v['title'] }}</a></strong></h3>
                             <div class="entry-meta text-muted">

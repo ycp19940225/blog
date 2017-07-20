@@ -46,12 +46,11 @@
                     <div class="article_detail">
                         <p >{!! $article['content'] !!}</p>
                     </div>
+                    <footer class="entry-meta article_detail_footer">
+                        &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>
+                        <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
+                    </footer>
                 </div>
-                <footer class="entry-meta article_detail_footer">
-
-                    &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>
-                    <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
-                </footer>
             </article>
         </div>
         <!--end 文章-->
