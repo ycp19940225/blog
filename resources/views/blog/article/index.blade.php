@@ -14,7 +14,7 @@
                 <div class="content article_content">
                     <header class="article_header">
                         <hr>
-                        <h1 class=""><strong>&nbsp;&nbsp;{{ $article['title'] }}</strong></h1>
+                        <h1 class="text-center"><strong>&nbsp;&nbsp;{{ $article['title'] }}</strong></h1>
                         <div class="entry-meta text-muted">
                             <p class="text-muted hidden-xs meta-data">
                                 &nbsp;&nbsp;&nbsp;<span class="cat-links">
@@ -23,7 +23,7 @@
                                 <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
                                     @foreach($article->tag as $tag)
-                                        <a href="">{{ $tag->name }}</a>
+                                        <a class="tag" href="">{{ $tag->name }}</a>
                                     @endforeach
                                    </span>
                                 <span class="posted-on">
@@ -57,16 +57,13 @@
         <!--end 文章-->
         <!--content right-->
 
-        <div class="col-md-3 ">
+        <div class="col-md-3">
             <div class="post-nav" >
-                <div class="panel panel-default widget-outline">
-                    <div class="panel-heading">目录</div>
-                    <div class="panel-body">
-                        <div class="article_nav" id="article_nav" >
-
+                        <div class="nva-list" id="article_nav" >
+                            <div class="panel panel-info">
+                                <div class="panel-heading">目录</div>
+                            </div>
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -82,7 +79,11 @@
     <script>
         $(document).ready(function(){
 
-
+            var toc = $('#article_nav').tocify({
+                selectors: "h2,h3,h4,h5",
+                showEffect: "show",
+                highlightDefault: true,
+                scrollHistory:true
             });
 
         });

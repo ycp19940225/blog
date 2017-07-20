@@ -12,8 +12,9 @@
     <link href="{{ loadStatic('blog/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('blog/css/main.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('common/tocfiy/stylesheets/jquery.tocify.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('common/prettify/src/prettify.css') }}" rel="stylesheet" />
-    <link href="{{ loadStatic('common/ztree_toc/css/zTreeStyle/zTreeStyle.css') }}" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
 </head>
@@ -71,8 +72,8 @@
 <script src="{{ loadStatic('admin/plugins/jquery/jquery-1.9.1.min.js') }}"></script>
 <script src="{{ loadStatic('common/prettify/src/prettify.js') }}"></script>
 <script src="{{ loadStatic('blog/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ loadStatic('common/ztree_toc/js/jquery.ztree.core-3.5.js') }}"></script>
-<script src="{{ loadStatic('common/ztree_toc/src/ztree_toc.js') }}"></script>
+<script src="{{ loadStatic('admin/plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}"></script>
+<script src="{{ loadStatic('common/tocfiy/javascripts/jquery.tocify.js') }}"></script>
 <!-- ================== END BASE JS ================== -->
 <script>
     $(function(){

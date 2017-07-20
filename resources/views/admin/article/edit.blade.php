@@ -1,6 +1,11 @@
 @extends('admin.layouts.app')
+<style>
+ .editor{
+     z-index:9999
+ }
+</style>
 @section('page.js')
-    // 引入编辑器代码
+
     @include('editor::head')
 @endsection
 @section('page.content')
@@ -62,8 +67,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name" class="col-xs-3 control-label">文章</label>
-                                <div class="col-xs-4">
+                                <div class="col-xs-12 col-md-offset-1">
                                     <div class="form-group editor">
                                         <label for="myEditor"></label><textarea id='myEditor' name="content">{{ $data['content'] or ''}}</textarea>
                                     </div>
