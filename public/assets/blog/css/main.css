@@ -158,4 +158,7 @@ blockquote{
     font-size:15px
 }
 
-
+.article_read {
+    border: #b9e6eb;
+    background: #b9e6eb;
+}

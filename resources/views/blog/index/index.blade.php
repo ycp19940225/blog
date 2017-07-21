@@ -35,10 +35,10 @@
                         </div>
                         <footer class="entry-meta article_footer">
                             <p class="visible-xs">
-                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v['id']]) }}" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v['id']]) }}" class="btn btn-primary btn-block article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="pull-right hidden-xs">
-                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v['id']]) }}" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v['id']]) }}" class="btn btn-primary article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="text-muted hidden-xs meta-data">
                                 &nbsp;&nbsp;&nbsp;<span class="cat-links">
