@@ -45,7 +45,7 @@
                                 <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
                                     @foreach($v->tag as $tag)
-                                        <a class="tag" href="">{{ $tag->name }}</a>
+                                        <a class="article_tag" href="">{{ $tag->name }}</a>
                                         @endforeach
                                     &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>				</span>
                                 <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>

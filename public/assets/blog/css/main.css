@@ -111,7 +111,7 @@ body {
     color: #005580;
 }
 
-.tag {
+.article_tag {
     display: inline-block;
     padding: 0 8px;
     color: #017E66;
@@ -132,5 +132,11 @@ body {
 }
 
 pre.prettyprint {
+    font-size: 15px;
+    white-space: pre;
     background: #fcfbfb;
+}
+pre{
+    max-height: 500px;
+    overflow: auto;
 }

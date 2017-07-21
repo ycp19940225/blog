@@ -14,7 +14,7 @@
     <link href="{{ loadStatic('admin/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('common/tocfiy/stylesheets/jquery.tocify.css') }}" rel="stylesheet" />
-    <link href="{{ loadStatic('common/prettify/src/prettify.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('common/prettify/styles/prttify_tomorow.css') }}" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
 </head>
@@ -40,7 +40,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <li><a href="#"><span class="fa fa-user"></span> 登录</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>

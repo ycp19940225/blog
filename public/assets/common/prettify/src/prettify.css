@@ -50,7 +50,12 @@
 }
 
 /* Put a border around prettyprinted code snippets. */
-pre.prettyprint { padding: 2px; border: 1px solid #888 }
+pre.prettyprint {
+  background: rgba(249, 248, 247, 0.53);
+  border: 1px solid #efefef;
+  box-shadow: 0 2px 5px 0 rgba(199, 199, 199, 0.16), 0 2px 10px 0 rgba(243, 243, 243, 0.12);
+  border-radius: 3px;
+}
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */

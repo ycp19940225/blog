@@ -23,7 +23,7 @@
                                 <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
                                     @foreach($article->tag as $tag)
-                                        <a class="tag" href="">{{ $tag->name }}</a>
+                                        <a class="article_tag" href="">{{ $tag->name }}</a>
                                     @endforeach
                                    </span>
                                 <span class="posted-on">
