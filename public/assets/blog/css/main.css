@@ -7,7 +7,7 @@ body {
     font-size: 14px;
     color: #525252;
     font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
-    background: #f0f2f5;
+    background: #b9e6eb;
 }
 .blog {
 }
@@ -29,22 +29,26 @@ body {
 }
 /****************end goTop************************/
 /****************begin container************************/
-.line-limit-length {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; //文本不换行，这样超出一行的部分被截取，显示...
-    display:-webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:2;
+.limit-font {
+    max-height: 40%;
+    white-space:nowrap;
+    overflow: hidden;//超出隐藏
+    text-overflow: ellipsis;//超出文本设置为...
+    display:-webkit-box;//将div1转换为盒子模型
+    -webkit-line-clamp: 3;//设置div1的文本为2行
+    -webkit-box-orient: vertical;//从顶部向底部垂直布置子元素
+    /*white-space: initial;*/
 }
 .articles {
-    height: 350px;
+    height: 300px;
     background-color:rgb(252, 252, 250);
     position: relative;
     min-height: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 .article_header {
-    color:#428bca;
+    text-align: left;
+    color:#05a1a2;
     margin: 10px;
 }
 .author_info {
@@ -54,9 +58,9 @@ body {
 /****************begin footer************************/
 .footer {
     color: #777;
-    padding: 19px 0;
+    padding: 0 0;
     position: absolute;
-    bottom: 0;
+    margin-bottom: 0;
     width: 100%;
     height: 50px;
 }
@@ -68,6 +72,7 @@ body {
 .article {
     background-color:#ffffff;
     font-size: 16px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 .article_header h1 {
     margin: 1.1em auto 1em;
@@ -103,7 +108,7 @@ body {
     height: 50px;
 }
 .article_intro{
-    height:auto;
+    height:350px;
     overflow-y: auto
 }
 
@@ -124,7 +129,6 @@ body {
 }
 .pagination>li>a, .pagination>li>span{
     margin-bottom: 5px;
-    background-color: rgb(195, 232, 238);
 }
 
 .articles_content {
@@ -140,3 +144,18 @@ pre{
     max-height: 500px;
     overflow: auto;
 }
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    z-index: 3;
+    color: #e4e4e4;
+    border-color: #e4e4e4;
+    background-color: transparent;
+}
+
+.article_title {
+    margin-left: 2%;
+}
+blockquote{
+    font-size:15px
+}
+
+

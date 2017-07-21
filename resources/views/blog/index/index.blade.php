@@ -9,7 +9,9 @@
                <article class="panel articles">
                     <div class="content articles_content">
                         <header class="article_header">
-                            <h3 class=""><strong><a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v['title'] }}</a></strong></h3>
+                            <div class="article_title ">
+                                <h3 class=""><strong><a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v['title'] }}</a></strong></h3>
+                            </div>
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
@@ -28,7 +30,7 @@
                         <hr>
                         <div class="article_intro" id="article_intro">
                             <blockquote>
-                            <p >{!! $v['content'] !!}</p>
+                            <p ><div class="">{!! $v['content'] !!}</div></p>
                             </blockquote>
                         </div>
                         <footer class="entry-meta article_footer">
@@ -110,7 +112,7 @@
             var oBox=document.getElementsByClassName('article_intro');
             var html = '';
             for(var i=0;i<oBox.length;i++){
-                var html = oBox[i].innerHTML.substring(0,200)+'...';
+                var html = oBox[i].innerHTML.substring(0,120)+'...';
                 oBox[i].innerHTML = html;
             }
 
