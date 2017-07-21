@@ -41,10 +41,11 @@ Route::group(['prefix'=>'admin','middleware'=>'web', 'namespace'=>'Admin'], func
 
 
 /********************************blog**********************************/
-//backend  , 'middleware'=>'admin'
+Route::get('/','Blog\IndexController@index');
 Route::group(['prefix'=>'blog','middleware'=>'web', 'namespace'=>'Blog'], function(){
     require (__DIR__ . '/Webs/Blog/BlogRoutes.php');
 });
+
 
 //vue
 Route::get('/test', function () {

@@ -61,7 +61,7 @@
 <div class="footer">
     <div class="container">
         <p style="text-align: center">
-            Copyright © 2012-2016 wenzhixin.net.cn <a href=""></a>
+            Copyright ©2017 yangcp.me <a href="http://www.miitbeian.gov.cn/">渝ICP备17009018号</a>
         </p>
     </div>
 </div>
