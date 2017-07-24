@@ -10,7 +10,7 @@
     overflow: auto;
     margin-left: 0;
     margin-top:0;
-    position: fixed;
+    position: absolute;
     border: 1px solid #ccc;
     webkit-border-radius: 6px;
     moz-border-radius: 6px;

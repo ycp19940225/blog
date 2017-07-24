@@ -12,9 +12,11 @@ namespace App\Models\Admin;
 use App\Services\Admin\SC;
 use Illuminate\Http\Request;
 use App\Models\Base;
+use Laravel\Scout\Searchable;
 
 class Article extends Base
 {
+    use Searchable;
     protected $table = 'blog_article';
     protected $dateFormat = 'U';
     /**
@@ -23,6 +25,15 @@ class Article extends Base
      */
     public $fillable = array('id','title','intro','content','created_at','updated_at','deleted_at','input_id','cat_id','views');
 
+    /**
+     * 得到该模型索引的名称。
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'articles_index';
+    }
 
     /**
      * 关联模型

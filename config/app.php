@@ -201,7 +201,11 @@ return [
         //qiniu image
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         //markdown
-        'YuanChao\Editor\EndaEditorServiceProvider'
+        'YuanChao\Editor\EndaEditorServiceProvider',
+        //search
+        Laravel\Scout\ScoutServiceProvider::class,
+        //Socialite
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -256,7 +260,9 @@ return [
         //Captcha
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         //markdown
-        'EndaEditor' => 'YuanChao\Editor\Facade\EndaEditorFacade'
+        'EndaEditor' => 'YuanChao\Editor\Facade\EndaEditorFacade',
+        //Socialite
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

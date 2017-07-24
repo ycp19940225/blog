@@ -16,20 +16,10 @@
                         <hr>
                         <h1 class="text-center"><strong>&nbsp;&nbsp;{{ $article['title'] }}</strong></h1>
                         <div class="entry-meta text-muted">
-                            <p class="text-muted hidden-xs meta-data">
-                                &nbsp;&nbsp;&nbsp;<span class="cat-links">
-					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/tutorials/blog" rel="category tag">{{ $article->cat->name }}&nbsp;</a>				</span>
-
-                                <span class="tags-links">
-					<i class="glyphicon glyphicon-tags"></i> 标签：
-                                    @foreach($article->tag as $tag)
-                                        <a class="article_tag" href="">{{ $tag->name }}</a>
-                                    @endforeach
-                                   </span>
                                 <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
                                 Posted on <a href="" rel="bookmark">
-                                    <time class="updated" datetime="">{{ $article['updated_at'] }}</time>
+                                    <time class="updated" datetime="">{!! date('Y-m-d',strtotime($article->updated_at)) !!}</time>
                                 </a>
                             </span>
                                 <span class="byline"> by <span class="author vcard">
@@ -47,6 +37,16 @@
                         <p >{!! $article['content'] !!}</p>
                     </div>
                     <footer class="entry-meta article_detail_footer">
+                        <p class="text-muted hidden-xs meta-data">
+                            &nbsp;&nbsp;&nbsp;<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/tutorials/blog" rel="category tag">{{ $article->cat->name }}&nbsp;</a>				</span>
+
+                            <span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签：
+                                @foreach($article->tag as $tag)
+                                    <a class="article_tag" href="">{{ $tag->name }}</a>
+                                @endforeach
+                                   </span>
                         &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>
                         <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
                     </footer>
@@ -56,7 +56,7 @@
         <!--end 文章-->
         <!--content right-->
 
-        <div class="col-md-3">
+        <div class="col-md-3 ">
             <div class="post-nav" >
                         <div class="nva-list" id="article_nav" >
                             <div class="panel panel-info">

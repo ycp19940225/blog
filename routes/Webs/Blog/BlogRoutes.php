@@ -8,5 +8,9 @@
 
 Route::get('/','IndexController@index');
 Route::get('/article/{id}','IndexController@article')->where('id','[0-9]+');
+Route::get('/search','SearchController@index');
+Route::get('/auth/index','LoginController@index');
+Route::get('/auth/{driver}', 'LoginController@redirectToProvider');
+Route::get('/auth/{driver}/callback', 'LoginController@handleProviderCallback');
 
 

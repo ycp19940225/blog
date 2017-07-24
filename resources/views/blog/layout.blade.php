@@ -40,12 +40,13 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="fa fa-user"></span> 登录</a></li>
+                <li><a href="{{ url('blog/auth/index') }}"><span class="fa fa-user"></span> 登录</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>
+                <li><a href="{{ url('blog/auth/register') }}"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search" method="get" action="https://lufficc.com/search">
+            <form class="navbar-form navbar-right" role="search" method="get" action="{{ url('blog/search') }}">
+                {{ csrf_field() }}
                 <input type="text" class="form-control" name="search" placeholder="搜索" required="">
             </form>
         </div>
@@ -54,9 +55,7 @@
 </nav>
 <!-- end nav   -->
 
-<!--begin main container-->
-@yield('content');
-<!--end main container-->
+@yield('content')
 <!--begin footer-->
 <div class="footer">
     <div class="container">

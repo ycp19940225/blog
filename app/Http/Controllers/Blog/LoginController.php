@@ -16,6 +16,8 @@ use App\Services\Ifs\Admin\AdminLoginServices;
 use App\Services\Ifs\Admin\UserServices;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class loginController extends controller
@@ -28,15 +30,35 @@ class loginController extends controller
         $this->user=$userServices;
         $this->loginServices=$adminLoginServices;
     }
-    /**
-     * @name 后台首页
-     * @desc 后台首页
-     * @author ycp
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function login()
+
+    public function index()
     {
-        return view('admin.login.login');
+        return view('blog.auth.login');
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @param $driver
+     * @return Response
+     */
+    public function redirectToProvider($driver)
+    {
+        return Socialite::driver($driver)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @param $driver
+     * @return Response
+     * @internal param Request $request
+     */
+    public function handleProviderCallback($driver)
+    {
+        $user = Socialite::driver($driver)->user();
+
+        // $user->token;
     }
 
     /**
