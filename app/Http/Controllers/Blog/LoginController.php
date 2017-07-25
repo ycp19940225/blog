@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Blog;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog\User;
 use App\Services\Admin\AdminLoginServicesImpl;
 use App\Services\Admin\SC;
 use App\Services\Ifs\Admin\AdminLoginServices;
@@ -18,6 +19,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Socialite\Facades\Socialite;
+use Session;
 
 
 class loginController extends controller
@@ -54,11 +56,15 @@ class loginController extends controller
      * @return Response
      * @internal param Request $request
      */
-    public function handleProviderCallback($driver)
+    public function handleProviderCallback()
     {
-        $user = Socialite::driver($driver)->user();
-
-        // $user->token;
+        $user = Socialite::driver('github')->user();
+        $res = $this->doLogin($user);
+        if($res){
+            session()->put('blog_userInfo',$res->toArray());
+            return redirect('blog')->with('status','登陆成功！');
+        }
+        return back()->withInput()->with('error','登陆失败！');
     }
 
     /**
@@ -66,26 +72,13 @@ class loginController extends controller
      * @desc 登陆操作
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function doLogin(Request $request)
+    public function doLogin($user)
     {
-        $adminname = $request->input('adminname');
-        $password = $request->input('password');
-        if(!captcha_check($request->input('captcha'))){
-            return back()->withInput()->with('error','验证码错误！');
-        }
-        $is_login = $this->loginServices->check($password,$adminname);
-        if($is_login){
-            SC::setLoginSession($is_login);
-            $admin_id = $is_login->id;
-            $access = DB::table('blog_admin_role as a')
-                ->Join('blog_role_pri as b','a.role_id','=','b.role_id')
-                ->Join('blog_privilege as c','b.pri_id','=','c.id')
-                ->where('admin_id',$admin_id)
-                ->get();
-            SC::setUserAccess($access->toArray());
-            return redirect('admin');
-        }
-        return back()->withInput()->with('error','用户名或密码错误！');
+        $data['name'] = $user->nickname;
+        $data['email'] = $user->email;
+        $data['avatar_url'] = $user->avatar;
+        $userModel = new User();
+        return $userModel->firstOrCreate($data);
     }
 
     /**
@@ -95,7 +88,9 @@ class loginController extends controller
      */
     public function logout()
     {
-        $this->loginServices->logout();
-        return redirect('admin/login')->with('status','您已经安全退出！');
+        session()->forget('blog_userInfo');
+        Session::flush();
+        Session::regenerate();
+        return redirect('blog')->with('status','您已经安全退出！');
     }
 }

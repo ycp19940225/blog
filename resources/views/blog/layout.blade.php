@@ -38,13 +38,28 @@
                 <li><a href="#">文章</a></li>
                 <li><a href="#">归档</a></li>
             </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('blog/auth/index') }}"><span class="fa fa-user"></span> 登录</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('blog/auth/register') }}"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>
-            </ul>
+            @if(!empty(session('blog_userInfo')))
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown navbar-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ session('blog_userInfo')['avatar_url'] }}" alt="" style="max-height: 25px;max-width:25px;">
+                            <span class="hidden-xs">{{ session('blog_userInfo')['name'] }}</span> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInLeft">
+                            <li class="arrow"></li>
+                            <li><a href="#">Setting</a></li>
+                            <li><a href="{{ url('blog/logout') }}">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+               @else
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url('blog/auth/index') }}"><span class="fa fa-user"></span> {{ session('userInfo')['name'] }}登录</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>
+                </ul>
+            @endif
             <form class="navbar-form navbar-right" role="search" method="get" action="{{ url('blog/search') }}">
                 {{ csrf_field() }}
                 <input type="text" class="form-control" name="search" placeholder="搜索" required="">
@@ -54,7 +69,6 @@
 
 </nav>
 <!-- end nav   -->
-
 @yield('content')
 <!--begin footer-->
 <div class="footer">
@@ -74,8 +88,16 @@
 <script src="{{ loadStatic('admin/plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}"></script>
 <script src="{{ loadStatic('common/tocfiy/javascripts/jquery.tocify.js') }}"></script>
 <!-- ================== END BASE JS ================== -->
+{{--layer.js--}}
+<script src="{{ loadStatic('common/layer/layer.js') }}"></script>
 <script>
     $(function(){
+        @if (session('status'))
+            layer.msg('{{ session('status') }}', {
+                offset: 't',
+                anim: 6
+            });
+        @endif
         $(window).scroll(function() {
             if ($(this).scrollTop() > 1) { //当window的scrolltop距离大于1时，go to top按钮淡出，反之淡入
                 $("#toTop").fadeIn();
