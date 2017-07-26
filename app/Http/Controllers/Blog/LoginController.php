@@ -11,12 +11,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog\User;
-use App\Services\Admin\AdminLoginServicesImpl;
-use App\Services\Admin\SC;
-use App\Services\Ifs\Admin\AdminLoginServices;
-use App\Services\Ifs\Admin\UserServices;
-use DB;
-use Illuminate\Http\Request;
+use Auth;
 use Illuminate\Http\Response;
 use Laravel\Socialite\Facades\Socialite;
 use Session;
@@ -24,14 +19,6 @@ use Session;
 
 class loginController extends controller
 {
-    protected $user;
-    protected $loginServices;
-
-    public function __construct(UserServices $userServices,AdminLoginServices $adminLoginServices)
-    {
-        $this->user=$userServices;
-        $this->loginServices=$adminLoginServices;
-    }
 
     public function index()
     {
@@ -61,7 +48,7 @@ class loginController extends controller
         $user = Socialite::driver('github')->user();
         $res = $this->doLogin($user);
         if($res){
-            session()->put('blog_userInfo',$res->toArray());
+            Auth::loginUsingId($res->id);
             return redirect('blog')->with('status','登陆成功！');
         }
         return back()->withInput()->with('error','登陆失败！');
