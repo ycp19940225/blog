@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-25 17:56:04
+Date: 2017-07-26 12:39:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -365,13 +365,19 @@ CREATE TABLE `blog_users` (
   `updated_at` int(11) NOT NULL DEFAULT '0',
   `avatar_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of blog_users
 -- ----------------------------
-INSERT INTO `blog_users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$De1MgZ4mmCTBnk071DAbNe4U0rV4rQBh9h7ef4MRCJjX5goNCMep.', 'AeVgvdf1mS6udHrPNAbZEsn00nepdeqrH07RN11cmIXCJ38lYNUyVYABVw9I', '2017', '2017', '');
+INSERT INTO `blog_users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$qWMPIPnETOrHNWGZ5cHyaOee3UL28rgcScDXZY8udcf6rUiExfdpW', 'g5ofNtMizDTmRcux06K4EWZTbj5kx5UEUUzrEIJN3p65gf0pOxOATVXSXjXJ', '2017', '1501040989', '');
 INSERT INTO `blog_users` VALUES ('4', 'ycp19940225', '820363773@qq.com', '', null, '1500976546', '1500976546', 'https://avatars0.githubusercontent.com/u/21313827?v=4');
+INSERT INTO `blog_users` VALUES ('5', 'ycp', '820363772@qq.com', '$2y$10$oFAlAIWs0dfjOzsxXKbbc.QVMUr4Lus6Pi1kAa18TAM61ihjzPQbW', null, '1501034553', '1501034553', '');
+INSERT INTO `blog_users` VALUES ('6', 'yyy', '820363771@qq.com', '$2y$10$JQoyfhsm7yuPfpnt8IaMIOdpFIWR8oQYHntC2iyzmcq2SBDfQsHVW', null, '1501036665', '1501036665', '');
+INSERT INTO `blog_users` VALUES ('7', '也一样一样', '820363770@qq.com', '$2y$10$DcHkJlgrLtFVhUDgnN7DoudyGK5Gbvu/dl41Kou3RCnn4gr.2B/YK', null, '1501036990', '1501036990', '');
+INSERT INTO `blog_users` VALUES ('8', '恩恩', '120363773@qq.com', '$2y$10$Usno297Bcx183IWiKBEzi.MigX70u6VI.iUUP9E2Hkgtg4mJCBxAq', null, '1501037131', '1501037131', '');
+INSERT INTO `blog_users` VALUES ('9', '点', '829363773@qq.com', '$2y$10$XoY15IP58u5Gr74Rr.Aem.kCw022VoOEe3bRscPDIDBFz2t6QM/Va', null, '1501037210', '1501037210', '');
+INSERT INTO `blog_users` VALUES ('10', '电放费', '820343773@qq.com', '$2y$10$ZUXcPpWBTwVK24f8yGLhRO6YmZwYqELnFAzBT1RE8.tHZ3kMbioyC', null, '1501037742', '1501037742', '');
 
 -- ----------------------------
 -- Table structure for chat_messages
@@ -422,11 +428,25 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
 -- ----------------------------
 INSERT INTO `migrations` VALUES ('1', '2014_10_12_100000_create_password_resets_table', '1');
 INSERT INTO `migrations` VALUES ('2', '2017_06_08_061045_create_role_table', '1');
-INSERT INTO `migrations` VALUES ('3', '2017_07_03_163619_create_chat_messages_table', '2');
+
+-- ----------------------------
+-- Table structure for password_resets
+-- ----------------------------
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`(250))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of password_resets
+-- ----------------------------
