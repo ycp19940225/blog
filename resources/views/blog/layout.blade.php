@@ -38,12 +38,12 @@
                 <li><a href="#">文章</a></li>
                 <li><a href="#">归档</a></li>
             </ul>
-            @if(!empty(session('blog_userInfo')))
+            @if(!empty(session('blog_userInfo') || Auth::check()))
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown navbar-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ session('blog_userInfo')['avatar_url'] }}" alt="" style="max-height: 25px;max-width:25px;">
-                            <span class="hidden-xs">{{ session('blog_userInfo')['name'] }}</span> <b class="caret"></b>
+                            <img src="{{ session('blog_userInfo')['avatar_url'] or '' }}" alt="" style="max-height: 25px;max-width:25px;">
+                            <span class="hidden-xs">{{ session('blog_userInfo')['name'] or Auth::user()->name}}</span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu animated fadeInLeft">
                             <li class="arrow"></li>

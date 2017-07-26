@@ -26,8 +26,13 @@ class RegisterController extends Controller
      * Where to redirect users after registration.
      *
      * @var string
+     * @return string
      */
-    protected $redirectTo = '/blog';
+    protected function redirectTo()
+    {
+        return '/blog';
+    }
+
 
     /**
      * Create a new controller instance.
@@ -49,7 +54,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:blog_users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

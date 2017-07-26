@@ -8,14 +8,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     protected $table = 'blog_users';
-    protected $primaryKey = "id";    //定义用户表主键
-    public $timestamps = 'U';         //是否有created_at和updated_at字段
+    protected $dateFormat = 'U';
+    //是否有created_at和updated_at字段
     use Notifiable;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
 
     protected $fillable = [
         'name', 'email', 'password',
