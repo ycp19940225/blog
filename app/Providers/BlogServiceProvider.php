@@ -5,6 +5,7 @@ namespace App\Providers;
 
 use App\Services\Admin\ArticleServicesImpl;
 use App\Services\Admin\CatServicesImpl;
+use App\Services\Admin\CommentsServicesImpl;
 use App\Services\Admin\TagServicesImpl;
 use Illuminate\Support\ServiceProvider;
 
@@ -38,6 +39,10 @@ class BlogServiceProvider extends ServiceProvider
         //标签
         $this->app->singleton('App\Services\Ifs\Admin\TagServices',function(){
             return new TagServicesImpl();
+        });
+        //评论
+        $this->app->singleton('App\Services\Ifs\Admin\CommentsServices',function(){
+            return new CommentsServicesImpl();
         });
 
     }

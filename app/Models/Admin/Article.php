@@ -61,6 +61,15 @@ class Article extends Base
     }
 
     /**
+     * 关联模型
+     * 属于该文章的评论
+     */
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Admin\Comment','article_id');
+    }
+
+    /**
      * @name 添加文章
      * @desc 添加文章
      * @author ycp

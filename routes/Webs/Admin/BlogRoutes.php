@@ -27,4 +27,7 @@ Route::post('/tag/addOperate','TagController@addOperate');
 Route::get('/tag/edit/{id}','TagController@edit')->where('id', '[0-9]+');
 Route::post('/tag/editOperate','TagController@editOperate');
 Route::post('/tag/delete','TagController@delete');
+//评论
+Route::get('/comments/index','CommentsController@index');
+Route::post('/comments/delete','CommentsController@delete');
 

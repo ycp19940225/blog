@@ -37,6 +37,11 @@ return [
                     'access'=>'admin/tag/index',
                     'icon'=>''
                 ],
+                [
+                    'name'=>'评论管理',
+                    'access'=>'admin/comments/index',
+                    'icon'=>''
+                ],
             ],
         ],
     ],

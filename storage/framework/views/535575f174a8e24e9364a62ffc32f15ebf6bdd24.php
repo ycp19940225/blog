@@ -8,12 +8,14 @@
                <article class="panel articles">
                     <div class="content articles_content">
                         <header class="article_header">
-                            <h3 class=""><strong><a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>"><?php echo e($v['title']); ?></a></strong></h3>
+                            <div class="article_title ">
+                                <h3 class=""><strong><a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>"><?php echo e($v['title']); ?></a></strong></h3>
+                            </div>
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
                                 Posted on <a href="" rel="bookmark">
-                                    <time class="updated" datetime=""><?php echo e($v['updated_at']); ?></time>
+                                    <time class="updated" datetime=""><?php echo e(date('Y-m-d',strtotime($v->updated_at))); ?></time>
                                 </a>
                             </span>
                                 <span class="byline"> by <span class="author vcard">
@@ -27,15 +29,15 @@
                         <hr>
                         <div class="article_intro" id="article_intro">
                             <blockquote>
-                            <p ><?php echo $v['content']; ?></p>
+                            <p ><div class=""><?php echo $v['content']; ?></div></p>
                             </blockquote>
                         </div>
                         <footer class="entry-meta article_footer">
                             <p class="visible-xs">
-                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" class="btn btn-primary btn-block article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="pull-right hidden-xs">
-                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" class="btn btn-primary article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="text-muted hidden-xs meta-data">
                                 &nbsp;&nbsp;&nbsp;<span class="cat-links">
@@ -44,7 +46,7 @@
                                 <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
                                     <?php $__currentLoopData = $v->tag; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <a class="tag" href=""><?php echo e($tag->name); ?></a>
+                                        <a class="article_tag" href=""><?php echo e($tag->name); ?></a>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>				</span>
                                 <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
@@ -110,7 +112,7 @@
             var oBox=document.getElementsByClassName('article_intro');
             var html = '';
             for(var i=0;i<oBox.length;i++){
-                var html = oBox[i].innerHTML.substring(0,200)+'...';
+                var html = oBox[i].innerHTML.substring(0,120)+'...';
                 oBox[i].innerHTML = html;
             }
 

@@ -92,7 +92,7 @@ fn.getList = function(){
             if(!data){
                 alert('获取评论列表失败');
                 return !1;
-            };
+            }
             //整理评论列表
             self.initList(data);
             self.loading.css('display', 'none');

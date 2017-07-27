@@ -57,7 +57,7 @@ class loginController extends controller
     /**
      * @name 登陆操作
      * @desc 登陆操作
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function doLogin($user)
     {
