@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-26 12:39:40
+Date: 2017-07-27 17:49:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -144,6 +144,27 @@ INSERT INTO `blog_category` VALUES ('39', 'ddffff333ff', 'ddff333ff', '149991662
 INSERT INTO `blog_category` VALUES ('40', '中文分类', '中文分类', '1499916853', '1500016222', '0', '0');
 INSERT INTO `blog_category` VALUES ('41', 'dddddd88', 'dddddd88', '1499997125', '1499997315', '0', '0');
 INSERT INTO `blog_category` VALUES ('42', '中文的上下', '中文的上下', '1500016196', '1500016196', '0', '0');
+
+-- ----------------------------
+-- Table structure for blog_comments
+-- ----------------------------
+DROP TABLE IF EXISTS `blog_comments`;
+CREATE TABLE `blog_comments` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Id',
+  `content` text CHARACTER SET utf8mb4 NOT NULL COMMENT '内容',
+  `user_id` int(10) NOT NULL DEFAULT '0',
+  `created_at` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated_at` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `article_id` int(10) NOT NULL DEFAULT '0' COMMENT '文章Id',
+  `deleted_at` tinyint(5) NOT NULL DEFAULT '0',
+  `parent_id` tinyint(5) NOT NULL DEFAULT '0' COMMENT '父评论ID',
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8 COMMENT='文章表';
+
+-- ----------------------------
+-- Records of blog_comments
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for blog_privilege
@@ -357,7 +378,7 @@ INSERT INTO `blog_tag_article` VALUES ('41', '112');
 DROP TABLE IF EXISTS `blog_users`;
 CREATE TABLE `blog_users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -365,19 +386,19 @@ CREATE TABLE `blog_users` (
   `updated_at` int(11) NOT NULL DEFAULT '0',
   `avatar_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of blog_users
 -- ----------------------------
-INSERT INTO `blog_users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$qWMPIPnETOrHNWGZ5cHyaOee3UL28rgcScDXZY8udcf6rUiExfdpW', 'g5ofNtMizDTmRcux06K4EWZTbj5kx5UEUUzrEIJN3p65gf0pOxOATVXSXjXJ', '2017', '1501040989', '');
-INSERT INTO `blog_users` VALUES ('4', 'ycp19940225', '820363773@qq.com', '', null, '1500976546', '1500976546', 'https://avatars0.githubusercontent.com/u/21313827?v=4');
+INSERT INTO `blog_users` VALUES ('11', 'ycp19940225', '820363773@qq.com', '', null, '1501055645', '1501055645', 'https://avatars0.githubusercontent.com/u/21313827?v=4');
 INSERT INTO `blog_users` VALUES ('5', 'ycp', '820363772@qq.com', '$2y$10$oFAlAIWs0dfjOzsxXKbbc.QVMUr4Lus6Pi1kAa18TAM61ihjzPQbW', null, '1501034553', '1501034553', '');
 INSERT INTO `blog_users` VALUES ('6', 'yyy', '820363771@qq.com', '$2y$10$JQoyfhsm7yuPfpnt8IaMIOdpFIWR8oQYHntC2iyzmcq2SBDfQsHVW', null, '1501036665', '1501036665', '');
 INSERT INTO `blog_users` VALUES ('7', '也一样一样', '820363770@qq.com', '$2y$10$DcHkJlgrLtFVhUDgnN7DoudyGK5Gbvu/dl41Kou3RCnn4gr.2B/YK', null, '1501036990', '1501036990', '');
 INSERT INTO `blog_users` VALUES ('8', '恩恩', '120363773@qq.com', '$2y$10$Usno297Bcx183IWiKBEzi.MigX70u6VI.iUUP9E2Hkgtg4mJCBxAq', null, '1501037131', '1501037131', '');
 INSERT INTO `blog_users` VALUES ('9', '点', '829363773@qq.com', '$2y$10$XoY15IP58u5Gr74Rr.Aem.kCw022VoOEe3bRscPDIDBFz2t6QM/Va', null, '1501037210', '1501037210', '');
 INSERT INTO `blog_users` VALUES ('10', '电放费', '820343773@qq.com', '$2y$10$ZUXcPpWBTwVK24f8yGLhRO6YmZwYqELnFAzBT1RE8.tHZ3kMbioyC', null, '1501037742', '1501037742', '');
+INSERT INTO `blog_users` VALUES ('12', '订单', '820363779@qq.com', '$2y$10$RvpjiNdxMkgeL8IO/zOFLO.Glazgzv65qTJ4hpRxYaqWTpvBwkb6S', 'qiE8bVxAuLr70dRhEOMtER0nyYtx6AIeXEjCgbaDIBT4ZMrznbJrfIRdb2cR', '1501055898', '1501055898', '');
 
 -- ----------------------------
 -- Table structure for chat_messages
@@ -450,3 +471,4 @@ CREATE TABLE `password_resets` (
 -- ----------------------------
 -- Records of password_resets
 -- ----------------------------
+INSERT INTO `password_resets` VALUES ('820363773@qq.com', '$2y$10$V0g.jq/blgm9yyeSmTTWEuP5GGtJfi5bfUTLE9YEpYXn8hEZ2vJe2', '2017-07-26 12:56:27');
