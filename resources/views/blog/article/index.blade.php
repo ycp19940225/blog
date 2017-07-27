@@ -15,7 +15,7 @@
                     <header class="article_header">
                         <hr>
                         <h1 class="text-center"><strong>&nbsp;&nbsp;{{ $article['title'] }}</strong></h1>
-                        <div class="entry-meta text-muted">
+                        <div class="entry-meta text-muted " style="text-align: center">
                                 <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
                                 Posted on <a href="" rel="bookmark">
@@ -36,22 +36,21 @@
                     <div class="article_detail">
                         <p >{!! $article['content'] !!}</p>
                     </div>
-                    <footer class="entry-meta article_detail_footer">
-                        <p class="text-muted hidden-xs meta-data">
-                            &nbsp;&nbsp;&nbsp;<span class="cat-links">
+                </div>
+                <footer class="entry-meta article_detail_footer">
+                    <p class="text-muted  meta-data">
+                        &nbsp;&nbsp;&nbsp;<span class="cat-links">
 					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/tutorials/blog" rel="category tag">{{ $article->cat->name }}&nbsp;</a>				</span>
 
-                            <span class="tags-links">
+                        <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
-                                @foreach($article->tag as $tag)
-                                    <a class="article_tag" href="">{{ $tag->name }}</a>
-                                @endforeach
+                            @foreach($article->tag as $tag)
+                                <a class="article_tag" href="">{{ $tag->name }}</a>
+                            @endforeach
                                    </span>
-                        &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>
-                        <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
-                    </footer>
-                </div>
+                </footer>
             </article>
+            @include('blog.comments')
         </div>
         <!--end 文章-->
         <!--content right-->
@@ -84,6 +83,12 @@
                 highlightDefault: true,
                 scrollHistory:true
             });
+            Comment.allocate({
+                parent: $('#article_comments'),
+                id: 0,
+                getCmtUrl: './php/getcomment.php',
+                setCmtUrl: './php/comment.php'
+            })
 
         });
 

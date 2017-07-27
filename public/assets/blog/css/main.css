@@ -11,7 +11,7 @@ body {
     min-height: 100%;
 }
 .blog {
-    background: #b9e6eb url(../img/body_bg.jpg) no-repeat center 0 ;
+    background: #b9e6eb /*url(../img/body_bg.jpg) no-repeat center 0 */;
 }
 #nav {
     color: #fff;
@@ -74,7 +74,7 @@ body {
 
 .article {
     background-color:#ffffff;
-    font-size: 16px;
+    font-size: 15px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 .article_header h1 {
@@ -85,7 +85,7 @@ body {
 }
 .article_content{
     padding:5px;
-    margin-bottom:500px ;
+    margin-bottom:50px ;
 }
 .article_detail{
     background-color:#ffffff;
@@ -105,10 +105,7 @@ body {
 .article_detail_footer{
     border-top: 1px solid rgb(195, 232, 238);
     color: #777;
-    padding: 19px 0;
-    bottom: -50px;
-    width: 96%;
-    height: 50px;
+
 }
 .article_intro{
     height:350px;
@@ -168,4 +165,8 @@ blockquote{
 
 #article_nav {
     position: fixed;
+}
+
+.article_comments {
+    background:#ffffff;
 }

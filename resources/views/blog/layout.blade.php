@@ -17,6 +17,10 @@
     <link href="{{ loadStatic('common/prettify/styles/prttify_tomorow.css') }}" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
 
+    <!-- ================== BEGIN PAGE CSS STYLE ================== -->
+    <link href="{{ loadStatic('blog/vendor/comments/css/comment.css') }}" rel="stylesheet" />
+    <!-- ================== END PAGE CSS STYLE ================== -->
+
 </head>
 <body>
 <!--begin响应式导航栏-->
@@ -54,7 +58,7 @@
                 </ul>
                @else
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('blog/auth/index') }}"><span class="fa fa-user"></span> {{ session('userInfo')['name'] }}登录</a></li>
+                    <li><a href="{{ url('blog/auth/index') }}"><span class="fa fa-user"></span>登录</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-log-in"></span> 注册</a></li>
@@ -83,13 +87,21 @@
 
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="{{ loadStatic('admin/plugins/jquery/jquery-1.9.1.min.js') }}"></script>
+<script src="{{ loadStatic('blog/vendor/comments/js/jquery.cookie.js') }}"></script>
 <script src="{{ loadStatic('common/prettify/src/prettify.js') }}"></script>
 <script src="{{ loadStatic('blog/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ loadStatic('admin/plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}"></script>
 <script src="{{ loadStatic('common/tocfiy/javascripts/jquery.tocify.js') }}"></script>
 <!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN PAGE JS ================== -->
 {{--layer.js--}}
 <script src="{{ loadStatic('common/layer/layer.js') }}"></script>
+<script src="{{ loadStatic('blog/vendor/comments/js/comment.js') }}"></script>
+<script src="{{ loadStatic('blog/vendor/comments/js/pager.js') }}"></script>
+<!-- ================== BEGIN PAGE JS ================== -->
+
+
 <script>
     $(function(){
         @if (session('status'))
