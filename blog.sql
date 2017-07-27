@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : phpstudy
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : blog
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-27 17:49:25
+Date: 2017-07-27 22:51:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -158,6 +158,7 @@ CREATE TABLE `blog_comments` (
   `article_id` int(10) NOT NULL DEFAULT '0' COMMENT '文章Id',
   `deleted_at` tinyint(5) NOT NULL DEFAULT '0',
   `parent_id` tinyint(5) NOT NULL DEFAULT '0' COMMENT '父评论ID',
+  `reviewed` tinyint(5) NOT NULL DEFAULT '1' COMMENT '是否通过审核',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=utf8 COMMENT='文章表';
@@ -472,3 +473,23 @@ CREATE TABLE `password_resets` (
 -- Records of password_resets
 -- ----------------------------
 INSERT INTO `password_resets` VALUES ('820363773@qq.com', '$2y$10$V0g.jq/blgm9yyeSmTTWEuP5GGtJfi5bfUTLE9YEpYXn8hEZ2vJe2', '2017-07-26 12:56:27');
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('2', 'ycp', '820363773@qq.com', '$2y$10$De1MgZ4mmCTBnk071DAbNe4U0rV4rQBh9h7ef4MRCJjX5goNCMep.', 'AeVgvdf1mS6udHrPNAbZEsn00nepdeqrH07RN11cmIXCJ38lYNUyVYABVw9I', '2017-06-20 09:53:51', '2017-06-20 09:53:51');
