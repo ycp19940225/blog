@@ -51,6 +51,7 @@
                 </footer>
             </article>
             @include('blog.comments')
+
         </div>
         <!--end 文章-->
         <!--content right-->
@@ -75,21 +76,26 @@
 @endsection
 @section('script.js')
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $(document).ready(function(){
-
-            var toc = $('#article_nav').tocify({
+            $('#article_nav').tocify({
                 selectors: "h2,h3,h4,h5",
                 showEffect: "show",
                 highlightDefault: true,
                 scrollHistory:true
             });
-            Comment.allocate({
-                parent: $('#article_comments'),
-                id: 0,
-                getCmtUrl: './php/getcomment.php',
-                setCmtUrl: './php/comment.php'
-            })
+            $("#submit").click(function () {
+                var hidden_article_id = '<input type="hidden" name="article_id" value="{{ $article['id'] }}">';
+                $(this).append(hidden_article_id);
+                var data  = $("#comments").serialize();
+                $.post('{{ url('blog/doComments') }}',data,function (res) {
 
+                });
+            });
         });
 
     </script>

@@ -11,6 +11,7 @@ namespace App\Services\Admin;
 
 use App\Models\Admin\Comments;
 use App\Services\Ifs\Admin\CommentsServices;
+use Auth;
 
 class CommentsServicesImpl implements CommentsServices
 {
@@ -24,7 +25,15 @@ class CommentsServicesImpl implements CommentsServices
 
     public function save($request)
     {
-        return $this->commentDao->create($request);
+        $data= $request;
+        dd($data);
+        if(Auth::check()){
+
+        }else{
+            unset($request['parent_id'],$request['belong'],$request['content']);
+            $data['comment_info'] =json_encode($request);
+        }
+        return $this->commentDao->create($data);
     }
 
     public function delete($id)

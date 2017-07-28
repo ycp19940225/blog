@@ -168,5 +168,18 @@ blockquote{
 }
 
 .article_comments {
-    background:#ffffff;
+    margin: 50px 0;
+    background-color:#ffffff;
+}
+
+.article_comments_list {
+    margin: 50px 0;
+    background-color:#ffffff;
+}
+
+.comment_body {
+}
+
+.article_comments_detail {
+    margin: 20px 0;
 }

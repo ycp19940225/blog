@@ -2,6 +2,7 @@ function Comment(options){
     this.belong = options.id;
     this.getCmtUrl = options.getCmtUrl;
     this.setCmtUrl = options.setCmtUrl;
+    this.checkAuth = options.checkAuth;
     this.lists = [];
     this.keys = {};
     this.offset = 5;
@@ -29,10 +30,18 @@ fn.initNode = function(options){
     }
     //init content
     this.body = (function(){
-        var strHTML = '<div class="m-comment">' +
-                          '<div class="cmt-form">' +
-                              '<textarea class="cmt-text" placeholder="欢迎建议，提问题，共同学习！"></textarea>' +
-                              '<button class="u-button u-login-btn">提交评论</button>' +
+        var comments_info = '';
+        if(!this.checkAuth){
+           comments_info = '<div class="col-md-12 ">'+
+               '<div class="form-group comment-form-author"><label class="sr-only control-label" for="author">名字 <span class="required">*</span></label> <div class="input-group"><span class="input-group-addon"><span class="fa fa-user"></span></span><input placeholder="名字 *" class="form-control" id="author" name="author" type="text" value="" size="30" aria-required="true"></div></div>'+
+                '<div class="form-group comment-form-email"><label class="sr-only control-label" for="email">邮箱 <span class="required">*</span></label> <div class="input-group"><span class="input-group-addon"><span class="fa fa-envelope"></span></span><input placeholder="邮箱 *" class="form-control" id="email" name="email" type="email" value="" size="30" aria-required="true"></div></div>'+
+                '<div class="form-group comment-form-url"><label class="sr-only control-label" for="url">站点</label> <div class="input-group"><span class="input-group-addon"><span class="fa fa-globe"></span></span><input placeholder="站点" class="form-control" id="url" name="url" type="url" value="" size="30"></div></div>'+
+                '</div>'
+        }
+        var strHTML = '<div class="m-comment">' + comments_info+
+                          '<div class="form-group cmt-form">' +
+                              '<textarea class="form-control cmt-text" placeholder="欢迎建议，提问题，共同学习！"></textarea>' +
+                              '<button type="button" class="btn btn-md  u-button u-login-btn">提交评论</button>' +
                           '</div>' +
                           '<div class="cmt-content">' +
                               '<div class="u-loading1"></div>' +
@@ -90,7 +99,7 @@ fn.getList = function(){
         data: { id: self.belong },
         success: function(data){
             if(!data){
-                alert('获取评论列表失败');
+                layer.msg('获取评论列表失败');
                 return !1;
             }
             //整理评论列表
@@ -118,7 +127,7 @@ fn.getList = function(){
             }
         },
         error: function(){
-            alert('获取评论列表失败');
+            layer.msg('获取评论列表失败');
         }
     });
 };
@@ -183,31 +192,30 @@ fn.showList = (function(){
         }
         _obj.content = _obj.content.replace(/\&lt\;/g, '<');
         _obj.content = _obj.content.replace(/\&gt\;/g, '>');
-        var str2 = '<li class="f-clear">' +
-            '<div class="head g-col-1">' +
+        var str2 = '<div type="panel"><li class="f-clear">' +
+            '<div class="col-md-1">' +
             '<img src="./img/head/' + headImg + '" width="100%"/>' +
             '</div>' +
-            '<div class="content g-col-19">' +
+            '<div class="content col-md-12">' +
             '<div class="f-clear">' +
-            '<span class="username f-float-left">' + _obj.username + '</span>' +
-            '<span class="time f-float-left">' + _obj.time + '</span>' +
+            '<span class="username col-md-4">' + _obj.username + '</span>' +
+            '<span class="time col-md-4">' + _obj.time + '</span>' +
             '</div>' +
-            '<span class="parent-content">' + _obj.content + '</span>' +
+            '<span class="parent-content col-md-12">' + _obj.content + '</span>' +
 
             '<ul class="child-comment">' + str1 + '</ul>' +
             '</div>' +
             '<div class="respone-box g-col-2 f-float-right">' +
             '<a href="javascript:void(0);" class="f-show response" data-id="' + _obj.id + '">[回复]</a>' +
             '</div>' +
-            '</li>';
+            '</li></div> ';
 
         return str2;
 
-    };
+    }
 
 
     return function (page) {
-
         var len = this.lists.length,
             end = len - (page - 1) * this.offset,
             start = end - this.offset < 0 ? 0 : end - this.offset,
@@ -231,7 +239,7 @@ fn.addCmt = function (_btn, _text, _parent) {
     var value = _text.val().replace(/^\s+|\s+$/g, '');
     value = value.replace(/[\r\n]/g,'<br >');
     if(!value){
-        alert('内容不能为空');
+        layer.msg('内容不能为空');
         return !1;
     }
     //禁止点击
@@ -239,21 +247,23 @@ fn.addCmt = function (_btn, _text, _parent) {
     _btn.html('评论提交中...');
     //提交处理
     var self = this,
-        email, username;
+        email, username,website;
 
-    username = $.cookie('user');
+    username = $("#author").val();
     if (!username) {
         username = '游客';
     }
-    email = $.cookie('email');
+    email =  $("#email").val();
     if (!email) {
         email = 'default@163.com';
     }
-
+    website = $("#url").val();
+    if (!website) {
+        website = '';
+    }
     var now = new Date();
-
     $.ajax({
-        type: 'get',
+        type: 'post',
         dataType: 'json',
         url: this.setCmtUrl,
         data: {
@@ -261,6 +271,7 @@ fn.addCmt = function (_btn, _text, _parent) {
             parent: _parent,
             email: email,
             username: username,
+            website: website,
             content: value
         },
         success: function(_data){
@@ -268,13 +279,13 @@ fn.addCmt = function (_btn, _text, _parent) {
             _btn.attr('data-disabled', '');
             _btn.html('提交评论');
             if (!_data) {
-                alert('评论失败，请重新评论');
+                layer.msg('评论失败，请重新评论',{icon:5});
                 return !1;
             }
-            if (_data['result'] == 1) {
+            if (_data['code'] === 'success') {
                 //评论成功
-                alert('评论成功');
-                var id = _data['id'],
+                layer.msg('评论成功',{icon:6});
+                var id = _data['data']['id'],
                     time = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' +
                         now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
 
@@ -324,11 +335,11 @@ fn.addCmt = function (_btn, _text, _parent) {
 
                 self.text.val('');
             } else {
-                alert('评论失败，请重新评论');
+                layer.msg('评论失败，请重新评论',{icon:5});
             }
         },
         error: function () {
-            alert('评论失败，请重新评论');
+            layer.msg('评论失败，请重新评论',{icon:5});
             //解除禁止点击
             _btn.attr('data-disabled', '');
             _btn.html('提交评论');

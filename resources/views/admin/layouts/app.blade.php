@@ -27,6 +27,7 @@
     <link href="{{ loadStatic('admin/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('admin/plugins/isotope/isotope.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/parsley/src/parsley.css') }}" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
@@ -309,6 +310,7 @@
 <script src="{{ loadStatic('admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ loadStatic('admin/js/dashboard.min.js') }}"></script>
 <script src="{{ loadStatic('admin/js/apps.min.js') }}"></script>
+<script src="{{ loadStatic('admin/plugins/parsley/dist/parsley.js') }}"></script>
 <!-- ================== BEGIN TABLE JS ================== -->
 <script src="{{ loadStatic('admin/plugins/DataTables/js/jquery.dataTables.js') }}"></script>
 <script src="{{ loadStatic('admin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>

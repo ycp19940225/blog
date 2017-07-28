@@ -3,8 +3,8 @@ button { padding: 0; margin: 0; border: 0; background-color: #fff; }
 /* 评论类 */
 .m-comment { margin: 40px auto; padding: 20px; background-color: #fff; border: 1px solid #eaeaea; }
 .m-comment .cmt-form { padding: 20px; border-bottom: 1px solid #ddd; }
-.m-comment textarea { display: block; margin-left: -21px; padding: 20px; width: 100%; height: 100px; border: 1px solid #ddd; font-size: 16px; line-height: 1.6; }
-.m-comment .u-button { margin-left: -20px; margin-top: 20px; width: 200px; height: 40px; }
+.m-comment textarea { display: block; /*margin-left: -21px; padding: 20px;*/ width: 100%; height: 100px; border: 1px solid #ddd; font-size: 16px; line-height: 1.6; }
+.m-comment .u-button { /*margin-left: -20px; margin-top: 20px; width: 200px; height: 40px;*/ }
 .m-comment .no-cmt { display:none;text-align: center; font-size: 18px; }
 .m-comment .cmt-content { padding: 20px 0; }
 .m-comment .cmt-list { line-height: 1.6; }
@@ -24,7 +24,7 @@ button { padding: 0; margin: 0; border: 0; background-color: #fff; }
 .m-comment .cmt-list a.cancel { margin-left: 10px; margin-top: 26px; float: left; }
 .m-comment .cmt-list a.cancel:hover { color: #44b549; }
 .m-comment .cmt-list .cmt-form { padding-bottom: 0px; border-bottom: 0px solid #ddd; }
-.m-comment .cmt-list .cmt-form .u-button { float: left; }
+.m-comment .cmt-list .cmt-form .u-button {/* float: center;*/ }
 .m-comment .pager-box { position: relative; top: 0; left: 50%; float: left; }
 .m-comment .pager-box a, .m-comment .pager-box span { position: relative; left: -50%; display: block; width: 36px; height: 36px; float: left; margin: 0 4px 0 0; padding: 0; border: 0; border-radius: 2px; line-height: 36px; text-align: center; color: #a9a9a9; text-decoration: none; font-size: 16px; background-color: #f1f1f1; }
 .m-comment .pager-box a:hover { background-color: #969696; color: #fff; }
@@ -33,10 +33,12 @@ button { padding: 0; margin: 0; border: 0; background-color: #fff; }
 .m-comment .pager-box .js-disabled:hover { background-color: #f1f1f1; color: #a9a9a9; }
 .m-comment .pager-box a.zprv, .m-comment .pager-box .pager a.znxt { font-size: 20px; font-weight: 500; }
 
-.u-button { display: block; background-color: #44b549; cursor: pointer; text-align: center; color: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
+.u-button { margin:20px ;display: block; background-color: #44b549; cursor: pointer; text-align: center; color: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
 .u-button:hover { color: #fff; background-color: rgba(68, 181, 73, 0.9); }
 .u-button:active { color: #fff; background-color: #2e8932; }
-.u-loading1 { margin: 0 auto; height: 20px; width: 100px; background-image: url(../img/loading.gif); background-repeat: no-repeat; }
+.u-loading1 { margin: 0 auto; height: 20px; width: 100px;
+    background: url(../img/loading.gif) no-repeat;
+}
 
 /* 布局类 */
 .g-col-1, .g-col-2, .g-col-3, .g-col-4, .g-col-5, .g-col-6, .g-col-7, .g-col-8, .g-col-9, .g-col-10, .g-col-11, .g-col-12, .g-col-13, .g-col-14, .g-col-15, .g-col-16, .g-col-17, .g-col-18, .g-col-19, .g-col-20, .g-col-21, .g-col-22, .g-col-23, .g-col-24 { display: block; margin-left: 5px; margin-right: 5px; width: 40px; float: left; }

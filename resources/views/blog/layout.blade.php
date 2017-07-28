@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>BLOG</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
@@ -18,7 +19,9 @@
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE CSS STYLE ================== -->
-    <link href="{{ loadStatic('blog/vendor/comments/css/comment.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('admin/plugins/parsley/src/parsley.css') }}" rel="stylesheet" />
+
+{{--<link href="{{ loadStatic('blog/vendor/comments/css/comment.css') }}" rel="stylesheet" />--}}
     <!-- ================== END PAGE CSS STYLE ================== -->
 
 </head>
@@ -97,8 +100,10 @@
 <!-- ================== BEGIN PAGE JS ================== -->
 {{--layer.js--}}
 <script src="{{ loadStatic('common/layer/layer.js') }}"></script>
-<script src="{{ loadStatic('blog/vendor/comments/js/comment.js') }}"></script>
-<script src="{{ loadStatic('blog/vendor/comments/js/pager.js') }}"></script>
+<script src="{{ loadStatic('admin/plugins/parsley/dist/parsley.js') }}"></script>
+
+{{--<script src="{{ loadStatic('blog/vendor/comments/js/comment.js') }}"></script>
+<script src="{{ loadStatic('blog/vendor/comments/js/pager.js') }}"></script>--}}
 <!-- ================== BEGIN PAGE JS ================== -->
 
 

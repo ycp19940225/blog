@@ -13,5 +13,9 @@ Route::get('/auth/index','LoginController@index');
 Route::get('/auth/{driver}', 'LoginController@redirectToProvider');
 Route::get('/auth/github/callback', 'LoginController@handleProviderCallback');
 Route::get('/logout', 'LoginController@logout');
+//评论
+Route::get('/getComments','CommentsController@getComments');
+Route::post('/doComments','CommentsController@doComments');
+
 
 

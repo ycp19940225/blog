@@ -19,7 +19,7 @@ class Comments extends Model
      * 可以被集体赋值的表字段
      * @var array
      */
-    public $fillable = array('id','content','user_id','article_id','parent_id','created_at','updated_at','deleted_at');
+    public $fillable = array('id','content','user_id','article_id','comment_info','parent_id','created_at','updated_at','deleted_at');
 
     /**
      * 关联模型
