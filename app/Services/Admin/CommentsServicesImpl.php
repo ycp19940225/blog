@@ -26,7 +26,6 @@ class CommentsServicesImpl implements CommentsServices
     public function save($request)
     {
         $data= $request;
-        dd($data);
         if(Auth::check()){
 
         }else{

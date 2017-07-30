@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Blog;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Comments;
 use App\Services\Ifs\Admin\CommentsServices;
 use Auth;
 use DB;
@@ -31,8 +32,8 @@ class CommentsController extends Controller
      */
     public function getComments(Request $request)
     {
-        $data =  DB::table('blog_comments')
-            ->where('article_id',$request->input('id'))
+        $model = new Comments();
+        $data =  $model->where('article_id',$request->input('id'))
             ->where('deleted_at',0)
             ->where('reviewed',1)
             ->get();

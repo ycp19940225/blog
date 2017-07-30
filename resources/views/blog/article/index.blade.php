@@ -93,8 +93,12 @@
                 $(this).append(hidden_article_id);
                 var data  = $("#comments").serialize();
                 $.post('{{ url('blog/doComments') }}',data,function (res) {
-
-                });
+                    if(res['code'] === 'success'){
+                        layer.msg(res['msg'],{icon: 6});
+                    }else{
+                        layer.msg(res['msg'],{icon:5});
+                    }
+                },'json');
             });
         });
 

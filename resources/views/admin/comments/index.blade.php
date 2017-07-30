@@ -82,7 +82,6 @@
                     id:i,
                     _token: _token
                 };
-                console.log(data);
                 $.post("{{ url('admin/role/delete') }}",data,function (res) {
                     console.log(res);
                     if(res['code'] === 'success'){
