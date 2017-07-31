@@ -29,7 +29,7 @@ class CommentsServicesImpl implements CommentsServices
         if(Auth::check()){
 
         }else{
-            unset($request['parent_id'],$request['belong'],$request['content']);
+            unset($request['belong'],$request['content']);
             $data['comment_info'] =json_encode($request);
         }
         return $this->commentDao->create($data);
@@ -54,5 +54,13 @@ class CommentsServicesImpl implements CommentsServices
     public function getOne($id)
     {
         return $this->commentDao->find($id);
+    }
+
+    public function getByArticle($article_id)
+    {
+        return $this->commentDao->where('article_id',$article_id)
+            ->where('deleted_at',0)
+            ->where('reviewed',1)
+            ->get();
     }
 }

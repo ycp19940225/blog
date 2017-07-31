@@ -20,4 +20,6 @@ interface CommentsServices
     public function getAll();
     //获取一个
     public function getOne($id);
+    //通过文章获取
+    public function getByArticle($article_id);
 }

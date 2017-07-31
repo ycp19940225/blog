@@ -32,11 +32,7 @@ class CommentsController extends Controller
      */
     public function getComments(Request $request)
     {
-        $model = new Comments();
-        $data =  $model->where('article_id',$request->input('id'))
-            ->where('deleted_at',0)
-            ->where('reviewed',1)
-            ->get();
+        $data =  $this->comments->getByArticle($request->input('article_id'));
         return response()->json(msg('success','获取成功!',['data'=>$data]));
     }
 
@@ -44,6 +40,8 @@ class CommentsController extends Controller
     {
         $data = $request->input();
         $res = $this->comments->save($data);
+
+
         if($res){
             return response()->json(msg('success','评论成功!',['data'=>$res]));
         }

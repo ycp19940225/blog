@@ -81,6 +81,47 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        $.getJSON('{{ url('blog/getComments') }}',{article_id:'{{ $article['id'] }}'},function (res) {
+            console.log(res['data']);
+            if(res['code'] === 'success'){
+                layer.msg(res['msg'],{icon: 6});
+
+                $.each(res['data']['data'],function (key,value){
+                    //language=HTML
+                    var comment_info=JSON.parse(value.comment_info);
+                    var author = String(comment_info.author);
+                    var comments_list = '<li class="list-group-item'+value.id+'" id="'+value.id+'">'+
+                        '<div class="article_comments_detail" id="article_comments">'+
+                       '<div class="panel panel-info">'+
+                        '<div class="panel-body comment-meta">'+
+                        '<div class="comment_body col-xs-11 ">'+
+                        '<div class="media-heading">'+
+                       '<cite>'+comment_info.author+'</cite>&nbsp;&nbsp; 发表于&nbsp;&nbsp;'+
+                        '<a href="">'+
+                        '<time datetime="2017-06-13T17:20:42+00:00">'+
+                        '<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;	'+get_format(value.created_at)+'		</time>'+
+                   '</a>'+
+                    '</div>'+
+
+                    '<div class="media-body markdown-reply content-body">'+
+                        '<p>'+value.content+'</p>'+
+                  '  </div>'+
+                   ' </div>'+
+                   ' <div class="pull-right">'+
+                        '<div class="reply text-right">'+
+                        '<a class="" href="JavaScript:void(0);" onclick="reply_comments(\''+author+'\','+value.id+')" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复'+
+                    '</a></div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</li>';
+                    $('.article_comments_list').append(comments_list);
+                });
+            }else{
+                layer.msg(res['msg'],{icon:5});
+            }
+        });
         $(document).ready(function(){
             $('#article_nav').tocify({
                 selectors: "h2,h3,h4,h5",
@@ -88,19 +129,64 @@
                 highlightDefault: true,
                 scrollHistory:true
             });
-            $("#submit").click(function () {
-                var hidden_article_id = '<input type="hidden" name="article_id" value="{{ $article['id'] }}">';
-                $(this).append(hidden_article_id);
-                var data  = $("#comments").serialize();
-                $.post('{{ url('blog/doComments') }}',data,function (res) {
+            $('form').on('click','.do_comments',function () {
+                var that = $(this).closest('form');
+                var data = that.serialize();
+                $.post('{{ url('blog/doComments') }}',data,function (res,status) {
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
+                        var author = that.find('input[name="author"]').val();
+                        var content = that.find('textarea[name="content"]').val();
+                        var timestamp = new Date().getTime();
+                        var time = get_format(timestamp/1000);
+                        var parent_id = JSON.parse(res['data']['data']['comment_info']).parent_id;
+                        var comments_list = '<li class="list-group-item" id="'+res['data']['data']['id']+'">'+
+                            '<div class="article_comments_detail" id="article_comments">'+
+                            '<div class="panel panel-info">'+
+                            '<div class="panel-body comment-meta">'+
+                            '<div class="comment_body col-xs-11 ">'+
+                            '<div class="media-heading">'+
+                            '<cite>'+author+'</cite>&nbsp;&nbsp; 发表于&nbsp;&nbsp;'+
+                            '<a href="">'+
+                            '<time datetime="">'+
+                            '<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;	'+time+'		</time>'+
+                            '</a>'+
+                            '</div>'+
+
+                            '<div class="media-body markdown-reply content-body">'+
+                            '<p>'+content+'</p>'+
+                            '  </div>'+
+                            ' </div>'+
+                            ' <div class="pull-right">'+
+                            '<div class="reply text-right">'+
+                            '<a class="" href="JavaScript:void(0);" onclick="reply_comments(\''+author+'\','+res['data']['data']['id']+')" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复'+
+                            '</a></div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</li>';
+                        $("#"+parent_id).after(comments_list);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }
                 },'json');
             });
+
+
         });
+        function reply_comments(author,comments_id){
+            var obj = $(".article_comments:last");
+            var comment_html = obj.clone(true);
+            console.log(comment_html);
+            comment_html.find("input[name='parent_id']").val(comments_id);
+            var comments_handle = '<span class="pull-right"><button type="button" class="btn btn-danger pull-right" onclick="cancel_comments($(this))">取消回复</button></span> <h3 >回复给<a href="#list-group-item">'+author+'</a></h3>'
+            comment_html.find('p').before(comments_handle);
+            $("#"+comments_id).after(comment_html);
+        }
+        function cancel_comments(e) {
+            e.closest('.article_comments').hide();
+        }
 
     </script>
     @endsection

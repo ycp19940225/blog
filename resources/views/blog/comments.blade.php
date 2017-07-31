@@ -1,193 +1,15 @@
 <!--PC和WAP自适应版-->
 <ul class="list-group article_comments_list">
     <p class=" alert alert-info"> 共计 222 条评论</p>
-    <li class="list-group-item">
-        <div class="article_comments_detail" id="article_comments">
-            <div class="panel panel-info">
-                <div class="panel-body comment-meta">
-                    <div class="comment_body col-xs-11 ">
-                        <div class="media-heading">
-                            <cite>ycp</cite> 发表于
-                            <a href="">
-                                <time datetime="2017-06-13T17:20:42+00:00">
-                                    <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;2017年6月13日 at 下午5:20						</time>
-                            </a>
-                        </div>
 
-                        <div class="media-body markdown-reply content-body">
-                            <p>这个 标记为*的字段是必填项（邮箱地址不会被公开），但是我看他们不也宝宝佛按法律能否 我也不会说去看这件事看嘛$reflection = new ReflectionClass($base_controller);
-                                $action_base_names = $reflection->getMethods();</p>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="reply text-right">
-                            <a class="" href="" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="article_comments_detail" id="article_comments">
-            <div class="panel panel-info">
-                <div class="panel-body comment-meta">
-                    <div class="comment_body col-xs-10 ">
-                        <div class="media-heading">
-                            <cite>ycp</cite> 发表于
-                            <a href="">
-                                <time datetime="2017-06-13T17:20:42+00:00">
-                                    <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;2017年6月13日 at 下午5:20						</time>
-                            </a>
-                        </div>
-
-                        <div class="media-body markdown-reply content-body">
-                            <p>一段位子</p>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="reply text-right">
-                            <a class="" href="" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="article_comments_detail" id="article_comments">
-            <div class="panel panel-info">
-                <div class="panel-body comment-meta">
-                    <div class="comment_body col-xs-10 ">
-                        <div class="media-heading">
-                            <cite>ycp</cite> 发表于
-                            <a href="">
-                                <time datetime="2017-06-13T17:20:42+00:00">
-                                    <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;2017年6月13日 at 下午5:20						</time>
-                            </a>
-                        </div>
-
-                        <div class="media-body markdown-reply content-body">
-                            <p>一段位子</p>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="reply text-right">
-                            <a class="" href="" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="article_comments_detail" id="article_comments">
-            <div class="panel panel-info">
-                <div class="panel-body comment-meta">
-                    <div class="comment_body col-xs-10 ">
-                        <div class="media-heading">
-                            <cite>ycp</cite> 发表于
-                            <a href="">
-                                <time datetime="2017-06-13T17:20:42+00:00">
-                                    <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;2017年6月13日 at 下午5:20						</time>
-                            </a>
-                        </div>
-
-                        <div class="media-body markdown-reply content-body">
-                            <p>一段位子</p>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="reply text-right">
-                            <a class="" href="" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-
-    <li class="list-group-item">
-        <div class="article_comments_detail" id="article_comments">
-            <div class="panel panel-info">
-                <div class="panel-body comment-meta">
-                    <div class="avatar avatar-container col-xs-1">
-                        <a href="">
-                            <img class="img-circle pull-left" alt="" src="https://dn-phphub.qbox.me/uploads/avatars/12063_1488174416.png?imageView2/1/w/100/h/100" style="width:55px;height:55px;">
-                        </a>
-                    </div>
-                    <div class="comment_body col-xs-10 ">
-                        <div class="media-heading">
-                            <cite>ycp</cite> 发表于
-                            <a href="">
-                                <time datetime="2017-06-13T17:20:42+00:00">
-                                    <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;2017年6月13日 at 下午5:20						</time>
-                            </a>
-                        </div>
-
-                        <div class="media-body markdown-reply content-body">
-                            <p>禅师厉害ffffffffffffffffffffffffffffffffffffacacaaaaaaaaaaaaaaaaaaaa
-                                $reflection = new ReflectionClass($base_controller);
-                                $action_base_names = $reflection->getMethods();
-                                $action_base_name=[];
-                                foreach ($action_base_names as $v){
-                                $action_base_name[]=$v->name;
-                                }</p>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="reply text-right">
-                            <a class="" href="" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="article_comments_detail" id="article_comments">
-            <div class="panel panel-info">
-                <div class="panel-body comment-meta">
-                    <div class="avatar avatar-container col-xs-1">
-                        <a href="">
-                            <img class="img-circle pull-left" alt="" src="https://dn-phphub.qbox.me/uploads/avatars/12063_1488174416.png?imageView2/1/w/100/h/100" style="width:55px;height:55px;">
-                        </a>
-                    </div>
-                    <div class="comment_body col-xs-10 ">
-                        <div class="media-heading">
-                            <cite>ycp</cite> 发表于
-                            <a href="">
-                                <time datetime="2017-06-13T17:20:42+00:00">
-                                    <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;2017年6月13日 at 下午5:20						</time>
-                            </a>
-                        </div>
-
-                        <div class="media-body markdown-reply content-body">
-                            <p>禅师厉害ffffffffffffffffffffffffffffffffffffacacaaaaaaaaaaaaaaaaaaaa
-                                $reflection = new ReflectionClass($base_controller);
-                                $action_base_names = $reflection->getMethods();
-                                $action_base_name=[];
-                                foreach ($action_base_names as $v){
-                                $action_base_name[]=$v->name;
-                                }</p>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="reply text-right">
-                            <a class="" href="" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复
-                            </a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
 </ul>
 
-<div class="article_comments" id="article_comments">
+<div class="article_comments" id="">
     <p class="comment-notes alert alert-info"> 标记为<span class="required">*</span>的字段是必填项（邮箱地址不会被公开）</p>
     <div class="panel-body">
-        <form action="" id="comments">
-            <input type="hidden" name="article_id" value="0">
+        <form action="">
+            <input type="hidden" name="parent_id" value="0">
+            <input type="hidden" name="article_id" value="{{ $article['id'] }}" >
             <div class="col-md-5">
                 <div class="form-group comment-form-author">
                     <label class="sr-only control-label" for="author">名字 <span class="required">*</span></label>
@@ -219,7 +41,7 @@
                 </div>
             </div>
             <div class="pull-right" >
-                <button type="button" class="btn btn-success" id="submit" >发表评论</button>
+                <button type="button" class="btn btn-success do_comments" >发表评论</button>
             </div>
         </form>
     </div>
