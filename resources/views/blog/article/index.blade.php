@@ -178,11 +178,12 @@
         function reply_comments(author,comments_id){
             var obj = $(".article_comments:last");
             var comment_html = obj.clone(true);
-            console.log(comment_html);
             comment_html.find("input[name='parent_id']").val(comments_id);
-            var comments_handle = '<span class="pull-right"><button type="button" class="btn btn-danger pull-right" onclick="cancel_comments($(this))">取消回复</button></span> <h3 >回复给<a href="#list-group-item">'+author+'</a></h3>'
+            var tt=comment_html.attr('id','reply_'+comments_id);
+            var comments_handle = '<span class="pull-right"><button type="button" class="btn btn-danger btn-sm pull-right" onclick="cancel_comments($(this))">取消回复</button></span> <h3 >回复给<a href="#list-group-item">'+author+'</a></h3>'
             comment_html.find('p').before(comments_handle);
             $("#"+comments_id).after(comment_html);
+            $("[id^='reply_']").not('#reply_'+comments_id).hide();
         }
         function cancel_comments(e) {
             e.closest('.article_comments').hide();

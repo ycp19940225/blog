@@ -1,10 +1,52 @@
 <!--PC和WAP自适应版-->
 <ul class="list-group article_comments_list">
     <p class=" alert alert-info"> 共计 222 条评论</p>
+    <li class="list-group-item" id="">
+        <div class="article_comments_detail" id="article_comments">
+            <div class="panel panel-info">
+                <div class="panel-body comment-meta">
+                    <div class="comment_body col-xs-11 ">
+                        <div class="media-heading">
+                            <cite>author+'</cite>&nbsp;&nbsp; 发表于&nbsp;&nbsp;
+                            <a href="">
+                                <time datetime=""><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;	time+		</time>
+                                </a>
+                            </div>
 
+                        <div class="media-body markdown-reply content-body">
+                            <p>content+'</p>
+                              </div>
+                         </div>
+                     <div class="pull-right">
+                        <div class="reply text-right">
+                            <a class="" href="JavaScript:void(0);" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复</a></div>
+                        </div></div>
+                </div>
+            </div>
+        <div class="panel panel-info pull-right" style="width: 95%">
+            <div class="panel-body comment-meta">
+                <div class="comment_body col-xs-10 ">
+                    <div class="media-heading">
+                        <cite>author+'</cite>&nbsp;&nbsp; 发表于&nbsp;&nbsp;
+                        <a href="">
+                            <time datetime=""><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;	time+		</time>
+                        </a>
+                    </div>
+
+                    <div class="media-body markdown-reply content-body">
+                        <p>content+'</p>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="reply text-right">
+                        <a class="" href="JavaScript:void(0);" onclick="" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复</a></div>
+                </div></div>
+        </div>
+        <div class="clear_float"></div>
+        </li>
 </ul>
 
-<div class="article_comments" id="">
+<div class="article_comments" id="0">
     <p class="comment-notes alert alert-info"> 标记为<span class="required">*</span>的字段是必填项（邮箱地址不会被公开）</p>
     <div class="panel-body">
         <form action="">

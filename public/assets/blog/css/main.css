@@ -184,3 +184,7 @@ blockquote{
     margin: 20px 0;
 }
 li{list-style:none;}
+
+.clear_float {
+    clear: both;
+}
