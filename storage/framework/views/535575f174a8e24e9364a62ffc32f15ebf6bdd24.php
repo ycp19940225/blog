@@ -48,8 +48,8 @@
                                     <?php $__currentLoopData = $v->tag; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <a class="article_tag" href=""><?php echo e($tag->name); ?></a>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>				</span>
-                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
+                                    &nbsp;&nbsp;&nbsp;<a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" rel="tag">评论</a>				</span>
+                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>"><?php echo e($v->comments->where('deleted_at',0)->count()); ?> Comments</a></span>
                             </p>
                             <div class="clearfix"></div>
                         </footer>
@@ -112,7 +112,7 @@
             var oBox=document.getElementsByClassName('article_intro');
             var html = '';
             for(var i=0;i<oBox.length;i++){
-                var html = oBox[i].innerHTML.substring(0,120)+'...';
+                html = oBox[i].innerHTML.substring(0,120)+'...';
                 oBox[i].innerHTML = html;
             }
 

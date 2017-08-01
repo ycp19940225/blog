@@ -163,7 +163,7 @@
 
                             width = toPercent((100-5)/100);
                         }
-                        var comments_list = '<li class="list-group-item" id="'+base_data.id+'">'+
+                        var comments_list = '<li class="list-group-item-'+base_data.id+'" id="'+base_data.id+'">'+
                             '<div class="article_comments_detail" id="article_comments">'+
                             '<div class="panel panel-info article_depth pull-right" style="width:'+width+'">'+
                             '<div class="panel-body comment-meta">'+
