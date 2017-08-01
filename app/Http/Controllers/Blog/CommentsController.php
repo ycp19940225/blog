@@ -40,7 +40,6 @@ class CommentsController extends Controller
     {
         $data = $request->input();
         $res = $this->comments->save($data);
-
         if($res){
             return response()->json(msg('success','评论成功!',['data'=>$res]));
         }

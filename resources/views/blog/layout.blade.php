@@ -41,9 +41,9 @@
         </div>
         <div class="navbar-collapse collapse " id="navbar-collapse-blog" role="navigation" aria-expanded="false" style="height: 1px;">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">文章</a></li>
-                <li><a href="#">归档</a></li>
+                <li class="active"><a href="#">文章</a></li>
+               {{-- <li><a href="#">文章</a></li>
+                <li><a href="#">归档</a></li>--}}
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">

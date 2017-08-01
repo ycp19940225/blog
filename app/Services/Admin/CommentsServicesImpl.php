@@ -58,9 +58,6 @@ class CommentsServicesImpl implements CommentsServices
 
     public function getByArticle($article_id)
     {
-        return $this->commentDao->where('article_id',$article_id)
-            ->where('deleted_at',0)
-            ->where('reviewed',1)
-            ->get();
+        return $this->commentDao->getByArticle($article_id);
     }
 }

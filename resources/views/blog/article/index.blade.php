@@ -90,14 +90,15 @@
                     //language=HTML
                     var comment_info=JSON.parse(value.comment_info);
                     var author = String(comment_info.author);
-                    var comments_list = '<li class="list-group-item'+value.id+'" id="'+value.id+'">'+
-                        '<div class="article_comments_detail" id="article_comments">'+
-                       '<div class="panel panel-info">'+
+                    var width = toPercent((100-5*value.level)/100);
+                    var comments_list = '<li class="list-group-item-'+value.id+'" id="'+value.id+'" >'+
+                        '<div class="article_comments_detail" id="article_comments" >'+
+                       '<div class="panel panel-info pull-right article_depth" style="width:'+width+'">'+
                         '<div class="panel-body comment-meta">'+
-                        '<div class="comment_body col-xs-11 ">'+
+                        '<div class="comment_body col-xs-10 ">'+
                         '<div class="media-heading">'+
                        '<cite>'+comment_info.author+'</cite>&nbsp;&nbsp; 发表于&nbsp;&nbsp;'+
-                        '<a href="">'+
+                        '<a href="#">'+
                         '<time datetime="2017-06-13T17:20:42+00:00">'+
                         '<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;	'+get_format(value.created_at)+'		</time>'+
                    '</a>'+
@@ -114,7 +115,7 @@
                     '</div>'+
                     '</div>'+
                     '</div>'+
-                    '</div>'+
+                    '</div> <div class="clear_float"></div>'+
                     '</li>';
                     $('.article_comments_list').append(comments_list);
                 });
@@ -140,9 +141,16 @@
                         var timestamp = new Date().getTime();
                         var time = get_format(timestamp/1000);
                         var parent_id = JSON.parse(res['data']['data']['comment_info']).parent_id;
+                        var width;
+                        if(parent_id ==0){
+                             var depth = 0;
+                             width = toPercent((100-5*depth)/100);
+                        }else{
+                            width = toPercent((100-5)/100);
+                        }
                         var comments_list = '<li class="list-group-item" id="'+res['data']['data']['id']+'">'+
                             '<div class="article_comments_detail" id="article_comments">'+
-                            '<div class="panel panel-info">'+
+                            '<div class="panel panel-info article_depth pull-right" style="width:'+width+'">'+
                             '<div class="panel-body comment-meta">'+
                             '<div class="comment_body col-xs-11 ">'+
                             '<div class="media-heading">'+
@@ -164,9 +172,14 @@
                             '</div>'+
                             '</div>'+
                             '</div>'+
-                            '</div>'+
+                            '</div><div class="clear_float"></div>'+
                             '</li>';
-                        $("#"+parent_id).after(comments_list);
+                        if(parent_id == 0){
+                            $("#comments_total").after(comments_list);
+                        }else{
+                            $("#"+parent_id).after(comments_list);
+                        }
+                        $("[id^='reply_']").hide();
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }
@@ -188,6 +201,10 @@
         function cancel_comments(e) {
             e.closest('.article_comments').hide();
         }
-
+        function toPercent(point){
+            var str=Number(point*100).toFixed(1);
+            str+="%";
+            return str;
+        }
     </script>
     @endsection

@@ -30,4 +30,58 @@ class Comments extends Model
         return $this->belongsTo('App\Models\Admin\Article','article_id');
     }
 
+    public function getByArticle($article_id)
+    {
+           $data =  $this->where('article_id',$article_id)
+            ->where('deleted_at',0)
+            ->where('reviewed',1)
+            ->orderBy('created_at','desc')
+            ->get();
+           return $this->get_tree($data->toArray());
+    }
+
+    public function get_tree($data)
+    {
+        return $this->_reSort($data);
+    }
+    private function _reSort($data, $parent_id=0, $level=0, $isClear=TRUE)
+    {
+        static $ret = array();
+        if($isClear)
+            $ret = array();
+        foreach ($data as $k => $v)
+        {
+            if($v['parent_id'] == $parent_id)
+            {
+                $v['level'] = $level;
+                $ret[] = $v;
+                $this->_reSort($data, $v['id'], $level+1, FALSE);
+            }
+        }
+        return $ret;
+    }
+    public function getChildren($id)
+    {
+        $data = $this->where('deleted_at',0)
+            ->where('reviewed',1)
+            ->orderBy('created_at','desc')
+            ->get();
+        return $this->_children($data, $id);
+    }
+
+    private function _children($data, $parent_id=0, $isClear=TRUE)
+    {
+        static $ret = array();
+        if($isClear)
+            $ret = array();
+        foreach ($data as $k => $v)
+        {
+            if($v['parent_id'] == $parent_id)
+            {
+                $ret[] = $v['id'];
+                $this->_children($data, $v['id'], FALSE);
+            }
+        }
+        return $ret;
+    }
 }
