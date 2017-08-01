@@ -30,7 +30,7 @@
 <div class="article_comments" id="0">
     <div class="panel-body">
         <form action="">
-            <p></p>
+            <p class="comment-notes alert alert-info">评论：</p>
             <input type="hidden" name="parent_id" value="0">
             <input type="hidden" name="article_id" value="{{ $article['id'] }}" >
             <div class="col-md-12">
