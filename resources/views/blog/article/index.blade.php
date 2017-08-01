@@ -48,6 +48,10 @@
                                 <a class="article_tag" href="">{{ $tag->name }}</a>
                             @endforeach
                                    </span>
+                    </p>
+                    <div class="comments_share">
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                    </div>
                 </footer>
             </article>
             @include('blog.comments')
@@ -76,11 +80,17 @@
 @endsection
 @section('script.js')
     <script>
+        /**
+         * 设置token,防止跨站脚本攻击
+         */
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        /**
+         * 获取评论
+         */
         $.getJSON('{{ url('blog/getComments') }}',{article_id:'{{ $article['id'] }}'},function (res) {
             console.log(res['data']);
             if(res['code'] === 'success'){
@@ -131,6 +141,9 @@
                 highlightDefault: true,
                 scrollHistory:true
             });
+            /**
+             * 发布评论，回复
+             */
             $('form').on('click','.do_comments',function () {
                 var that = $(this).closest('form');
                 var data = that.serialize();
@@ -192,6 +205,9 @@
 
 
         });
+        /**
+         * 评论框
+         */
         function reply_comments(author,comments_id){
             var obj = $(".article_comments:last");
             var comment_html = obj.clone(true);
@@ -210,5 +226,7 @@
             str+="%";
             return str;
         }
+        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
     </script>
     @endsection
