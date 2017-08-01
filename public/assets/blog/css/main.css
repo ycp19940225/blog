@@ -183,7 +183,9 @@ blockquote{
 .article_comments_detail {
     margin: 20px 0;
 }
-li{list-style:none;}
+.article_comments_list li{
+    list-style:none;
+}
 
 .clear_float {
     clear: both;
