@@ -64,9 +64,9 @@ class Article extends Base
      * 关联模型
      * 属于该文章的评论
      */
-    public function articles()
+    public function comments()
     {
-        return $this->hasMany('App\Models\Admin\Comment','article_id');
+        return $this->hasMany('App\Models\Admin\Comments','article_id');
     }
 
     /**

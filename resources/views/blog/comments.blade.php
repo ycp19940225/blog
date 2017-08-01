@@ -1,6 +1,6 @@
 <!--PC和WAP自适应版-->
 <ul class="list-group article_comments_list">
-    <p class=" alert alert-info" id="comments_total"> 共计 222 条评论</p>
+    <p class=" alert alert-info" id="comments_total"> </p>
     {{--<li class="list-group-item" id="">
         <div class="article_comments_detail" id="article_comments">
             <div class="panel panel-info pull-right" style="width: 80%">

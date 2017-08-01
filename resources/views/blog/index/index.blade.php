@@ -49,8 +49,8 @@
                                     @foreach($v->tag as $tag)
                                         <a class="article_tag" href="">{{ $tag->name }}</a>
                                         @endforeach
-                                    &nbsp;&nbsp;&nbsp;<a href="http://laravelacademy.org/tags/%e8%af%84%e8%ae%ba" rel="tag">评论</a>				</span>
-                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="#comments">43 Comments</a></span>
+                                    &nbsp;&nbsp;&nbsp;<a href="{{ url('blog/article',['id'=>$v['id']]) }}" rel="tag">评论</a>				</span>
+                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v->comments->count() }} Comments</a></span>
                             </p>
                             <div class="clearfix"></div>
                         </footer>
@@ -112,7 +112,7 @@
             var oBox=document.getElementsByClassName('article_intro');
             var html = '';
             for(var i=0;i<oBox.length;i++){
-                var html = oBox[i].innerHTML.substring(0,120)+'...';
+                html = oBox[i].innerHTML.substring(0,120)+'...';
                 oBox[i].innerHTML = html;
             }
 

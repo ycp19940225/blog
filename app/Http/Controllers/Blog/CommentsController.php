@@ -33,7 +33,8 @@ class CommentsController extends Controller
     public function getComments(Request $request)
     {
         $data =  $this->comments->getByArticle($request->input('article_id'));
-        return response()->json(msg('success','获取成功!',['data'=>$data]));
+        $count = count($data);
+        return response()->json(msg('success','评论获取成功',['data'=>$data,'count'=>$count]));
     }
 
     public function doComments(Request $request)

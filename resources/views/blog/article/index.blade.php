@@ -84,8 +84,7 @@
         $.getJSON('{{ url('blog/getComments') }}',{article_id:'{{ $article['id'] }}'},function (res) {
             console.log(res['data']);
             if(res['code'] === 'success'){
-                layer.msg(res['msg'],{icon: 6});
-
+                layer.msg(res['msg'],{time:1000});
                 $.each(res['data']['data'],function (key,value){
                     //language=HTML
                     var comment_info=JSON.parse(value.comment_info);
@@ -119,6 +118,8 @@
                     '</li>';
                     $('.article_comments_list').append(comments_list);
                 });
+                var total = $(".article_comments_list").find('li').length;
+                $("#comments_total").html('共计'+total+'条评论');
             }else{
                 layer.msg(res['msg'],{icon:5});
             }
@@ -146,6 +147,7 @@
                              var depth = 0;
                              width = toPercent((100-5*depth)/100);
                         }else{
+
                             width = toPercent((100-5)/100);
                         }
                         var comments_list = '<li class="list-group-item" id="'+res['data']['data']['id']+'">'+
@@ -180,6 +182,8 @@
                             $("#"+parent_id).after(comments_list);
                         }
                         $("[id^='reply_']").hide();
+                        var total = $(".article_comments_list").find('li').length;
+                        $("#comments_total").html('共计'+total+'条评论');
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }
