@@ -92,7 +92,6 @@
          * 获取评论
          */
         $.getJSON('{{ url('blog/getComments') }}',{article_id:'{{ $article['id'] }}'},function (res) {
-            console.log(res['data']);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{time:1000});
                 $.each(res['data']['data'],function (key,value){
@@ -139,7 +138,7 @@
                 selectors: "h2,h3,h4,h5",
                 showEffect: "show",
                 highlightDefault: true,
-                scrollHistory:true
+                scrollHistory:false
             });
             /**
              * 发布评论，回复
@@ -148,22 +147,24 @@
                 var that = $(this).closest('form');
                 var data = that.serialize();
                 $.post('{{ url('blog/doComments') }}',data,function (res,status) {
+                    var data =JSON.parse(res['data']['data']['comment_info']);
+                    var base_data = res['data']['data'];
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        var author = that.find('input[name="author"]').val();
-                        var content = that.find('textarea[name="content"]').val();
+                        var author = data.author;
+                        var content = res['data'].data.content;
                         var timestamp = new Date().getTime();
                         var time = get_format(timestamp/1000);
-                        var parent_id = JSON.parse(res['data']['data']['comment_info']).parent_id;
+                        var parent_id = base_data.parent_id;
                         var width;
-                        if(parent_id ==0){
+                        if(parent_id == 0){
                              var depth = 0;
                              width = toPercent((100-5*depth)/100);
                         }else{
 
                             width = toPercent((100-5)/100);
                         }
-                        var comments_list = '<li class="list-group-item" id="'+res['data']['data']['id']+'">'+
+                        var comments_list = '<li class="list-group-item" id="'+base_data.id+'">'+
                             '<div class="article_comments_detail" id="article_comments">'+
                             '<div class="panel panel-info article_depth pull-right" style="width:'+width+'">'+
                             '<div class="panel-body comment-meta">'+
@@ -182,7 +183,7 @@
                             ' </div>'+
                             ' <div class="pull-right">'+
                             '<div class="reply text-right">'+
-                            '<a class="" href="JavaScript:void(0);" onclick="reply_comments(\''+author+'\','+res['data']['data']['id']+')" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复'+
+                            '<a class="" href="JavaScript:void(0);" onclick="reply_comments(\''+author+'\','+base_data.id+')" ><i class="fa fa-reply"></i>&nbsp;&nbsp;回复'+
                             '</a></div>'+
                             '</div>'+
                             '</div>'+

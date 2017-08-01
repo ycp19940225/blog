@@ -27,7 +27,11 @@ class CommentsServicesImpl implements CommentsServices
     {
         $data= $request;
         if(Auth::check()){
-
+            $user = Auth::getUser();
+            $data['user_id'] = $user->id;
+            $comment_user['author'] = $user->name;
+            $comment_user['email'] = $user->email;
+            $data['comment_info'] =json_encode($comment_user);
         }else{
             unset($request['belong'],$request['content']);
             $data['comment_info'] =json_encode($request);
