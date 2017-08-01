@@ -9,7 +9,6 @@
     <!-- begin page-header -->
     <h1 class="page-header">{{ $title }}
         <small>
-            <button class="btn btn-primary m-l-20" type="button" onclick=" window.location.href='/admin/role/add' ">添加角色</button>
         </small>
     </h1>
     <div class="row">

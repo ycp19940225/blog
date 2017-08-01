@@ -7,7 +7,7 @@
         <div class="col-md-9" >
             <ol class="breadcrumb">
                 <li><a href="{{ url('blog') }}">blog</a></li>
-                <li><a href="{{ url('blog/articles') }}">article</a></li>
+                <li><a href="{{ url('blog') }}">article</a></li>
                 <li class="active">{{ $article['title'] }}</li>
             </ol>
             <article class="article">
