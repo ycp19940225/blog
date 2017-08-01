@@ -29,6 +29,14 @@ class Comments extends Model
     {
         return $this->belongsTo('App\Models\Admin\Article','article_id');
     }
+    /**
+     * 关联模型
+     * 评论属于的作者
+     */
+    public function author()
+    {
+        return $this->hasOne('App\User','id','user_id');
+    }
 
     public function getByArticle($article_id)
     {

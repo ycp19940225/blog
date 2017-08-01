@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>BLOG</title>
+    <title>YCP-BLOG</title>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="{{ loadStatic('blog/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />

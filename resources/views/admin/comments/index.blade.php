@@ -32,7 +32,8 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>角色名</th>
+                                <th>评论者</th>
+                                <th>内容</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
                                 <th>操作</th>
@@ -42,12 +43,16 @@
                             @foreach($data as $k=>$v)
                             <tr>
                                 <td>{{ $v['id'] }}</td>
-                                <td>{{ $v['role_name'] }}</td>
+                                @if(isset($v->author->name))
+                                    <td>{{  $v->author->name or '' }}</td>
+                                    @elseif($v['comment_info'])
+                                    <td>{{ $v['comment_info']->author or ''}} </td>
+                                @endif
+                                <td>{{ $v['content'] }}</td>
                                 <td>{{ $v['created_at'] }}</td>
                                 <td>{{ $v['updated_at'] }}</td>
                                 <td>
-                                    <a href="{{ route('pri-index',['role_id'=>$v['id']]) }}"  class="btn btn-info btn-xs m-2 delete" >权限</a>
-                                    <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/role/edit',['id'=>$v['id']]) }}" >编辑</a>
+                                    <a class="btn btn-success btn-xs m-2 detail" href="{{ url('admin/comments/edit',['id'=>$v['id']]) }}" >编辑</a>
                                     <a href="JavaScript:void(0)" onclick="del({{ $v['id'] }})" class="btn btn-danger btn-xs m-2 delete" >删除</a>
                                 </td>
                             </tr>
@@ -82,11 +87,11 @@
                     id:i,
                     _token: _token
                 };
-                $.post("{{ url('admin/role/delete') }}",data,function (res) {
+                $.post("{{ url('admin/comments/delete') }}",data,function (res) {
                     console.log(res);
                     if(res['code'] === 'success'){
                         layer.msg(res['msg'],{icon: 6});
-                        setTimeout('location.href="{{ url('admin/role/index') }}"',1000);
+                        setTimeout('location.href="{{ url('admin/comments/index') }}"',1000);
                     }else{
                         layer.msg(res['msg'],{icon:5});
                     }
