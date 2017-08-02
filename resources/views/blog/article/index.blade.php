@@ -142,10 +142,21 @@
             /**
              * 发布评论，回复
              */
-            $('form').on('click','.do_comments',function () {
+            /*Parsley.on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });*/
+            $('.do_comments').on('click',function () {
+                /**
+                 *表单验证
+                 */
+                if(!$('.comments_sub').valid()){
+                    return false;
+                }
+                $(this).attr('disabled',true);
                 var that = $(this).closest('form');
                 var data = that.serialize();
                 $.post('{{ url('blog/doComments') }}',data,function (res,status) {
+                    $('.do_comments').attr('disabled',false);
                     var data =JSON.parse(res['data']['data']['comment_info']);
                     var base_data = res['data']['data'];
                     if(res['code'] === 'success'){

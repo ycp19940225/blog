@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use DB;
 use YuanChao\Editor\EndaEditor;
 use App\Services\Ifs\Admin\ArticleServices;
 
@@ -30,7 +31,7 @@ class IndexController extends controller
      */
     public function index()
     {
-        $articles = $this->articles->getAllByPaginate(4);
+        $articles = $this->articles->getAllByPaginate(1);
         foreach ($articles as $k=>$v){
             $articles[$k]['content'] = EndaEditor::MarkDecode($v->content);
         }

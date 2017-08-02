@@ -44,8 +44,12 @@ class Comments extends Model
             ->where('deleted_at',0)
             ->where('reviewed',1)
             ->orderBy('created_at','desc')
-            ->get();
-           return $this->get_tree($data->toArray());
+            ->paginate(5);
+           dd($data);
+        /*$paginate = collect(['paginate'=>$data->links()]);
+        $data =$this->get_tree($data->all());
+        $res = ['paginate'=>$paginate,'data'=>$data];*/
+        return $this->get_tree($data->all());
     }
 
     public function get_tree($data)
@@ -59,12 +63,12 @@ class Comments extends Model
             $ret = array();
         foreach ($data as $k => $v)
         {
-            if($v['parent_id'] == $parent_id)
-            {
-                $v['level'] = $level;
-                $ret[] = $v;
-                $this->_reSort($data, $v['id'], $level+1, FALSE);
-            }
+                if($v['parent_id'] == $parent_id)
+                {
+                    $v['level'] = $level;
+                    $ret[] = $v;
+                    $this->_reSort($data, $v['id'], $level+1, FALSE);
+                }
         }
         return $ret;
     }

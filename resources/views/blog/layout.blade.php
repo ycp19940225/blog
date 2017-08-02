@@ -100,7 +100,8 @@
 <!-- ================== BEGIN PAGE JS ================== -->
 {{--layer.js--}}
 <script src="{{ loadStatic('common/layer/layer.js') }}"></script>
-<script src="{{ loadStatic('admin/plugins/parsley/dist/parsley.js') }}"></script>
+<script src="{{ loadStatic('common/jquery_validation/dist/jquery.validate.js') }}"></script>
+<script src="{{ loadStatic('common/jquery_validation/language/messages_zh.js') }}"></script>
 <script src="{{ loadStatic('blog/js/app.js') }}"></script>
 
 {{--<script src="{{ loadStatic('blog/vendor/comments/js/comment.js') }}"></script>
