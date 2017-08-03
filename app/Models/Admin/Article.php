@@ -83,6 +83,7 @@ class Article extends Base
         $this_article = $this->create($data);
         $tags=explode(',',$data['tags']);
         $tags_id = $this->getTagsID($tags);
+        $this_article->tag()->sync($tags_id);
         return $this_article;
     }
 
