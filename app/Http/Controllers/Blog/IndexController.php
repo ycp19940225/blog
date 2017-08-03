@@ -10,8 +10,6 @@ namespace App\Http\Controllers\Blog;
 
 
 use App\Http\Controllers\Controller;
-use Auth;
-use DB;
 use YuanChao\Editor\EndaEditor;
 use App\Services\Ifs\Admin\ArticleServices;
 
@@ -50,4 +48,6 @@ class IndexController extends controller
         $article['content'] = EndaEditor::MarkDecode($article->content);
         return view('blog.article.index',['article'=>$article]);
     }
+
+
 }

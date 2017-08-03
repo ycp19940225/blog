@@ -44,8 +44,7 @@ class Comments extends Model
             ->where('deleted_at',0)
             ->where('reviewed',1)
             ->orderBy('created_at','desc')
-            ->paginate(5);
-           dd($data);
+            ->get();
         /*$paginate = collect(['paginate'=>$data->links()]);
         $data =$this->get_tree($data->all());
         $res = ['paginate'=>$paginate,'data'=>$data];*/
