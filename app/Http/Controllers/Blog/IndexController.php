@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Blog;
 
 
 use App\Http\Controllers\Controller;
+use DB;
 use YuanChao\Editor\EndaEditor;
 use App\Services\Ifs\Admin\ArticleServices;
 
@@ -45,8 +46,10 @@ class IndexController extends controller
     public function article($id)
     {
         $article = $this->articles->getOne($id);
+        $urls['pre'] = DB::table('blog_article')->where('id', '<', $id)->max('id');
+        $urls['next'] = DB::table('blog_article')->where('id', '>', $id)->min('id');
         $article['content'] = EndaEditor::MarkDecode($article->content);
-        return view('blog.article.index',['article'=>$article]);
+        return view('blog.article.index',['article'=>$article,'urls'=>$urls]);
     }
 
 

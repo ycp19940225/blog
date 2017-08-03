@@ -28,7 +28,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <form action="" class="form-horizontal" role="form" method="post">
+                        <form action="" class="form-horizontal form_need_validate" role="form" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <input type="hidden" name="id" value="{{ $data['id'] or '' }}">
@@ -71,6 +71,12 @@
          * 表单提交
          */
         $("#submit").click(function () {
+            /**
+             *表单验证
+             */
+            if(!$(".form_need_validate").valid()){
+                return false;
+            }
            var data = $("form").serialize();
             var method = "{{ Route::current()->getActionMethod() }}";
             if(method === 'edit'){

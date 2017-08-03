@@ -322,8 +322,10 @@
 <!-- ================== BEGIN tag JS ================== -->
 <script src="{{ loadStatic('common/tag_input/jquery.tagsinput.min.js') }}"></script>
 <!-- ================== END tag JS ================== -->
-
-
+<!-- ================== BEGIN validate JS ================== -->
+<script src="{{ loadStatic('common/jquery_validation/dist/jquery.validate.js') }}"></script>
+<script src="{{ loadStatic('common/jquery_validation/language/messages_zh.js') }}"></script>
+<!-- ================== END validate JS ================== -->
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 
