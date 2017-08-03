@@ -29,7 +29,7 @@ class IndexController extends controller
      */
     public function index()
     {
-        $articles = $this->articles->getAllByPaginate(1);
+        $articles = $this->articles->getAllByPaginate(4);
         foreach ($articles as $k=>$v){
             $articles[$k]['content'] = EndaEditor::MarkDecode($v->content);
         }
