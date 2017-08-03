@@ -7,14 +7,17 @@
     "require": {
         "php": ">=5.6.4",
         "algolia/algoliasearch-client-php": "^1.18",
+        "barryvdh/laravel-debugbar": "^2.4",
         "laravel/framework": "5.4.*",
         "laravel/scout": "^3.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.1",
+        "spatie/laravel-analytics": "^3.0",
         "yajra/laravel-datatables-oracle": "7.5",
         "yuanchao/laravel-5-markdown-editor": "dev-master",
-        "zgldh/qiniu-laravel-storage": "^0.6.8"
+        "zgldh/qiniu-laravel-storage": "^0.6.8",
+        "orangehill/iseed": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.3",

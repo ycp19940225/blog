@@ -192,6 +192,8 @@ return [
         App\Providers\BlogServiceProvider::class,
         //ide-helper
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
         //laravel-data——tables
         Yajra\Datatables\DatatablesServiceProvider::class,
         //Captcha
@@ -206,6 +208,10 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         //Socialite
         Laravel\Socialite\SocialiteServiceProvider::class,
+        //google analytics
+        Spatie\Analytics\AnalyticsServiceProvider::class,
+        //iseed
+        Orangehill\Iseed\IseedServiceProvider::class,
     ],
 
     /*
@@ -256,13 +262,15 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /******************user-setting************************/
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         //Captcha
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         //markdown
         'EndaEditor' => 'YuanChao\Editor\Facade\EndaEditorFacade',
         //Socialite
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        //google analytics
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
 
     ],
 
