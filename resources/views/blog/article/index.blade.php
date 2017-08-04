@@ -93,7 +93,7 @@
          */
         $.getJSON('{{ url('blog/getComments') }}',{article_id:'{{ $article['id'] }}'},function (res) {
             if(res['code'] === 'success'){
-                layer.msg(res['msg'],{time:1000});
+                layer.msg(res['msg'],{time:1000,offset: 'rb'});
                 $.each(res['data']['data'],function (key,value){
                     //language=HTML
                     var comment_info=JSON.parse(value.comment_info);
