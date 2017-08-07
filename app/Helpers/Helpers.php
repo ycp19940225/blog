@@ -114,10 +114,5 @@ if ( ! function_exists('check_select')){
         return $res;
     }
 }
-/**
- * 获取无限极递归，树形结构
- */
-if ( ! function_exists('get_tree')){
-  
-}
+
 

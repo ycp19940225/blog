@@ -18,9 +18,7 @@
                         <div class="entry-meta text-muted " style="text-align: center">
                                 <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
-                                Posted on <a href="" rel="bookmark">
-                                    <time class="updated" datetime="">{!! date('Y-m-d',strtotime($article->updated_at)) !!}</time>
-                                </a>
+                                    Last updated on  <time class="updated" datetime="">{!! date('Y-m-d',strtotime($article->updated_at)) !!}</time>
                             </span>
                                 <span class="byline"> by <span class="author vcard">
                                     <i class="glyphicon glyphicon-user">

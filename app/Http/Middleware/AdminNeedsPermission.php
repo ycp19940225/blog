@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\Admin\SC;
 use Closure;
 
 class AdminNeedsPermission

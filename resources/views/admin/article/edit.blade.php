@@ -47,15 +47,22 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="intro" class="col-xs-3 control-label">简介</label><em style="color:red">*</em>
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" id="intro" name="intro" value="{{ $data['intro'] or ''}}" placeholder="请输入简介" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="name" class="col-xs-3 control-label">分类</label>
                                 <div class="col-xs-2">
-                                    <select name="cat_id" class="form-control" title="">
+                                    <select name="cat_id" class="form-control" id='cats' itle="">
                                         <option selected="" value="-1">默认分类</option>
                                     @foreach($cats as $v)
                                             <option value="{{ $v->id }}" {{ $v->selected or '' }}>{{ $v->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                    <button type="button" class="btn btn-primary btn-xs" id="add_cat">添加一个分类</button>
                                 <div class="col-xs-3">
                                     <input type="text" class="form-control" id="tags" name="tags" value="
                                     @if(isset($data))
@@ -91,11 +98,19 @@
 @section('script.js')
     <script>
         /**
+         * 设置token,防止跨站脚本攻击
+         */
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        /**
          * 表单提交
          */
         $("#submit").click(function () {
            var data = $("form").serialize();
-            var method = "{{ Route::current()->getActionMethod() }}";
+             var method = "{{ Route::current()->getActionMethod() }}";
             if(method === 'edit'){
                 $.post('{{ url('admin/article/editOperate') }}',data,function (res) {
                     handle(res);
@@ -119,7 +134,6 @@
          * 结果处理
          */
         function handle(res){
-            console.log(res);
             if(res['code'] === 'success'){
                 layer.msg(res['msg'],{icon: 6});
                 setTimeout('location.href="{{ url('admin/article/index') }}"',1000);
@@ -146,6 +160,38 @@
             'maxChars' : 0, // if not provided there is no limit
             'placeholderColor' : '#666666'
         });
+        /**
+         * 快捷添加分类
+         */
+        $("#add_cat").click(function () {
+            //页面层-自定义
+            layer.open({
+                type: 1,
+                title: '添加一个分类',
+                area: ['300px', '140px'],
+                offset: '100px',
+                closeBtn: 1,
+                shadeClose: true,
+                skin: 'yourclass',
+                content: '<input type="text" class="form-control" id="add_cat_text" name="add_cat" value="" placeholder="请输入分类" >',
+                btn: ['确定'],
+                yes:function () {
+                    var cat = $("#add_cat_text").val();
+                    var data = {
+                        'name':cat
+                    };
+                    $.post('{{ url('admin/cat/addOperate') }}',data,function (res) {
+                        if(res['code'] === 'success'){
+                            $("#cats").append('<option value="'+res['data']['id']+'">'+res['data']['name']+'</option>');
+                            layer.msg(res['msg'],{icon:6,time:1000});
+                            layer.closeAll('page'); //关闭所有页面层
+                        }
+                        else{
 
+                        }
+                    },'json');
+                }
+            });
+        });
     </script>
     @endsection

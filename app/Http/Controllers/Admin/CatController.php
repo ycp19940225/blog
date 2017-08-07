@@ -50,8 +50,8 @@ class CatController extends controller
      */
     public function addOperate(Request $request)
     {
-        if($this->catService->save($request->input())){
-            return response()->json(msg('success','添加成功!'));
+        if($res = $this->catService->save($request->input())){
+            return response()->json(msg('success','添加成功!',$res));
         }
         return response()->json(msg('error','添加失败！'));
     }

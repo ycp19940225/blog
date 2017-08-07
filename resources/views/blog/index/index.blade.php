@@ -15,9 +15,9 @@
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
-                                Posted on <a href="" rel="bookmark">
-                                    <time class="updated" datetime="">{{ date('Y-m-d',strtotime($v->updated_at)) }}</time>
-                                </a>
+                                Created on
+                                    <time class="crated" datetime="">{{ date('Y-m-d',strtotime($v->created_at)) }}</time>
+                                    Last updated on <time class="updated" datetime="">{{ date('Y-m-d',strtotime($v->updated_at)) }}</time>
                             </span>
                                 <span class="byline"> by <span class="author vcard">
                                     <i class="glyphicon glyphicon-user">
@@ -30,7 +30,7 @@
                         <hr>
                         <div class="article_intro" id="article_intro">
                             <blockquote>
-                            <p ><div class="">{!! $v['content'] !!}</div></p>
+                            <div class="">{{ $v['intro']  or ''}}</div>
                             </blockquote>
                         </div>
                         <footer class="entry-meta article_footer">
@@ -109,12 +109,12 @@
 @section('script.js')
     <script>
         $(function () {
-            var oBox=document.getElementsByClassName('article_intro');
+           /* var oBox=document.getElementsByClassName('article_intro');
             var html = '';
             for(var i=0;i<oBox.length;i++){
                 html = oBox[i].innerHTML.substring(0,120)+'...';
                 oBox[i].innerHTML = html;
-            }
+            }*/
 
 
         });
