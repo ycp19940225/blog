@@ -1,7 +1,7 @@
-##基于laravel5.4+mysql 开发
+>基于laravel5.4+mysql 开发
 
 
-###主要功能
+主要功能
 博客
 * 七牛云存储+本地存储，
 * 基于Algolia的全文搜索方案
