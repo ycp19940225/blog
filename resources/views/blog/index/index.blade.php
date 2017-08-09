@@ -104,7 +104,12 @@
                 </header>
                 <ul class="list-group">
                     @foreach ($archives as $archive)
-                    <li class="list-group-item"><a href="/posts/?month={{$archive->month}}&&year={{$archive->year}}">{{$archive->month}}&nbsp{{$archive->year}}</a></li>
+                    <li class="list-group-item">
+                        <a href="/posts/?month={{$archive->month}}&&year={{$archive->year}}">
+                            {{$archive->month}}&nbsp{{$archive->year}}
+                            <span class="badge">{{$archive->published}}</span>
+                        </a>
+                    </li>
                         @endforeach
                 </ul>
 
