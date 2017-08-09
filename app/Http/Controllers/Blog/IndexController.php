@@ -34,7 +34,15 @@ class IndexController extends controller
         foreach ($articles as $k=>$v){
             $articles[$k]['content'] = EndaEditor::MarkDecode($v->content);
         }
-        return view('blog.index.index',['articles'=>$articles]);
+        //归档
+        $archives = DB::table('blog_article')
+            ->selectRaw('year(FROM_UNIXTIME(created_at))  year, monthname(FROM_UNIXTIME(created_at)) month, count(*) published')
+            ->where('deleted_at',0)
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) desc')
+            ->get();
+        //分类
+        return view('blog.index.index',['articles'=>$articles,'archives'=>$archives]);
     }
 
     /**

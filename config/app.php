@@ -212,6 +212,8 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         //iseed
         Orangehill\Iseed\IseedServiceProvider::class,
+        //date
+        'Jenssegers\Date\DateServiceProvider',
     ],
 
     /*
@@ -271,7 +273,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         //google analytics
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
-
+        //data
+        'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];
