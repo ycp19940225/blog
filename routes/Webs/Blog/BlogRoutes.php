@@ -17,9 +17,9 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/getComments','CommentsController@getComments');
 Route::post('/doComments','CommentsController@doComments');
 //归档
-Route::get('/archives/{year}/{month}','indexController@archives');
+Route::get('/archives/{year}/{month}','IndexController@archives');
 //分类
-Route::get('/cat/{cat_id}','indexController@catArticle');
+Route::get('/cat/{cat_id}','IndexController@catArticle');
 
 
 
