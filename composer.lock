@@ -355,16 +355,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.17",
+            "version": "v0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "04d29c4b679249bd0ed62e5891203478072c8a09"
+                "reference": "018f3288dc686345bd6d82deea81b6f56171bfc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/google/google-api-php-client-services/04d29c4b679249bd0ed62e5891203478072c8a09.zip",
-                "reference": "04d29c4b679249bd0ed62e5891203478072c8a09",
+                "url": "https://files.phpcomposer.com/files/google/google-api-php-client-services/018f3288dc686345bd6d82deea81b6f56171bfc0.zip",
+                "reference": "018f3288dc686345bd6d82deea81b6f56171bfc0",
                 "shasum": ""
             },
             "require": {
@@ -388,7 +388,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2017-07-30T00:20:54+00:00"
+            "time": "2017-08-06T00:19:44+00:00"
         },
         {
             "name": "google/auth",
@@ -843,16 +843,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.31",
+            "version": "v5.4.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fc1afa6b981cadbe3be8be65b49ca82e3eb9b9c9"
+                "reference": "b8300578d159199b1195413b67318c79068cd24d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/laravel/framework/fc1afa6b981cadbe3be8be65b49ca82e3eb9b9c9.zip",
-                "reference": "fc1afa6b981cadbe3be8be65b49ca82e3eb9b9c9",
+                "url": "https://files.phpcomposer.com/files/laravel/framework/b8300578d159199b1195413b67318c79068cd24d.zip",
+                "reference": "b8300578d159199b1195413b67318c79068cd24d",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-08-02T15:24:31+00:00"
+            "time": "2017-08-03T12:59:42+00:00"
         },
         {
             "name": "laravel/scout",
@@ -1162,16 +1162,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.40",
+            "version": "1.0.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61"
+                "reference": "f400aa98912c561ba625ea4065031b7a41e5a155"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3828f0b24e2c1918bb362d57a53205d6dc8fde61",
-                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61",
+                "url": "https://files.phpcomposer.com/files/thephpleague/flysystem/f400aa98912c561ba625ea4065031b7a41e5a155.zip",
+                "reference": "f400aa98912c561ba625ea4065031b7a41e5a155",
                 "shasum": ""
             },
             "require": {
@@ -1192,13 +1192,13 @@
                 "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
                 "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
                 "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
-                "league/flysystem-copy": "Allows you to use Copy.com storage",
                 "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
                 "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
                 "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
                 "league/flysystem-webdav": "Allows you to use WebDAV storage",
                 "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
-                "spatie/flysystem-dropbox": "Allows you to use Dropbox storage"
+                "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
+                "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
             },
             "type": "library",
             "extra": {
@@ -1241,7 +1241,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-04-28T10:15:08+00:00"
+            "time": "2017-08-06T17:41:04+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -1417,16 +1417,16 @@
         },
         {
             "name": "mews/captcha",
-            "version": "v2.1.4",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mewebstudio/captcha.git",
-                "reference": "ada76309e55fcbd3bb5604f4fd0dd357dec35823"
+                "reference": "9e4436a11d5b2427a006017fcb39b0013c662492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/mewebstudio/captcha/ada76309e55fcbd3bb5604f4fd0dd357dec35823.zip",
-                "reference": "ada76309e55fcbd3bb5604f4fd0dd357dec35823",
+                "url": "https://files.phpcomposer.com/files/mewebstudio/captcha/9e4436a11d5b2427a006017fcb39b0013c662492.zip",
+                "reference": "9e4436a11d5b2427a006017fcb39b0013c662492",
                 "shasum": ""
             },
             "require": {
@@ -1470,7 +1470,7 @@
                 "laravel5 Captcha",
                 "laravel5 Security"
             ],
-            "time": "2016-07-19T09:01:51+00:00"
+            "time": "2017-08-08T13:11:53+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2159,16 +2159,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.6.1",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e"
+                "reference": "0ef23d1b10cf1bc576e9d865a7e9c47982c5715e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
-                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
+                "url": "https://files.phpcomposer.com/files/ramsey/uuid/0ef23d1b10cf1bc576e9d865a7e9c47982c5715e.zip",
+                "reference": "0ef23d1b10cf1bc576e9d865a7e9c47982c5715e",
                 "shasum": ""
             },
             "require": {
@@ -2237,7 +2237,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2017-03-26T20:37:53+00:00"
+            "time": "2017-08-04T13:39:04+00:00"
         },
         {
             "name": "spatie/laravel-analytics",
@@ -3785,22 +3785,22 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.2.0",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "46f7e8bb075036c92695b15a1ddb6971c751e585"
+                "reference": "4aada1f93c72c35e22fb1383b47fee43b8f1d157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/phpDocumentor/ReflectionDocBlock/46f7e8bb075036c92695b15a1ddb6971c751e585.zip",
-                "reference": "46f7e8bb075036c92695b15a1ddb6971c751e585",
+                "url": "https://files.phpcomposer.com/files/phpDocumentor/ReflectionDocBlock/4aada1f93c72c35e22fb1383b47fee43b8f1d157.zip",
+                "reference": "4aada1f93c72c35e22fb1383b47fee43b8f1d157",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5",
                 "phpdocumentor/reflection-common": "^1.0@dev",
-                "phpdocumentor/type-resolver": "^0.4.0",
+                "phpdocumentor/type-resolver": "^0.3.0",
                 "webmozart/assert": "^1.0"
             },
             "require-dev": {
@@ -3826,20 +3826,20 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-07-15T11:38:20+00:00"
+            "time": "2017-08-08T06:39:58+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "0.4.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
+                "reference": "fb3933512008d8162b3cdf9e18dba9309b7c3773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/phpDocumentor/TypeResolver/9c977708995954784726e25d0cd1dddf4e65b0f7.zip",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "url": "https://files.phpcomposer.com/files/phpDocumentor/TypeResolver/fb3933512008d8162b3cdf9e18dba9309b7c3773.zip",
+                "reference": "fb3933512008d8162b3cdf9e18dba9309b7c3773",
                 "shasum": ""
             },
             "require": {
@@ -3873,7 +3873,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2017-07-14T14:27:02+00:00"
+            "time": "2017-06-03T08:32:36+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -4140,29 +4140,29 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.11",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
+                "reference": "ecb0b2cdaa0add708fe6f329ef65ae0c5225130b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
-                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
+                "url": "https://files.phpcomposer.com/files/sebastianbergmann/php-token-stream/ecb0b2cdaa0add708fe6f329ef65ae0c5225130b.zip",
+                "reference": "ecb0b2cdaa0add708fe6f329ef65ae0c5225130b",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "php": ">=5.3.3"
+                "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.2"
+                "phpunit/phpunit": "^6.2.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -4185,7 +4185,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-02-27T10:12:30+00:00"
+            "time": "2017-08-03T14:17:41+00:00"
         },
         {
             "name": "phpunit/phpunit",

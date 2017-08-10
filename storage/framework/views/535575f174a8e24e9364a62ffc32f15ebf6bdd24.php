@@ -9,14 +9,14 @@
                     <div class="content articles_content">
                         <header class="article_header">
                             <div class="article_title ">
-                                <h3 class=""><strong><a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>"><?php echo e($v['title']); ?></a></strong></h3>
+                                <h3 class=""><strong><a href="<?php echo e(url('blog/article',['id'=>$v->id])); ?>"><?php echo e($v->title); ?></a></strong></h3>
                             </div>
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
                                 &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-calendar"></i>
-                                Posted on <a href="" rel="bookmark">
-                                    <time class="updated" datetime=""><?php echo e(date('Y-m-d',strtotime($v->updated_at))); ?></time>
-                                </a>
+                                Created on
+                                    <time class="crated" datetime=""><?php echo e(date('Y-m-d',strtotime($v->created_at))); ?></time>
+                                    Last updated on <time class="updated" datetime=""><?php echo e(date('Y-m-d',strtotime($v->updated_at))); ?></time>
                             </span>
                                 <span class="byline"> by <span class="author vcard">
                                     <i class="glyphicon glyphicon-user">
@@ -29,15 +29,15 @@
                         <hr>
                         <div class="article_intro" id="article_intro">
                             <blockquote>
-                            <p ><div class=""><?php echo $v['content']; ?></div></p>
+                            <div class=""><?php echo e(isset($v->intro) ? $v->intro : ''); ?></div>
                             </blockquote>
                         </div>
                         <footer class="entry-meta article_footer">
                             <p class="visible-xs">
-                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" class="btn btn-primary btn-block article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v->id])); ?>" class="btn btn-primary btn-block article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="pull-right hidden-xs">
-                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" class="btn btn-primary article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="<?php echo e(url('blog/article',['id'=>$v->id])); ?>" class="btn btn-primary article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="text-muted hidden-xs meta-data">
                                 &nbsp;&nbsp;&nbsp;<span class="cat-links">
@@ -49,7 +49,7 @@
                                         <a class="article_tag" href=""><?php echo e($tag->name); ?></a>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     &nbsp;&nbsp;&nbsp;<a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>" rel="tag">评论</a>				</span>
-                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="<?php echo e(url('blog/article',['id'=>$v['id']])); ?>"><?php echo e($v->comments->where('deleted_at',0)->count()); ?> Comments</a></span>
+                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="<?php echo e(url('blog/article',['id'=>$v->id])); ?>"><?php echo e($v->comments->where('deleted_at',0)->count()); ?> Comments</a></span>
                             </p>
                             <div class="clearfix"></div>
                         </footer>
@@ -57,7 +57,6 @@
                     </div>
                 </article>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                 <?php echo e($articles->links()); ?>
 
         </div>
@@ -65,7 +64,7 @@
         <!--content right-->
 
         <div class="col-md-3 ">
-            <div class="panel panel-success">
+            <div class="panel panel-default">
                 <div class="panel-heading">about me</div>
                 <div class="panel-body">
                     <p>phper</p>
@@ -97,7 +96,8 @@
                 </div>
             </div>
         </div>
-
+    <?php echo $__env->make('blog.common.cats', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('blog.common.archives', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <!--end content right-->
     </div>
     <!-- begin scroll to top btn -->
@@ -109,12 +109,13 @@
 <?php $__env->startSection('script.js'); ?>
     <script>
         $(function () {
-            var oBox=document.getElementsByClassName('article_intro');
+           /* var oBox=document.getElementsByClassName('article_intro');
             var html = '';
             for(var i=0;i<oBox.length;i++){
                 html = oBox[i].innerHTML.substring(0,120)+'...';
                 oBox[i].innerHTML = html;
-            }
+            }*/
+
 
         });
     </script>

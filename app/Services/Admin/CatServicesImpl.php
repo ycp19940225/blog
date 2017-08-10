@@ -47,4 +47,9 @@ class CatServicesImpl implements CatServices
     {
         return $this->catDao->find($id);
     }
+
+    public function getArticleByCatID($id,$limit='')
+    {
+        return $this->catDao->getArticleByCatID($id,$limit);
+    }
 }

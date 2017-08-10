@@ -10,7 +10,7 @@
                     <div class="content articles_content">
                         <header class="article_header">
                             <div class="article_title ">
-                                <h3 class=""><strong><a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v['title'] }}</a></strong></h3>
+                                <h3 class=""><strong><a href="{{ url('blog/article',['id'=>$v->id]) }}">{{ $v->title }}</a></strong></h3>
                             </div>
                             <div class="entry-meta text-muted">
                             <span class="posted-on">
@@ -30,15 +30,15 @@
                         <hr>
                         <div class="article_intro" id="article_intro">
                             <blockquote>
-                            <div class="">{{ $v['intro']  or ''}}</div>
+                            <div class="">{{ $v->intro  or ''}}</div>
                             </blockquote>
                         </div>
                         <footer class="entry-meta article_footer">
                             <p class="visible-xs">
-                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v['id']]) }}" class="btn btn-primary btn-block article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v->id]) }}" class="btn btn-primary btn-block article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="pull-right hidden-xs">
-                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v['id']]) }}" class="btn btn-primary article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+                                <a rel="bookmark" href="{{ url('blog/article',['id'=>$v->id]) }}" class="btn btn-primary article_read"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
                             </p>
                             <p class="text-muted hidden-xs meta-data">
                                 &nbsp;&nbsp;&nbsp;<span class="cat-links">
@@ -50,7 +50,7 @@
                                         <a class="article_tag" href="">{{ $tag->name }}</a>
                                         @endforeach
                                     &nbsp;&nbsp;&nbsp;<a href="{{ url('blog/article',['id'=>$v['id']]) }}" rel="tag">评论</a>				</span>
-                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="{{ url('blog/article',['id'=>$v['id']]) }}">{{ $v->comments->where('deleted_at',0)->count() }} Comments</a></span>
+                                <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="{{ url('blog/article',['id'=>$v->id]) }}">{{ $v->comments->where('deleted_at',0)->count() }} Comments</a></span>
                             </p>
                             <div class="clearfix"></div>
                         </footer>
@@ -58,8 +58,7 @@
                     </div>
                 </article>
             @endforeach
-
-                {{ $articles->links() }}
+                {{ $articles->links()}}
         </div>
         <!--end 文章-->
         <!--content right-->

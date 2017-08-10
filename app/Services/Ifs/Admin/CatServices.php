@@ -20,4 +20,6 @@ interface CatServices
     public function getAll();
     //获取一个
     public function getOne($id);
+
+    public function getArticleByCatID($id,$limit='');
 }

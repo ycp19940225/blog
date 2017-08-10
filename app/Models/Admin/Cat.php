@@ -32,4 +32,12 @@ class Cat extends Base
     {
         return $this->hasMany('App\Models\Admin\Article','cat_id','id');
     }
+
+    public function getArticleByCatID($id,$limit ='')
+    {
+        return $this
+            ->leftJoin('')
+            ->where('id',$id)
+            ->paginate($limit);
+    }
 }

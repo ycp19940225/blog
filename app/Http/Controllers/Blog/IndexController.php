@@ -72,6 +72,11 @@ class IndexController extends controller
 
     public function catArticle($id)
     {
-        $data = $this->cat->getOne($id);
+        $this->cat->getArticleByCatID($id);
+        $data = DB::table('blog_category as a')
+            ->leftJoin('blog_article as b','a.id','=','b.cat_id')
+            ->where('a.id',$id)
+            ->paginate(3);
+        return view('blog.index.index',['articles'=>$data]);
     }
 }
