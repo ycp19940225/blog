@@ -12,7 +12,9 @@ namespace App\Models\Admin;
 use App\Services\Admin\SC;
 use Illuminate\Http\Request;
 use App\Models\Base;
+use Jenssegers\Date\Date;
 use Laravel\Scout\Searchable;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class Article extends Base
 {
@@ -24,6 +26,7 @@ class Article extends Base
      * @var array
      */
     public $fillable = array('id','title','intro','content','created_at','updated_at','deleted_at','input_id','cat_id','views');
+
 
     /**
      * 得到该模型索引的名称。
@@ -128,5 +131,41 @@ class Article extends Base
             $tags_id[] = $tags_model->firstOrCreate(['name' => $v])->id;
         }
         return $tags_id;
+    }
+
+
+    /**
+     * @name 文章分类列表
+     * @desc
+     * @param string $year
+     * @param string $month
+     * @param string $paginate
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getArchives($year = '', $month ='', $paginate= '')
+    {
+
+        $start = Date::parse($year.$month)->timestamp;
+        $end = Date::parse($year.$month)->addMonth()->subSecond()->timestamp;
+        return $this
+            ->whereBetween('updated_at',[$start,$end])
+            ->where('deleted_at',0)
+            ->orderBy('updated_at','desc')
+            ->paginate($paginate);
+    }
+
+    /**
+     * @name 文章分类类目
+     * @desc
+     * @return \Illuminate\Support\Collection
+     */
+    public static function archives()
+    {
+        return static::
+        selectRaw('year(FROM_UNIXTIME(updated_at))  year, monthname(FROM_UNIXTIME(updated_at)) month, count(*) published')
+        ->where('deleted_at',0)
+        ->groupBy('year','month')
+        ->orderByRaw('min(updated_at) desc')
+        ->get();
     }
 }

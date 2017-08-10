@@ -16,6 +16,10 @@ Route::get('/logout', 'LoginController@logout');
 //评论
 Route::get('/getComments','CommentsController@getComments');
 Route::post('/doComments','CommentsController@doComments');
+//归档
+Route::get('/archives/{year}/{month}','indexController@archives');
+//分类
+Route::get('/cat/{cat_id}','indexController@catArticle');
 
 
 

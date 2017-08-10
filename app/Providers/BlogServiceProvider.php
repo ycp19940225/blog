@@ -3,10 +3,13 @@
 namespace App\Providers;
 
 
+use App\Models\Admin\Article;
+use App\Models\Admin\Cat;
 use App\Services\Admin\ArticleServicesImpl;
 use App\Services\Admin\CatServicesImpl;
 use App\Services\Admin\CommentsServicesImpl;
 use App\Services\Admin\TagServicesImpl;
+use DB;
 use Illuminate\Support\ServiceProvider;
 
 class BlogServiceProvider extends ServiceProvider
@@ -18,7 +21,16 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        ////归档
+        view()->composer('blog.common.archives',function($view){
+            $archives = Article::archives();
+            $view->with('archives',$archives);
+        });
+        //分类
+        view()->composer('blog.common.cats',function($view){
+            $cats = Cat::where('deleted_at',0)->get();
+            $view->with('cats',$cats);
+        });
     }
 
     /**

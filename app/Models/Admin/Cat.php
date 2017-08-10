@@ -26,10 +26,10 @@ class Cat extends Base
 
     /**
      * 关联模型
-     * 属于该用户的权限。
+     * 属于该分类的文章。
      */
-    public function pris()
+    public function articles()
     {
-        return $this->belongsToMany('App\Models\Admin\Users','blog_role_pri','role_id','pri_id');
+        return $this->hasMany('App\Models\Admin\Article','cat_id','id');
     }
 }

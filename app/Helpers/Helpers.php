@@ -100,7 +100,7 @@ if ( ! function_exists('checkPri')){
     }
 }
 /**
- * 检测下拉框选中
+ * 检测分类下拉框选中
  */
 if ( ! function_exists('check_select')){
     function check_select($data,$all){
@@ -112,6 +112,38 @@ if ( ! function_exists('check_select')){
             }
         }
         return $res;
+    }
+}
+
+/**
+ * 时间人性化
+ *
+ * @param int $time 写作的时间
+ * @return string
+ */
+if( ! function_exists('showWriteTime'))
+{
+    function showWriteTime($time)
+    {
+        $interval = time() - $time;
+        $format = array(
+            '31536000'  => '年',
+            '2592000'   => '个月',
+            '604800'    => '星期',
+            '86400'     => '天',
+            '3600'      => '小时',
+            '60'        => '分钟',
+            '1'         => '秒'
+        );
+        foreach($format as $key => $value)
+        {
+            $match = floor($interval / (int) $key );
+            if(0 != $match)
+            {
+                return $match . $value . '前';
+            }
+        }
+        return date('Y-m-d', $time);
     }
 }
 
