@@ -70,13 +70,15 @@ class IndexController extends controller
         return view('blog.index.index',['articles'=>$data]);
     }
 
+    /**
+     * @name  根据分类获取文章
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function catArticle($id)
     {
-        $this->cat->getArticleByCatID($id);
-        $data = DB::table('blog_category as a')
-            ->leftJoin('blog_article as b','a.id','=','b.cat_id')
-            ->where('a.id',$id)
-            ->paginate(3);
+        $cat = $this->cat->getOne($id);
+        $data = $cat->articles()->where('deleted_at',0)->paginate(4);
         return view('blog.index.index',['articles'=>$data]);
     }
 }

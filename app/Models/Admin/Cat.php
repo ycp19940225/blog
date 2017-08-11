@@ -35,9 +35,6 @@ class Cat extends Base
 
     public function getArticleByCatID($id,$limit ='')
     {
-        return $this
-            ->leftJoin('')
-            ->where('id',$id)
-            ->paginate($limit);
+
     }
 }
