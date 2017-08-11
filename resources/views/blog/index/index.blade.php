@@ -116,6 +116,11 @@
                 oBox[i].innerHTML = html;
             }*/
 
+            var article = '{{ count($articles) }}';
+            if(article === '0'){
+                layer.msg('Whoops,看起来什么都没有~',{offset: '100px'});
+            }
+
 
         });
     </script>
