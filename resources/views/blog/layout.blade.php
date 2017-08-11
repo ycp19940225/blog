@@ -26,6 +26,7 @@
 {{--<link href="{{ loadStatic('blog/vendor/comments/css/comment.css') }}" rel="stylesheet" />--}}
     <!-- ================== END PAGE CSS STYLE ================== -->
     <meta name="baidu-site-verification" content="a927620e7c6448b7de1dc1876e8858a8"/>
+    <meta name="baidu-site-verification" content="Fx4PGOuetH" />
 </head>
 <body>
 <!--begin响应式导航栏-->
