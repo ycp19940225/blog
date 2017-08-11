@@ -16,6 +16,8 @@
     <link href="{{ loadStatic('admin/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('common/tocfiy/stylesheets/jquery.tocify.css') }}" rel="stylesheet" />
     <link href="{{ loadStatic('common/prettify/styles/prttify_tomorow.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('blog/css/main.css') }}" rel="stylesheet" />
+
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE CSS STYLE ================== -->
@@ -78,11 +80,13 @@
 <!-- end nav   -->
 @yield('content')
 <!--begin footer-->
-<div class="footer">
-    <div class="container">
-        <p style="text-align: center">
-            Copyright ©2017 yangcp.me <a href="http://www.miitbeian.gov.cn/">渝ICP备17009018号</a>
-        </p>
+<div class="layout_footer">
+    <div class="footer">
+        <div class="container">
+            <p style="text-align: center">
+                Copyright ©2017 yangcp.me <a href="http://www.miitbeian.gov.cn/">渝ICP备17009018号</a>
+            </p>
+        </div>
     </div>
 </div>
 <!-- end footer-->

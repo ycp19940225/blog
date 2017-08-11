@@ -1,4 +1,3 @@
-<div class="col-md-3">
     <aside class="panel panel-default">
         <header class="panel-heading">
             文章分类
@@ -9,12 +8,10 @@
                 <li class="list-group-item ">
                     <a href="{{ url('blog/cat',['cat_id'=>$cat->id]) }}">
                         {{ $cat->name }}
-                        &nbsp;<span class="badge">{{ $cat->articles->count() }}</span>
+                        &nbsp;<span class="badge">{{ $cat->articles()->where('deleted_at',0)->count() }}</span>
                     </a>
                 </li>
                 @endforeach
             </ul>
         </div>
-
     </aside>
-</div>

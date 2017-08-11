@@ -42,12 +42,12 @@
                             </p>
                             <p class="text-muted hidden-xs meta-data">
                                 &nbsp;&nbsp;&nbsp;<span class="cat-links">
-					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/tutorials/blog" rel="category tag">{{ $v->cat->name }}&nbsp;</a>				</span>
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="{{ url('blog/cat',['cat_id'=>$v->cat->id]) }}" rel="category tag">{{ $v->cat->name }}&nbsp;</a>				</span>
 
                                 <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
                                     @foreach($v->tag as $tag)
-                                        <a class="article_tag" href="">{{ $tag->name }}</a>
+                                        <a class="article_tag" href="{{ url('blog/tag',['tag_id'=>$tag->id]) }}">{{ $tag->name }}</a>
                                         @endforeach
                                     &nbsp;&nbsp;&nbsp;<a href="{{ url('blog/article',['id'=>$v['id']]) }}" rel="tag">评论</a>				</span>
                                 <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="{{ url('blog/article',['id'=>$v->id]) }}">{{ $v->comments->where('deleted_at',0)->count() }} Comments</a></span>
@@ -95,9 +95,9 @@
                     </div>
                 </div>
             </div>
+            @include('blog.common.cats')
+            @include('blog.common.archives')
         </div>
-    @include('blog.common.cats')
-    @include('blog.common.archives')
         <!--end content right-->
     </div>
     <!-- begin scroll to top btn -->

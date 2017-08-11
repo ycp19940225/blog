@@ -26,10 +26,10 @@ class Tag extends Base
 
     /**
      * 关联模型
-     * 属于该用户的权限。
+     * 属于该标签的文章。
      */
-    public function pris()
+    public function articles()
     {
-        return $this->belongsToMany('App\Models\Admin\Users','blog_role_pri','role_id','pri_id');
+        return $this->belongsToMany('App\Models\Admin\Article','blog_tag_article','tag_id','article_id');
     }
 }

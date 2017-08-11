@@ -20,6 +20,8 @@ Route::post('/doComments','CommentsController@doComments');
 Route::get('/archives/{year}/{month}','IndexController@archives');
 //分类
 Route::get('/cat/{cat_id}','IndexController@catArticle');
+//标签文章
+Route::get('/tag/{tag_id}','IndexController@tagArticle');
 
 
 

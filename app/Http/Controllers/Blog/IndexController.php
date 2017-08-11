@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Article;
 use App\Services\Ifs\Admin\CatServices;
+use App\Services\Ifs\Admin\TagServices;
 use DB;
 use Jenssegers\Date\Date;
 use YuanChao\Editor\EndaEditor;
@@ -21,11 +22,15 @@ class IndexController extends controller
 {
     protected $articles;
     protected $cat;
+    protected $tag;
 
-    public function __construct(ArticleServices $articleServices,CatServices $catServices)
+    public function __construct(ArticleServices $articleServices,
+                                CatServices $catServices,
+                                TagServices $tagServices)
     {
         $this->articles = $articleServices;
         $this->cat = $catServices;
+        $this->tag = $tagServices;
     }
     /**
      * @name 后台首页
@@ -79,6 +84,12 @@ class IndexController extends controller
     {
         $cat = $this->cat->getOne($id);
         $data = $cat->articles()->where('deleted_at',0)->paginate(4);
+        return view('blog.index.index',['articles'=>$data]);
+    }
+
+    public function tagArticle($id)
+    {
+        $data = $this->tag->getOne($id)->articles()->where('deleted_at',0)->paginate(4);
         return view('blog.index.index',['articles'=>$data]);
     }
 }

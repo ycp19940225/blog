@@ -1,4 +1,3 @@
-<div class="col-md-3">
     <aside class="panel panel-default">
         <header class="panel-heading">
             文章归档
@@ -17,4 +16,3 @@
         </div>
 
     </aside>
-</div>
