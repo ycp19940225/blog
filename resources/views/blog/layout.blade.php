@@ -83,9 +83,11 @@
 <div class="layout_footer">
     <div class="footer">
         <div class="container">
-            <p style="text-align: center">
-                Copyright ©2017 yangcp.me <a href="http://www.miitbeian.gov.cn/">渝ICP备17009018号</a>
-            </p>
+                <p style="text-align: center">
+                    Copyright ©2017 yangcp.me <a href="http://www.miitbeian.gov.cn/">渝ICP备17009018号</a>
+                    <img src="{{ loadStatic('blog/img/record.png') }}" style="width:16px;">
+                    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50011702500280" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/>渝公网安备 50011702500280号</a>
+                </p>
         </div>
     </div>
 </div>
