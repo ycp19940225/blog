@@ -26,7 +26,6 @@
                                     </i> <a class="url fn n" href="">{{ $article->author->adminname or '' }}</a>
                                 </span>
                             </span>
-                            </p>
 
                         </div>
                     </header>

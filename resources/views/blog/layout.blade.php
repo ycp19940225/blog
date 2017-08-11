@@ -136,6 +136,19 @@
         });
         $("pre").addClass("prettyprint");
         prettyPrint();
+        $("img").click(function () {
+            var width = $(this).attr('width');
+            var height = $(this).attr('height');
+            layer.open({
+                type: 1,
+                shadeClose: true,
+                shade: 0.8,
+                area: ['1024px', '80%'],
+                title: false, //不显示标题
+                content: ' <img src="' +$(this).attr('src')+' " class="" >' //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+
+        })
 
     })
 </script>
