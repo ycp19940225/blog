@@ -16,6 +16,7 @@
         "mews/captcha": "^2.1",
         "orangehill/iseed": "dev-master",
         "spatie/laravel-analytics": "^3.0",
+        "spatie/laravel-backup": "^4.19",
         "yajra/laravel-datatables-oracle": "7.5",
         "yuanchao/laravel-5-markdown-editor": "dev-master",
         "zgldh/qiniu-laravel-storage": "^0.6.8"

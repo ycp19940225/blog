@@ -214,6 +214,9 @@ return [
         Orangehill\Iseed\IseedServiceProvider::class,
         //date
         'Jenssegers\Date\DateServiceProvider',
+        //backup
+        // ...
+        Spatie\Backup\BackupServiceProvider::class,
     ],
 
     /*
