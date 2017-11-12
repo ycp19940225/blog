@@ -12,3 +12,4 @@ npm-debug.log
 /html
 .gitignore
 /storage
+composer.lock
