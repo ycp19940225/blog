@@ -148,7 +148,7 @@ class Article extends Base
         $start = Date::parse($year.$month)->timestamp;
         $end = Date::parse($year.$month)->addMonth()->subSecond()->timestamp;
         return $this
-            ->whereBetween('updated_at',[$start,$end])
+            ->whereBetween('created_at',[$start,$end])
             ->where('deleted_at',0)
             ->orderBy('updated_at','desc')
             ->paginate($paginate);
