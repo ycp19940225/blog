@@ -162,10 +162,10 @@ class Article extends Base
     public static function archives()
     {
         return static::
-        selectRaw('year(FROM_UNIXTIME(updated_at))  year, monthname(FROM_UNIXTIME(updated_at)) month, count(*) published')
+        selectRaw('year(FROM_UNIXTIME(created_at))  year, monthname(FROM_UNIXTIME(created_at)) month, count(*) published')
         ->where('deleted_at',0)
         ->groupBy('year','month')
-        ->orderByRaw('min(updated_at) desc')
+        ->orderByRaw('min(created_at) desc')
         ->get();
     }
 }
