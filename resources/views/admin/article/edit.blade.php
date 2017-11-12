@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 <style>
- .editor{
-     z-index:9999
- }
+    .editor{
+        z-index:9999
+    }
 </style>
 @section('page.js')
 
@@ -37,7 +37,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <form action="" class="form-horizontal" role="form" method="post">
+                        <form action="" class="form-horizontal" role="form" method="post" id="add_post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <input type="hidden" name="id" value="{{ $data['id'] or '' }}">
@@ -57,12 +57,12 @@
                                 <div class="col-xs-2">
                                     <select name="cat_id" class="form-control" id='cats' itle="">
                                         <option selected="" value="-1">默认分类</option>
-                                    @foreach($cats as $v)
+                                        @foreach($cats as $v)
                                             <option value="{{ $v->id }}" {{ $v->selected or '' }}>{{ $v->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                    <button type="button" class="btn btn-primary btn-xs" id="add_cat">添加一个分类</button>
+                                <button type="button" class="btn btn-primary btn-xs" id="add_cat">添加一个分类</button>
                                 <div class="col-xs-3">
                                     <input type="text" class="form-control" id="tags" name="tags" value="
                                     @if(isset($data))
@@ -70,7 +70,7 @@
                                     {{ $tag->name }},
                                     @endforeach
                                     @endif
-                                    " data-id='' placeholder="请填写标签">
+                                            " data-id='' placeholder="请填写标签">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -109,8 +109,10 @@
          * 表单提交
          */
         $("#submit").click(function () {
-           var data = $("form").serialize();
-             var method = "{{ Route::current()->getActionMethod() }}";
+            var form =$("#add_post");
+            var error = form.valid();//表单验证
+            var data = form.serialize();
+            var method = "{{ Route::current()->getActionMethod() }}";
             if(method === 'edit'){
                 $.post('{{ url('admin/article/editOperate') }}',data,function (res) {
                     handle(res);
@@ -121,6 +123,8 @@
                 }
                 $.post('{{ url('admin/article/addOperate') }}',data,function (res) {
                     handle(res);
+                }).error(function(res){
+                    layer.msg('请完整填写表单！',{icon:5});
                 });
             }
         });
@@ -194,4 +198,4 @@
             });
         });
     </script>
-    @endsection
+@endsection
