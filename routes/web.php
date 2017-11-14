@@ -41,7 +41,9 @@ Route::group(['prefix'=>'admin','middleware'=>'web', 'namespace'=>'Admin'], func
 
 
 /********************************blog**********************************/
-Route::get('/','Blog\IndexController@index');
+Route::get('/', function () {
+    return view('blog.index');
+});
 Route::group(['prefix'=>'blog','middleware'=>'web', 'namespace'=>'Blog'], function(){
     require (__DIR__ . '/Webs/Blog/BlogRoutes.php');
 });
