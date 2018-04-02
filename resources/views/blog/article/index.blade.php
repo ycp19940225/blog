@@ -85,6 +85,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        $("table:visible").addClass("table table-bordered table-striped table-condensed");
         /**
          * 获取评论
          */
