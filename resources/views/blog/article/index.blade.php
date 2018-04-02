@@ -4,7 +4,7 @@
 <div class="container blog" data-spy="scroll" data-target=".article_nav">
     <div id="content" class="row">
         <!--文章-->
-        <div class="col-md-9" >
+        <div class="col-md-11" >
             <ol class="breadcrumb">
                 <li><a href="{{ url('blog') }}">blog</a></li>
                 <li><a href="{{ url('blog') }}">article</a></li>
@@ -57,7 +57,7 @@
         <!--end 文章-->
         <!--content right-->
 
-        <div class="col-md-3 ">
+        <div class="col-md-1 ">
             <div class="post-nav" >
                         <div class="nva-list" id="article_nav" >
                             <div class="panel panel-info">
