@@ -3,8 +3,11 @@
 <!--begin main container-->
 <div class="container blog" data-spy="scroll" data-target=".article_nav">
     <div id="content" class="row">
+        <div class="col-md-1 ">
+
+        </div>
         <!--文章-->
-        <div class="col-md-11" >
+        <div class="col-md-10" >
             <ol class="breadcrumb">
                 <li><a href="{{ url('blog') }}">blog</a></li>
                 <li><a href="{{ url('blog') }}">article</a></li>

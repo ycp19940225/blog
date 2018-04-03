@@ -4,9 +4,8 @@ html {
 }
 body {
     height: 100%;
-    font-size: 14px;
-    color: #525252;
-    font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+    color: #636b6f;
+    font-family: "Helvetica Neue", NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
     background: #b9e6eb ;
     min-height: 100%;
 }
@@ -86,9 +85,10 @@ body {
     margin-bottom:50px ;
 }
 .article_detail{
+    font-size: 16px;
     background-color:#ffffff;
     padding: 19px 22px;
-    line-height: 1.8;
+    line-height: 1.6;
     word-wrap: break-word;
 }
 .article_footer{
