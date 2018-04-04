@@ -10,6 +10,7 @@ namespace App\Models\Admin;
 
 
 use Illuminate\Database\Eloquent\Model;
+use YuanChao\Editor\EndaEditor;
 
 class Comments extends Model
 {
@@ -45,9 +46,9 @@ class Comments extends Model
             ->where('reviewed',1)
             ->orderBy('created_at','desc')
             ->get();
-        /*$paginate = collect(['paginate'=>$data->links()]);
-        $data =$this->get_tree($data->all());
-        $res = ['paginate'=>$paginate,'data'=>$data];*/
+        foreach ($data as $k=>$v){
+            $v['content'] = EndaEditor::MarkDecode($v->content);
+        }
         return $this->get_tree($data->all());
     }
 

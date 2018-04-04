@@ -35,7 +35,7 @@
             <input type="hidden" name="article_id" value="{{ $article['id'] }}" >
             <div class="col-md-12">
                 <div class="form-group">
-                    <textarea class="form-control" rows="5"  name="content" required></textarea>
+                    <textarea class="form-control" data-provide="markdown" rows="5"  name="content" required></textarea>
                 </div>
             </div>
             <div class="pull-right" >
@@ -52,7 +52,7 @@
             <form action=""  class="comments_sub" data-parsley-validate="true">
                 <input type="hidden" name="parent_id" value="0">
                 <input type="hidden" name="article_id" value="{{ $article['id'] }}" >
-                <div class="col-md-5">
+                <div class="col-md-10">
                     <div class="form-group comment-form-author">
                         <label class="sr-only control-label" for="author">名字 <span class="required">*</span></label>
                         <div class="input-group">
@@ -77,9 +77,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-7">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="6"  name="content" required></textarea>
+                <div class="col-md-11">
+                    <div class="form-group ibox-content">
+                        <textarea class="form-control" data-provide="markdown" rows="5"  name="content" required></textarea>
                     </div>
                 </div>
                 <div class="pull-right" >

@@ -98,6 +98,7 @@
                 $.each(res['data']['data'],function (key,value){
                     //language=HTML
                     var comment_info=JSON.parse(value.comment_info);
+                    var content = value.content;
                     var author = String(comment_info.author);
                     var width = toPercent((100-5*value.level)/100);
                     var comments_list = '<li class="list-group-item-'+value.id+'" id="'+value.id+'" >'+
@@ -114,7 +115,7 @@
                     '</div>'+
 
                     '<div class="media-body markdown-reply content-body">'+
-                        '<p>'+value.content+'</p>'+
+                        '<p>'+content+'</p>'+
                   '  </div>'+
                    ' </div>'+
                    ' <div class="pull-right">'+

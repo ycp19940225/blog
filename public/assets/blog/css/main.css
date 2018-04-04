@@ -203,3 +203,4 @@ blockquote{
 .layout_footer {
     height: 100px;
 }
+.comment_body { word-wrap:break-word; }

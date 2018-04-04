@@ -22,6 +22,8 @@
 
     <!-- ================== BEGIN PAGE CSS STYLE ================== -->
     <link href="{{ loadStatic('admin/plugins/parsley/src/parsley.css') }}" rel="stylesheet" />
+    <link href="{{ loadStatic('blog/css/markdown/bootstrap-markdown.min.css') }}" rel="stylesheet" />
+
 
 {{--<link href="{{ loadStatic('blog/vendor/comments/css/comment.css') }}" rel="stylesheet" />--}}
     <!-- ================== END PAGE CSS STYLE ================== -->
@@ -108,6 +110,11 @@
 <script src="{{ loadStatic('common/layer/layer.js') }}"></script>
 <script src="{{ loadStatic('common/jquery_validation/dist/jquery.validate.js') }}"></script>
 <script src="{{ loadStatic('common/jquery_validation/language/messages_zh.js') }}"></script>
+{{--markdowm--}}
+<script src="{{ loadStatic('blog/js/markdown/markdown.js') }}"></script>
+<script src="{{ loadStatic('blog/js/markdown/to-markdown.js') }}"></script>
+<script src="{{ loadStatic('blog/js/markdown/bootstrap-markdown.js') }}"></script>
+<script src="{{ loadStatic('blog/js/markdown/bootstrap-markdown.zh.js') }}"></script>
 <script src="{{ loadStatic('blog/js/app.js') }}"></script>
 
 {{--<script src="{{ loadStatic('blog/vendor/comments/js/comment.js') }}"></script>
@@ -135,6 +142,7 @@
             $("body").animate({"scrollTop": "0px"},300); //Webkit
         });
         $("pre").addClass("prettyprint");
+        $("#article_comments").addClass("prettyprint");
         prettyPrint();
         $("img").click(function () {
             var width = $(this).attr('width');
