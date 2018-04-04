@@ -45,7 +45,7 @@
                         <span class="tags-links">
 					<i class="glyphicon glyphicon-tags"></i> 标签：
                             @foreach($article->tag as $tag)
-                                <a class="article_tag" href="">{{ $tag->name }}</a>
+                                <a class="article_tag" href="{{ url('blog/tag',['tag_id'=>$tag->id]) }}">{{ $tag->name }}</a>
                             @endforeach
                                    </span>
                     </p>
