@@ -83,7 +83,9 @@ class TestController
     ]
 }';
         $urls = ' https://api.weixin.qq.com/cgi-bin/menu/create?access_token'.$this->access_token;
-        return $this->send($urls,'post',$data);
+        $res = $this->send($urls,'post',$data);
+
+
 
 
 
@@ -109,6 +111,7 @@ class TestController
             curl_setopt($ch, CURLOPT_TIMEOUT, 30); // 设置超时限制防止死循环
         }
         $data = json_decode(curl_exec($ch));
+        curl_close($ch);
         return $data;
     }
 }
