@@ -23,11 +23,12 @@ class TestController
     }
     public function test()
     {
-        $data =file_get_contents('menu.json');
+        /*$data =file_get_contents('menu.json');
 
         $urls = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token'.$this->access_token;
         $res = $this->send($urls,'post',$data);
-        dd($res);
+        dd($res);*/
+        echo $this->access_token;
 
 
 
@@ -53,8 +54,6 @@ class TestController
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         }
         $data = curl_exec($ch);
-        dd($data);
-        $data = json_decode($data);
         curl_close($ch);
         return $data;
     }
