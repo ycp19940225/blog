@@ -23,12 +23,11 @@ class TestController
     }
     public function test()
     {
-        /*$data =file_get_contents('menu.json');
+        $data =file_get_contents('menu.json');
 
-        $urls = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token'.$this->access_token;
+        $urls = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->access_token;
         $res = $this->send($urls,'post',$data);
-        dd($res);*/
-        echo $this->access_token;
+        dd($res);
 
 
 
