@@ -47,10 +47,10 @@ class TestController
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//设置curl参数，要求结果是否输出到屏幕上，为true的时候是不返回到网页中,假设上面的0换成1的话，那么接下来的$data就需要echo一下。
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//跳过证书验证
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  // 从证书中检查SSL加密算法是否存在
+        curl_setopt($ch, CURLOPT_HEADER, 0);
         if($type == 'post'){
             curl_setopt($ch, CURLOPT_POST, 1); // 发送一个常规的Post请求
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 30); // 设置超时限制防止死循环
         }
         $data = json_decode(curl_exec($ch));
         curl_close($ch);
