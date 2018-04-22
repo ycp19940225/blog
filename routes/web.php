@@ -59,5 +59,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //微信测试
 Route::get('/wx', 'Weixin\TestController@test');
+Route::get('/handle', 'Weixin\GetTokenController@handle');
 
 
