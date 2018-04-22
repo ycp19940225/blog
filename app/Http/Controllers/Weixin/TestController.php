@@ -25,12 +25,18 @@ class TestController
 
     public function __construct()
     {
-        self::set_interval();
         $this->access_token = self::read_token();
     }
     public function test()
     {
-        echo $this->access_token;
+        $ch = curl_init(); //初始化一个CURL对象
+        curl_setopt($ch, CURLOPT_URL, "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".self::$appId."&secret=".self::$AppSecret);//设置你所需要抓取的URL
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//设置curl参数，要求结果是否输出到屏幕上，为true的时候是不返回到网页中,假设上面的0换成1的话，那么接下来的$data就需要echo一下。
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//跳过证书验证
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  // 从证书中检查SSL加密算法是否存在
+        $data = json_decode(curl_exec($ch));
+        curl_close($ch);
+        echo $data->access_token;
 
     }
 
