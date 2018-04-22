@@ -57,3 +57,7 @@ Route::get('/test', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//微信测试
+Route::get('/wx', 'Weixin\TestController@test');
+
+
