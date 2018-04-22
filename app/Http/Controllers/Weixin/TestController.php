@@ -18,6 +18,6 @@ class TestController extends Controller
 {
     public function test()
     {
-       echo true;
+       include 'demo.php';
     }
 }

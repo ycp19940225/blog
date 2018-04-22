@@ -15,12 +15,12 @@ $pc = new WXBizMsgCrypt($token, $encodingAesKey, $appId);
 $encryptMsg = '';
 $errCode = $pc->encryptMsg($text, $timeStamp, $nonce, $encryptMsg);
 if ($errCode == 0) {
-	print("加密后: " . $encryptMsg . "\n");
+	print($encryptMsg );
 } else {
 	print($errCode . "\n");
 }
 
-$xml_tree = new DOMDocument();
+/*$xml_tree = new DOMDocument();
 $xml_tree->loadXML($encryptMsg);
 $array_e = $xml_tree->getElementsByTagName('Encrypt');
 $array_s = $xml_tree->getElementsByTagName('MsgSignature');
@@ -37,4 +37,4 @@ if ($errCode == 0) {
 	print("解密后: " . $msg . "\n");
 } else {
 	print($errCode . "\n");
-}
+}*/
