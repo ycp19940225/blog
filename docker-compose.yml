@@ -1,16 +1,23 @@
 version: '3.4'
 services:
   web:
-#    image: webdevops/php-nginx:7.3
+    #    image: webdevops/php-nginx:7.3
     build:
       dockerfile: Dockerfile
     container_name: web
+    env_file: .env
     environment:
       - APP_ENV=prod
       - PHP_DATE_TIMEZONE=Asia/Shanghai
     restart: always
     ports:
       - "80:80"
+    volumes:
+      - .:/app/
+      - ./ci/nginx.conf:/opt/docker/etc/nginx/vhost.conf
+    stdin_open: true
+    tty: true
+    command: /bin/bash
     networks:
       - prod-network
 networks:
