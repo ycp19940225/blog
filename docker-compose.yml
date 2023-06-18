@@ -1,10 +1,7 @@
 version: '3.4'
 services:
   web:
-    image: webdevops/php-nginx:7.3
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
+    image: webdevops/php-nginx:7.4
     container_name: web
     env_file: .env
     environment:
@@ -16,11 +13,6 @@ services:
     volumes:
       - .:/app/
       - ./ci/nginx.conf:/opt/docker/etc/nginx/vhost.conf
-#    stdin_open: true
-#    tty: true
-#    command: /bin/bash
-    command: >
-      sh -c "sh /app/start.sh"
     networks:
       - prod-network
 networks:
