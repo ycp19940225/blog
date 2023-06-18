@@ -3,6 +3,7 @@ services:
   web:
     #    image: webdevops/php-nginx:7.3
     build:
+      context: .
       dockerfile: Dockerfile
     container_name: web
     env_file: .env
