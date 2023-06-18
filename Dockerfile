@@ -11,5 +11,6 @@ RUN composer install
 COPY .env.example .env
 RUN php artisan key:generate
 EXPOSE 80
+RUN supervisord
 # Run the application
-CMD ["php", "artisn", "serve", "--port=80"]
+#CMD ["php", "artisn", "serve", "--port=80"]
