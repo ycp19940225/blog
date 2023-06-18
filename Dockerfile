@@ -1,4 +1,4 @@
-FROM webdevops/php-nginx:7.2
+FROM webdevops/php-nginx:7.3
 
 # Add your application code
 COPY . /app
