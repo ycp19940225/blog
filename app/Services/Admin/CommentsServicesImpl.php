@@ -33,8 +33,8 @@ class CommentsServicesImpl implements CommentsServices
             $comment_user['email'] = $user->email;
             $data['comment_info'] =json_encode($comment_user);
         }else{
-            unset($request['belong'],$request['content']);
-            $data['comment_info'] =json_encode($request);
+            unset($request['belong'], $request['content']);
+            $data['comment_info'] = json_encode($request);
         }
         return $this->commentDao->create($data);
     }
