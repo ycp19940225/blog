@@ -38,7 +38,7 @@ class UserServicesImpl implements UserServices
 
     public function select()
     {
-        return $this->userDao->where('deleted_at',0)->get();
+        return $this->userDao->where('deleted_at', 0)->get();
     }
 
     public function updateUser($data)
@@ -53,7 +53,7 @@ class UserServicesImpl implements UserServices
 
     public function delete($id)
     {
-        return $this->userDao->where('id',$id)->delete();
+        return $this->userDao->where('id', $id)->delete();
     }
 
     public function getInfoByFiled($adminname)
